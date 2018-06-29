@@ -1,0 +1,83 @@
+.homepage{
+  .container{
+    .info-slide{
+      margin-top: 3vh;
+      // margin-bottom: 3vh;
+      border: 2px solid $abu;
+      padding: 10px 0;
+      .text{
+        margin-left: 5px;
+        p{margin-bottom: 5px;}
+        .f-philo{
+          font:{
+            size: 15px;
+            weight: bold;
+          }
+        }
+      }
+    }
+
+    .text-welcome{
+      p.f-philo{font-size: 2em;}
+      margin-top: 8vh;
+      margin-bottom: 8vh;
+    }
+
+    .wall-promo{
+      p{margin-bottom: 5px;}
+      p.f-times{
+        font-size: 1.6em;
+        margin-bottom: 4vh;
+      }
+
+      @include box-prod;
+    }
+  }
+
+  .container-fluid.banner{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+  }
+
+  .container.browse-prod{
+    margin-bottom: 10vh;
+    p{margin-bottom: 5px;}
+    p.f-times{
+      font-size: 1.6em;
+    }
+    ul.pane-browse{
+      padding: 0 0 5px 0;
+      border-bottom: 2px solid $biru;
+      display: table;
+      margin: 0 auto 4vh;
+      li{
+        list-style: none;
+        font-weight: bold;
+        display: inline-block;
+        padding: 10px 20px;
+        &:nth-child(2){
+          border-left: 1px solid $abu;
+          border-right: 1px solid $abu;
+        }
+      }
+    }
+    @include box-prod;
+  }
+
+  .testimonial{
+    background: url('../../dist/img/assets/back-testi.png');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 80vh;
+    padding: 15vh 0;
+    img.middle.block{
+      margin-bottom: 8vh;
+    }
+    p.f-mont{
+      font-size: 1.5em
+    }
+    #testislide{
+      width: 50%;
+    }
+  }  
+}

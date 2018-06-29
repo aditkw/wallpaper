@@ -1,0 +1,120 @@
+@media only screen and (min-width: 1370px) {
+    // ini untuk dilayar gede supaya ikut kecil elemen nya
+    $width: 1170px;
+    .grid-home{
+      width: $width;
+      margin-right: auto;
+      margin-left: auto;
+    }
+}
+@media only screen and (min-width: 200px) and (max-width: 1024px) {
+    /* All Moblie.*/
+    section{
+      padding-top: 62px;
+    }
+    p{
+      margin-bottom: 1vw;
+    }
+    .homepage{
+      .home-service{
+        .row{
+          &:last-child{
+            .col-lg-4{
+              border-right: 1px solid #fff;
+              &:nth-child(n + 4){
+                border-bottom: 1px solid #e0e0e0;
+              }
+            }
+          }
+        }
+      }
+      .member-firm{
+        p{
+          font-size: 1.5vw;
+        }
+        .left p:first-child {
+          font-size: 2vw;
+        }
+        .container.partners {
+          padding-top:0;
+          padding-bottom:0;
+        }
+      }
+      .benefits-home .box-benefits {
+        & {
+          padding: 2vw;
+          a{
+            margin-top: 4vw;
+            font-size: 2vw;
+          }
+        }
+        p:first-child {
+          font-size: 3vw;
+          width: 100%;
+        }
+        p:nth-child(2) {
+          font-size: 1.5vw;
+          width: 100%;
+        }
+        p:nth-child(3) {
+          font-size: 1.5vw;
+        }
+      }
+    }
+
+    .content-contact .row:nth-child(2) {
+      margin-top: 0;
+      div .col-xs-12{
+        padding: 0;
+        &:nth-child(1){
+          margin-bottom: 5vw;
+        }
+      }
+
+      .col-lg-11::before {
+        left: 15px;
+      }
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Desktop & Tablet */
+    .content-contact .row:nth-child(2) {
+      div .col-sm-5{
+        padding: 0 15px;
+      }
+    }
+}
+
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  /* Tablet (Portrait) */
+  .nav-tabs{
+    margin-bottom: 5vw;
+  }
+
+}
+
+@media only screen and (min-width: 413px) and (max-width: 480px) {
+  .breadcrumb a{
+    font-size: 0.9em;
+  }
+  .nav-tabs{
+    margin-bottom: 5vw;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 412px) {
+  .nav-tabs{
+    margin-bottom: 5vw;
+  }
+}
+
+@media only screen and (min-width: 200px) and (max-width:  374px) {
+    footer .footer .row:first-child .col-lg-4:first-child .logo-footer p {
+      font-size: 16px;
+  }
+  .nav-tabs{
+    margin-bottom: 5vw;
+  }
+}

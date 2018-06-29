@@ -1,0 +1,76 @@
+footer{
+  .subs-email{
+    background: url('../../dist/img/assets/subscribe-mail2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 70vh;
+    .info{
+      position: absolute;
+      width: 50%;
+      top: 18vh;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      z-index: 3;
+      p.f-philo{font-size: 2em;}
+      p.f-segoe{font-size: 1.1em;margin-bottom: 8vh;}
+      form{
+        margin: 0 auto;
+        display: block;
+        border: 2px solid $abu;
+        margin-top: 14px;
+        border-radius: 5px;
+        input, button{
+          color: $putih;
+          border: none;
+          background: transparent;
+          padding: 10px 10px;
+        }
+        input{
+          width: 85%;
+          border-radius: 10px;
+        }
+        button{
+          width: 15%;
+          background: $abu;
+          font-weight: bold;
+          color: $titem;
+        }
+      }
+    }
+    .back-item{
+      position: absolute;
+      top: 0;
+      background-color: $item;
+      opacity: 0.8;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .footer{
+    background-color: $item;
+    a.text-putih{
+      &:hover{
+        color: $biru;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+    }
+    .row{
+      &:first-child{
+        padding: 5vh 0;
+        .col-md-7{
+          a{
+            display: inline-block;
+            padding: 2vh 1vw;
+          }
+        }
+        .sosmed{
+          margin-top: 1.5vh;
+        }
+      }
+    }
+  }
+}

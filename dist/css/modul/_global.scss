@@ -1,0 +1,38 @@
+// warna
+$ijo   : #11d4a2;
+$biru  : #4acaf5;
+$merah : #e03b09;
+$item  : #202020;
+$titem : #1b1b1b;
+$abu   : #f5f5f5;
+$babu  : #999999;
+$xbabu : #585858;
+$putih : #ffffff;
+
+.text-biru{color: $biru}
+.text-ijo{color: $ijo}
+.text-titem{color: $titem}
+.text-merah{color: $merah}
+.text-abu{color: $abu}
+.text-babu{color: $babu}
+.text-xbabu{color: $xbabu}
+.text-putih{color: $putih}
+.text-gede{font-size: 1.3em}
+.border-bot{border-bottom: 1px solid $xbabu}
+.relative{position: relative;}
+.hidden{display: none}
+.block{display: block}
+.inline{display: inline-block}
+.no-margin{margin: 0}
+.no-padding{padding: 0}
+.fleft{float: left}
+.fright{float: right}
+.clear{clear:both}
+.max-width{max-width: 100%}
+.middle{margin: 0 auto}
+.f-segoe{font-family: "Segoe Ui"}
+.f-philo{font-family: "Philosopher"}
+.f-mont{font-family: "Montserrat"}
+.f-times{font-family: "Times New Roman"}
+
+p, li, a{font-family: "Segoe Ui"}

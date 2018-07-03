@@ -1,4 +1,4 @@
-	
+
 		<!-- jQuery 2.1.4 -->
 		<script src="<?php echo base_url('plugins/jQuery/jQuery-2.1.4.min.js');?>"></script>
 		<!-- jQueryUI -->
@@ -30,7 +30,7 @@
 		wow.init();
 
 		// Close alert smooth
-		window.setTimeout(function() {	
+		window.setTimeout(function() {
 				$(".alert-success").slideUp(500, function() {
 					$(this).remove();
 				});
@@ -53,7 +53,7 @@
 
 			// SELECT2
 			$(".select2").select2();
-			
+
 			// DATA TABLE
 			$("#datatable1").DataTable();
 			$('#datatable2').DataTable({
@@ -64,7 +64,7 @@
 				"info": true,
 				"autoWidth": false
 			});
-			
+
 			// AJAX
 			// get user (edit)
 			$('.btn-edit-user').click(function() {
@@ -76,8 +76,8 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
@@ -86,27 +86,29 @@
 						$("#level").val(data.level).prop('selected','selected');
 						$("#status").val(data.status).prop('selected','selected');
 						$("#editUser").modal('show');
-					}	 
+					}
 				});
 			});
-			// get service (edit)
-			$('.btn-edit-service').click(function() {
+			// get voucher (edit)
+			$('.btn-edit-voucher').click(function() {
 				var id = $(this).attr('data-id');
 				$.ajax({
 					type: "POST",
-					url: "<?php echo site_url('admin/service/update_load');?>",
+					url: "<?php echo site_url('admin/voucher/update_load');?>",
 					data: { dataID: id},
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
-						$("#title").val(data.title);
-						$("#text").val(data.text);
+						$("#code").val(data.code);
+						$("#discount").val(data.discount);
+						$("#limit").val(data.limit);
+						$("#expired").val(data.expired);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get term (edit)
@@ -119,14 +121,14 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#title").val(data.title);
 						CKEDITOR.instances.desc.setData(data.desc);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get faq (edit)
@@ -139,14 +141,14 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#question").val(data.question);
 						$("#answer").val(data.answer);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get bank (edit)
@@ -159,15 +161,15 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#no").val(data.no);
 						$("#account").val(data.account);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get shipment (edit)
@@ -180,14 +182,14 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#web").val(data.web);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get category (edit)
@@ -200,15 +202,15 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#desc").val(data.desc);
 						$("#alt").val(data.alt);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get brand (edit)
@@ -221,56 +223,54 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
-			// get sub-category / subcat(edit)
-			$('.btn-edit-subcat').click(function() {
+
+			$('.btn-edit-motif').click(function() {
 				var id = $(this).attr('data-id');
 				$.ajax({
 					type: "POST",
-					url: "<?php echo site_url('admin/subcat/update_load');?>",
+					url: "<?php echo site_url('admin/motif/update_load');?>",
 					data: { dataID: id},
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
-						$("#category").val(data.category).prop('selected','selected');
 						$("#name").val(data.name);
-						$("#alt").val(data.alt);
-						$("#desc").val(data.desc);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
-			// get statusprd / status-product(edit)
-			$('.btn-edit-statusprd').click(function() {
+
+			$('.btn-edit-color').click(function() {
 				var id = $(this).attr('data-id');
 				$.ajax({
 					type: "POST",
-					url: "<?php echo site_url('admin/statusprd/update_load');?>",
+					url: "<?php echo site_url('admin/color/update_load');?>",
 					data: { dataID: id},
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
+
 			// get howto / how-to-buy(edit)
 			$('.btn-edit-howto').click(function() {
 				var id = $(this).attr('data-id');
@@ -281,14 +281,14 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						CKEDITOR.instances.desc.setData(data.desc);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get slide (edit)
@@ -301,14 +301,14 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#link").val(data.link);
 						$("#alt").val(data.alt);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get banner (edit)
@@ -321,14 +321,14 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#link").val(data.link);
 						$("#alt").val(data.alt);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get seo (edit)
@@ -341,15 +341,15 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#title").val(data.title);
 						$("#keyword").val(data.keyword);
 						$("#desc").val(data.desc);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get tag (edit)
@@ -362,13 +362,13 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get tag (edit)
@@ -381,13 +381,13 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			$('.btn-edit-shipment-number').click(function() {
@@ -399,13 +399,13 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#order_no").val(data.order_no);
 						$("#update").modal('show');
-					}	 
+					}
 				});
 			});
 			// get member (block)
@@ -418,13 +418,13 @@
 					timeout : 3000,
 					dataType: "JSON",
 					error: function() {
-						alert("ERROR!");	 
-					},	 
+						alert("ERROR!");
+					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
 						$("#block").modal('show');
-					}	 
+					}
 				});
 			});
 			// select sub-category
@@ -446,7 +446,7 @@
 
 		// Review Image
 		function previewImage(input) {
-				 
+
 			if (input.files && input.files[0]) {
 				var fileReader = new FileReader();
 				var imageFile = input.files[0];

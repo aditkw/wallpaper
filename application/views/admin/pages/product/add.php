@@ -63,6 +63,34 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-offset-2 col-md-4 col-lg-4">
+								<div class="form-group">
+									<label for="product">Color</label>
+									<select id="color" name="color" class="form-control" required>
+										<option disabled selected>Select Color</option>
+										<?php foreach ($color as $color): ?>
+											<option value="<?php echo $color->color_id;?>">
+												<?php echo ucwords($color->color_name);?>
+											</option>
+										<?php endforeach ?>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-4 col-lg-4">
+								<div class="form-group">
+									<label for="product">Motif</label>
+									<select id="motif" name="motif" class="form-control" required>
+										<option disabled selected>Select Motif</option>
+										<?php foreach ($motif as $motif): ?>
+											<option value="<?php echo $motif->motif_id;?>">
+												<?php echo ucwords($motif->motif_name);?>
+											</option>
+										<?php endforeach ?>
+									</select>
+								</div>
+							</div>
+						</div>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 col-lg-12">
@@ -98,39 +126,45 @@
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Stock</label>
-							<input type="number" name="stock" class="form-control" value="" placeholder="product stock" required>
+							<label for="product">Discount(%)</label>
+							<input type="number" name="discount" class="form-control" value="" placeholder="product discount" required>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-6">
+					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="product">Weight (kg)</label>
 							<input type="number" name="weight" class="form-control" value="" placeholder="product weight" required>
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-6">
-						<label for="product">Dimension (Length x Width x Height) (cm)</label>
+					<div class="col-md-4 col-lg-4">
+						<label for="product">Size (Width x Height) (cm)</label>
 						<div class="row">
-							<div class="col-md-4 col-lg-4">
+							<!-- <div class="col-md-4 col-lg-4">
 								<div class="form-group">
 									<input type="number" name="length" class="form-control" value="" placeholder="lenght" required>
 								</div>
-							</div>
-							<div class="col-md-4 col-lg-4">
+							</div> -->
+							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
 									<input type="number" name="width" class="form-control" value="" placeholder="width" required>
 								</div>
 							</div>
-							<div class="col-md-4 col-lg-4">
+							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
 									<input type="number" name="height" class="form-control" value="" placeholder="height" required>
 								</div>
 							</div>
 						</div>
 					</div>
+					<div class="col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="product">Stock</label>
+							<input type="number" name="stock" class="form-control" value="" placeholder="product stock" required>
+						</div>
+					</div>
 				</div>
 				<hr>
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-md-12 col-lg-12">
 						<div class="form-group">
 							<label for="product">Description</label>
@@ -138,12 +172,18 @@
 						</div>
 					</div>
 				</div>
-				<hr>
+				<hr> -->
 				<div class="row">
-					<div class="col-md-12 col-lg-12">
+					<div class="col-md-4 col-md-offset-2 col-lg-4">
 						<div class="form-group">
 							<label for="product">Image Alt</label>
 							<input type="text" name="alt" class="form-control" value="" placeholder="image alt" required>
+						</div>
+					</div>
+					<div class="col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="product">Product Launching (Year)</label>
+							<input type="number" name="launching" class="form-control" value="" placeholder="tahun terbit" required>
 						</div>
 					</div>
 				</div>
@@ -157,7 +197,7 @@
 						</div>
 					</div>
 					<?php for ($i=1; $i < 6; $i++):?>
-						<div class="col-md-2 col-lg-2">
+						<div class="<?php echo ($i==1) ? 'col-md-offset-1 ' : '';?>col-md-2 col-lg-2">
 							<div class="form-group">
 								<label for="product">Image </label>
 								<input type="file" name="image[]" class="form-control">

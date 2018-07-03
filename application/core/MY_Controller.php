@@ -47,15 +47,15 @@ class MY_Controller extends CI_Controller
 	*	@admin_accept = untuk admin ketika barang yang dikirim telah diterima oleh customer
 	*/
 	/*-----------------*/
-	protected $customer_order = 'Pesanan anda | Erakomp.com';
-	protected $customer_delivery = 'Pesanan anda dalam pengiriman | Erakomp.com';
-	protected $customer_register = 'Varifikasi akun | Erakomp.com';
-	protected $customer_forgot = 'Varifikasi akun | Erakomp.com';
+	protected $customer_order = 'Pesanan anda | Wallpaper Indonesia';
+	protected $customer_delivery = 'Pesanan anda dalam pengiriman | Wallpaper Indonesia';
+	protected $customer_register = 'Varifikasi akun | Wallpaper Indonesia';
+	protected $customer_forgot = 'Varifikasi akun | Wallpaper Indonesia';
 
-	protected $admin_order = 'Pesanan baru | Erakomp.com';
-	protected $admin_confirm = 'Konfirmasi pembayaran baru | Erakomp.com';
-	protected $admin_accept = 'Pesanan telah diterima | Erakomp.com';
-	protected $admin_register = 'Member baru | Erakomp.com';
+	protected $admin_order = 'Pesanan baru | Wallpaper Indonesia';
+	protected $admin_confirm = 'Konfirmasi pembayaran baru | Wallpaper Indonesia';
+	protected $admin_accept = 'Pesanan telah diterima | Wallpaper Indonesia';
+	protected $admin_register = 'Member baru | Wallpaper Indonesia';
 	protected $to_admin = TRUE;
 	protected $to_customer = TRUE;
 
@@ -77,16 +77,15 @@ class MY_Controller extends CI_Controller
 		$this->load->model(
 			array(
 				'about_model',
+				'voucher_model',
 				'howto_model',
 				'category_model',
-				'subcat_model',
+				'color_model',
+				'motif_model',
 				'bank_model',
 				'user_model',
 				'contact_model',
-				'term_model',
-				'faq_model',
 				'shipment_model',
-				'statusprd_model',
 				'product_model',
 				'banner_model',
 				'slide_model',
@@ -97,7 +96,6 @@ class MY_Controller extends CI_Controller
 				'member_model',
 				'reason_model',
 				'tag_model',
-				'articlecat_model',
 				'article_model',
 				'brand_model',
 				'province_model',
@@ -105,8 +103,7 @@ class MY_Controller extends CI_Controller
 				'order_model',
 				'transaction_item_model',
 				'transaction_model',
-				'payment_model',
-				'sample_model'
+				'payment_model'
 			)
 		);
 
@@ -347,7 +344,7 @@ class Backend_Controller extends MY_Controller
 			'content' => array('about', 'contact', 'service', 'social-media', 'term-and-condition', 'faq', 'bank', 'shipment', 'how-to-buy', 'howto' ),
 			'profile' => array('about', 'contact' ),
 			'article' => array('tag', 'article-category', 'article'),
-			'product' => array('category', 'sub-category', 'brand', 'subcat', 'product', 'product-status', 'statusprd'),
+			'product' => array('category', 'color', 'brand', 'motif', 'product'),
 			'transaction' => array('transaction-detail', 'order', 'confirm', 'delivery', 'close', 'canceled', 'report'),
 			'member' => array('member'),
 			'misscellaneous' => array('slide', 'banner', 'video'),

@@ -1,13 +1,13 @@
 <?php
 
 /**
-* 
+*
 */
 class Product extends Backend_Controller
 {
 	protected $max_size					= 1024 * 200;
 	protected $wt 							= 70;
-	protected $ht 							= 0; 
+	protected $ht 							= 0;
 	protected $image_input_name = 'image';
 	protected $modul_file 			= 'product';
 
@@ -30,18 +30,20 @@ class Product extends Backend_Controller
 		$this->data['content'] 		= 'admin/pages/product/add';
 		$this->data['category'] 	= $this->category_model->get();
 		$this->data['brand'] 			= $this->brand_model->get();
+		$this->data['color'] 			= $this->color_model->get();
+		$this->data['motif'] 			= $this->motif_model->get();
 		$this->data['path_file']	= $this->img_path.$this->modul_file;
 
 		$this->load->view('admin/media', $this->data);
 	}
 
 	public function insert()
-	{	
+	{
 		$post 			= $this->input->post(NULL, TRUE);
 		$rules 			= $this->product_model->rules;
 		$alt 				= title_url($post['alt']);
 		$link 			= title_url($post['name']);
-		$dimension 	= $post['length'].', '.$post['width'].', '.$post['height'];
+		$dimension 	= $post['width'].', '.$post['height'];
 
 		$this->form_validation->set_rules('code','Product Code','required|is_unique[{PRE}product.product_code]');
 		$this->form_validation->set_rules($rules);
@@ -57,9 +59,11 @@ class Product extends Backend_Controller
 			$array_data['product_code'] 				= $post['code'];
 			$array_data['category_id'] 					= $post['category'];
 			$array_data['brand_id'] 						= $post['brand'];
+			$array_data['motif_id'] 						= $post['motif'];
+			$array_data['color_id'] 						= $post['color'];
 			// $array_data['statusprd_id'] 				= $post['status'];
 			$array_data['product_name'] 				= $post['name'];
-			$array_data['product_desc'] 				= $post['desc'];
+			// $array_data['product_desc'] 				= $post['desc'];
 			$array_data['product_price'] 				= $post['price'];
 			$array_data['product_price_strip'] 	= $post['strip'];
 			$array_data['product_stock'] 				= $post['stock'];
@@ -67,10 +71,12 @@ class Product extends Backend_Controller
 			$array_data['product_dimension'] 		= $dimension;
 			$array_data['product_alt'] 					= $post['alt'];
 			$array_data['product_link']					= $link;
+			$array_data['product_launching']	  = $post['launching'];
+			$array_data['product_discount']	    = $post['discount'];
 
 			$product_id = $this->product_model->insert($array_data);
 
-			for ($i=0; $i < 6; $i++) { 
+			for ($i=0; $i < 6; $i++) {
 				$array_img[] = array(
 					'parent_id' 				=> $product_id,
 					'image_parent_name'	=> 'product',
@@ -79,7 +85,7 @@ class Product extends Backend_Controller
 					);
 			}
 
-			$this->image_model->insert($array_img, TRUE); 
+			$this->image_model->insert($array_img, TRUE);
 
 			$this->session->set_flashdata('success',$this->add_text);
 
@@ -99,7 +105,9 @@ class Product extends Backend_Controller
 		$this->data['thumb_pre']	= $this->thumb_pre;
 		$this->data['category'] 	= $this->category_model->get();
 		$this->data['brand'] 			= $this->brand_model->get();
-		$this->data['status'] 		= $this->statusprd_model->get();
+		$this->data['color'] 			= $this->color_model->get();
+		$this->data['motif'] 			= $this->motif_model->get();
+		// $this->data['status'] 		= $this->statusprd_model->get();
 		$this->data['dimension']	= explode(', ', $this->data['product']->product_dimension);
 		$this->data['path_file']	= $this->img_path.$this->modul_file;
 
@@ -120,14 +128,16 @@ class Product extends Backend_Controller
 
 		$alt 				= title_url($post['alt']);
 		$link 			= title_url($post['name']);
-		$dimension 	= $post['length'].', '.$post['width'].', '.$post['height'];
+		$dimension 	= $post['width'].', '.$post['height'];
 
 		$array_data['product_code'] 				= $post['code'];
 		$array_data['category_id'] 					= $post['category'];
 		$array_data['brand_id'] 						= $post['brand'];
+		$array_data['motif_id'] 						= $post['motif'];
+		$array_data['color_id'] 						= $post['color'];
 		// $array_data['statusprd_id'] 				= $post['status'];
 		$array_data['product_name'] 				= $post['name'];
-		$array_data['product_desc'] 				= $post['desc'];
+		// $array_data['product_desc'] 				= $post['desc'];
 		$array_data['product_price'] 				= $post['price'];
 		$array_data['product_price_strip'] 	= $post['strip'];
 		$array_data['product_stock'] 				= $post['stock'];
@@ -135,6 +145,8 @@ class Product extends Backend_Controller
 		$array_data['product_dimension'] 		= $dimension;
 		$array_data['product_alt'] 					= $post['alt'];
 		$array_data['product_link']					= $link;
+		$array_data['product_launching']	  = $post['launching'];
+		$array_data['product_discount']	    = $post['discount'];
 
 		$is_unique = $this->product_model->unique_update($post['code'], $id, 'product_code');
 
@@ -149,7 +161,7 @@ class Product extends Backend_Controller
 		else {
 			// update data produk
 			$this->product_model->update($array_data, $array_id);
-			
+
 			// upload gambar baru
 			$upload_image = $this->lawave_image->upload_images($this->modul_file, $this->image_input_name, $alt, $this->thumb_pre, $this->wt, $this->ht);
 
@@ -217,7 +229,7 @@ class Product extends Backend_Controller
 		if ($get_data->product_pub == '88') {
 			$array_data['product_pub'] = '99';
 			$text_msg = $this->publish_text;
-		} 
+		}
 
 		else {
 			$array_data['product_pub'] = '88';
@@ -246,7 +258,7 @@ class Product extends Backend_Controller
 		if (status_product($get_data->statusprd_id, $status_id) == $status_id) {
 			$diff = array_diff($array_stat, array($status_id));
 			$fill = array_filter($diff);
-			
+
 			$data['statusprd_id'] = (!empty($fill)) ? implode(',', $fill) : '';
 
 			$this->product_model->update($data, array('product_id' => $id));
@@ -262,7 +274,7 @@ class Product extends Backend_Controller
 	}
 
 	public function ajax_subcat()
-	{	
+	{
 		$id 					= $this->input->post('dataID');
 		$array_where 	= array('category_id' => $id);
 		$get_data 		= $this->subcat_model->get_by($array_where);
@@ -277,5 +289,5 @@ class Product extends Backend_Controller
 			}
 			echo $output;
 		}
-	}	
+	}
 }

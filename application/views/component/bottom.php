@@ -109,11 +109,13 @@ $(document).ready(function(){
 	});
 
 	$("#testislide").owlCarousel({
-		loop:true,
+		loop:false,
 		autoplay: true,
 		smartSpeed: 2000,
 		responsiveClass:true,
 		autoplayHoverPause: true,
+		nav: true,
+		navText: [$('.am-prev'),$('.am-next')],
 		responsive:{
 			320:{
 				items:1

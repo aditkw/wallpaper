@@ -77,12 +77,38 @@
         <p class="text-center text-biru">SEMUA PRODUK</p>
         <p class="text-center f-times">Browse Our Product</p>
         <ul class="pane-browse">
-          <li>MERK</li>
-          <li>WARNA</li>
-          <li>MOTIF</li>
+          <li>
+            MERK
+            <ul class="active">
+              <li>Avenue</li>
+              <li>Floral</li>
+              <li>Stella By Seoul</li>
+              <li>Selection</li>
+              <li>Feliz</li>
+            </ul>
+          </li>
+          <li class="garis">
+            WARNA
+            <ul>
+              <li>Merah</li>
+              <li>Jingga</li>
+              <li>Kuning</li>
+              <li>Hijau</li>
+              <li>Biru</li>
+            </ul>
+          </li>
+          <li>
+            MOTIF
+            <ul>
+              <li>Bunga</li>
+              <li>Lucu</li>
+              <li>Korea</li>
+              <li>Polos</li>
+            </ul>
+          </li>
         </ul>
         <?php for($i=1;$i<5;$i++): ?>
-        <div class="col-md-3 box-prod">          
+        <div class="col-md-3 box-prod">
           <div class="img-hover relative">
             <img class="max-width" src="<?=site_url('dist/img/assets/wall'.$i.'.jpg')?>" alt="">
             <div class="hover-detail">
@@ -100,15 +126,23 @@
       </div>
      </div>
 
-     <div class="testimonial">
+     <div class="testimonial relative">
        <img class="middle block" src="<?=site_url('dist/img/assets/quote.png')?>" alt="">
        <p class="text-center f-mont">Hal terpenting dalam bisnis adalah memiliki <span class="text-biru">Pelanggan Yang Senang <br>
         Berbelanja Pada Kami.</span> Kami memberikan pelayanan terbaik.</p>
        <div id="testislide" class="owl-carousel middle">
+        <?php for ($i=0; $i <4; $i++):?>
          <div class="item text-center">
            <p class="f-times text-xbabu"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</em></p>
            <p class="member"><strong>MARRY WELL</strong> - <span class="text-babu">Designer</span></p>
          </div>
+       <?php endfor; ?>
+       </div>
+       <div class="am-prev">
+         <i class="fa fa-angle-left"></i>
+       </div>
+       <div class="am-next">
+         <i class="fa fa-angle-right"></i>
        </div>
      </div>
     </div>

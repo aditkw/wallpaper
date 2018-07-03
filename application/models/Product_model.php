@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Product_model extends MY_Model
 {
-	
+
 	protected $_table_name = 'product';
 	protected $_primary_key = 'product_id';
 	public $rules = array(
@@ -24,11 +24,11 @@ class Product_model extends MY_Model
 			'label' => 'Product Name',
 			'rules' => 'required'
 			),
-		'desc' => array(
-			'field' => 'desc',
-			'label' => 'Product Description',
-			'rules' => 'required'
-			),
+		// 'desc' => array(
+		// 	'field' => 'desc',
+		// 	'label' => 'Product Description',
+		// 	'rules' => 'required'
+		// 	),
 		'price' => array(
 			'field' => 'price',
 			'label' => 'Product Proce',
@@ -44,19 +44,19 @@ class Product_model extends MY_Model
 			'label' => 'Product Weight',
 			'rules' => 'required'
 			),
-		'length' => array(
-			'field' => 'length',
-			'label' => 'Dimension (Length)',
+		'launching' => array(
+			'field' => 'launching',
+			'label' => 'Product Launching',
 			'rules' => 'required'
 			),
 		'width' => array(
 			'field' => 'width',
-			'label' => 'Dimension (Width)',
+			'label' => 'Size (Width)',
 			'rules' => 'required'
 			),
 		'height' => array(
 			'field' => 'height',
-			'label' => 'Dimension (Height)',
+			'label' => 'Size (Height)',
 			'rules' => 'required'
 			)
 		);
@@ -79,7 +79,7 @@ class Product_model extends MY_Model
 				$this->db->order_by($key, $value);
 			}
 		}
-		return parent::get_by($where,$limit,$offset,$single,$select);		
+		return parent::get_by($where,$limit,$offset,$single,$select);
 	}
 
 	public function count_product($where = NULL, $like = NULL)
@@ -95,7 +95,7 @@ class Product_model extends MY_Model
 		$get_data = $this->get($id);
 
 		if ($value == $get_data->$field) {
-			$require = '';	
+			$require = '';
 		}
 
 		else {

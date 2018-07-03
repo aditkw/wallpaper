@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -67,7 +67,7 @@
 								<th>Product Name</th>
 								<th>Category</th>
 								<th>Stock</th>
-								<th>Status</th>
+								<!-- <th>Status</th> -->
 								<th width="15%">Action</th>
 							</tr>
 						</thead>
@@ -82,7 +82,7 @@
 									<td><?php echo ucwords($product->product_name);?></td>
 									<td><?php echo $product->category_name;?></td>
 									<td><?php echo $product->product_stock;?></td>
-									<td>
+									<!-- <td>
 										<?php if (status_product($product->statusprd_id, '2') == '2'): ?>
 											<a class="btn btn-flat btn-default text-maroon" href="<?php echo site_url('admin/product/status/popular/'.$product->product_id) ?>" title="Popular">
 												<i class="fa fa-heart"></i>
@@ -103,7 +103,7 @@
 												<i class="fa fa-star"></i>
 											</a>
 										<?php endif ?>
-									</td>
+									</td> -->
 									<td>
 										<!-- Action -->
 										<?php if ($product->product_pub == '88'): ?>
@@ -118,9 +118,9 @@
 										<a class="btn btn-flat btn-default" onclick="window.location.href='<?php echo site_url('admin/product/edit/'.$product->product_id);?>'" title="Update">
 											<i class="fa fa-edit"></i>
 										</a>
-										<!-- <a onclick="return confirm('Are you sure ?')"  href="<?php echo site_url('admin/product/delete/'.$product->product_id);?>" class="btn btn-warning btn-flat" title="Delete">
+										<a onclick="return confirm('Are you sure ?')"  href="<?php echo site_url('admin/product/delete/'.$product->product_id);?>" class="btn btn-warning btn-flat" title="Delete">
 										<i class="fa fa-trash"></i>
-										</a> -->
+										</a>
 									</td>
 								</tr>
 							<?php $no++; endforeach ?>
@@ -132,8 +132,8 @@
 								<th>Code</th>
 								<th>Product Name</th>
 								<th>Category</th>
-								<th>Stoct</th>
-								<th>Status</th>
+								<th>Stock</th>
+								<!-- <th>Status</th> -->
 								<th>Action</th>
 							</tr>
 						</thead>

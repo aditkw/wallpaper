@@ -38,6 +38,7 @@
 						<p>My Cart</p>
 						<p><strong>2 Product</strong> <i class="fa fa-angle-down"></i></p>
 					</div>
+					<div class="clear"></div>
 				</div>
 			</div>
 		</div>

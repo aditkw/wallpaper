@@ -15,6 +15,11 @@
 								<i class="fa fa-user-secret"></i> <span>Administrator</span>
 							</a>
 						</li>
+						<li class="treeview <?php echo active_menu($uri_2, 'voucher') ?>">
+							<a href="<?php echo site_url('admin/voucher');?>">
+								<i class="fa fa-credit-card"></i> <span>Voucher</span>
+							</a>
+						</li>
 						<li class="treeview <?php echo active_perent($uri_2, $menu['content']) ?>">
 							<a href="#">
 								<i class="fa fa-table"></i> <span>Content</span>
@@ -37,18 +42,18 @@
 								<li class="<?php echo active_menu($uri_2, 'how-to-buy') ?>">
 									<a href="<?php echo site_url('admin/how-to-buy');?>"><i class="fa fa-circle-o"></i> How to Buy </a>
 								</li>
-								<li class="<?php echo active_menu($uri_2, 'term-and-condition') ?>">
+								<!-- <li class="<?php echo active_menu($uri_2, 'term-and-condition') ?>">
 									<a href="<?php echo site_url('admin/term-and-condition');?>"><i class="fa fa-circle-o"></i> Terms and Conditions </a>
-								</li>
-								<li class="<?php echo active_menu($uri_2, 'faq') ?>">
+								</li> -->
+								<!-- <li class="<?php echo active_menu($uri_2, 'faq') ?>">
 									<a href="<?php echo site_url('admin/faq');?>"><i class="fa fa-circle-o"></i> F A Q </a>
-								</li>
+								</li> -->
 								<li class="<?php echo active_menu($uri_2, 'bank') ?>">
 									<a href="<?php echo site_url('admin/bank');?>"><i class="fa fa-circle-o"></i> Bank </a>
 								</li>
-								<li class="<?php echo active_menu($uri_2, 'shipment') ?>">
+								<!-- <li class="<?php echo active_menu($uri_2, 'shipment') ?>">
 									<a href="<?php echo site_url('admin/shipment');?>"><i class="fa fa-circle-o"></i> Shipment</a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="treeview <?php echo active_perent($uri_2, $menu['article']) ?>">
@@ -60,13 +65,12 @@
 								<li class="<?php echo active_menu($uri_2, 'tag') ?>">
 									<a href="<?php echo site_url('admin/tag');?>"><i class="fa fa-circle-o"></i> Tag </a>
 								</li>
-								<li class="<?php echo active_menu($uri_2, 'article-category') ?>">
+								<!-- <li class="<?php echo active_menu($uri_2, 'article-category') ?>">
 									<a href="<?php echo site_url('admin/article-category');?>"><i class="fa fa-circle-o"></i> Article Category </a>
-								</li>
+								</li> -->
 								<li class="<?php echo active_menu($uri_2, 'article') ?>">
 									<a href="<?php echo site_url('admin/article');?>"><i class="fa fa-circle-o"></i> Article </a>
 								</li>
-
 							</ul>
 						</li>
 						<li class="treeview <?php echo active_perent($uri_2, $menu['product']) ?>">
@@ -79,6 +83,12 @@
 								</li>
 								<li class="<?php echo active_menu($uri_2, 'brand') ?>">
 									<a href="<?php echo site_url();?>admin/brand"><i class="fa fa-circle-o"></i> Brand </a>
+								</li>
+								<li class="<?php echo active_menu($uri_2, 'color') ?>">
+									<a href="<?php echo site_url();?>admin/color"><i class="fa fa-circle-o"></i> Color </a>
+								</li>
+								<li class="<?php echo active_menu($uri_2, 'motif') ?>">
+									<a href="<?php echo site_url();?>admin/motif"><i class="fa fa-circle-o"></i> Motif </a>
 								</li>
 								<li class="<?php echo active_menu($uri_2, 'product') ?>">
 									<a href="<?php echo site_url();?>admin/product"><i class="fa fa-circle-o"></i> Product </a>
@@ -158,9 +168,9 @@
 								<li class="<?php echo active_menu($uri_2, 'banner') ?>">
 									<a href="<?php echo site_url('admin/banner');?>"><i class="fa fa-circle-o"></i> Banner </a>
 								</li>
-								<li class="<?php echo active_menu($uri_2, 'video') ?>">
+								<!-- <li class="<?php echo active_menu($uri_2, 'video') ?>">
 									<a href="<?php echo '#'; //site_url('admin/video');?>"><i class="fa fa-circle-o"></i> Video </a>
-								</li>
+								</li> -->
 							</ul>
 						</li>
 						<li class="treeview <?php echo active_perent($uri_2, $menu['seo']) ?>">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2018 at 01:45 PM
+-- Generation Time: Jul 13, 2018 at 12:51 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -44,6 +44,13 @@ CREATE TABLE `lwd_article` (
   `article_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lwd_article`
+--
+
+INSERT INTO `lwd_article` (`article_id`, `article_tag`, `article_title`, `article_title_en`, `article_review`, `article_review_en`, `article_desc`, `article_desc_en`, `article_date`, `article_pub`, `article_image`, `article_alt`, `article_link`) VALUES
+(1, 'Notebook', 'testy', '', '', '', '<p>qwew</p>\r\n', '', '2018-07-09 00:00:00', '99', '', 'testy', 'testy');
+
 -- --------------------------------------------------------
 
 --
@@ -64,8 +71,8 @@ CREATE TABLE `lwd_bank` (
 --
 
 INSERT INTO `lwd_bank` (`bank_id`, `bank_name`, `bank_account`, `bank_no`, `bank_pub`, `bank_image`) VALUES
-(14, 'BCA', 'Muhamad Syarif SyaBana', '20011041244', '99', '1257-bca-bca.jpg'),
-(15, 'Mandiri Syari\'ah', 'Syarif SyaBana', '9500125411', '99', '2985-mandiri-mandiri.jpg');
+(14, 'BCA', 'Adit Walihadi', '20011041244', '99', '1257-bca-bca.jpg'),
+(15, 'Mandiri Syari\'ah', 'Adit Walihadi', '9500125411', '99', '2985-mandiri-mandiri.jpg');
 
 -- --------------------------------------------------------
 
@@ -87,15 +94,13 @@ CREATE TABLE `lwd_banner` (
 --
 
 INSERT INTO `lwd_banner` (`banner_id`, `banner_type`, `banner_link`, `banner_alt`, `banner_pub`, `banner_image`) VALUES
-(1, 'slide', '#', 'erakomp', '99', 'kylie-lip-kit-brown-sugar-8854.jpg'),
-(5, 'slide', '#', 'erakomp', '99', 'erakomp-2329.jpg'),
-(6, 'slide', '#', 'erakomp', '99', 'erakomp-5842.jpg'),
 (7, 'banner', '#', 'erakomp', '99', 'erakomp-115.jpg'),
 (8, 'banner', '#', 'erakomp', '99', 'erakomp-1469.jpg'),
 (9, 'banner', '#', 'erakomp', '99', 'erakomp-4622.jpg'),
 (10, 'banner', '#', 'erakomp', '99', 'erakomp-5173.jpg'),
 (11, 'banner', '#', 'erakomp', '99', 'erakomp-6375.jpg'),
-(12, 'banner', '#', 'erakomp', '99', 'erakomp-7445.jpg');
+(12, 'banner', '#', 'erakomp', '99', 'erakomp-7445.jpg'),
+(13, 'slide', '#', '#', '99', '-6528.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,7 +110,16 @@ INSERT INTO `lwd_banner` (`banner_id`, `banner_type`, `banner_link`, `banner_alt
 
 CREATE TABLE `lwd_brand` (
   `brand_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `motif_id` int(11) NOT NULL,
   `brand_name` varchar(255) NOT NULL,
+  `brand_price` decimal(10,0) NOT NULL,
+  `brand_price_strip` decimal(10,0) NOT NULL,
+  `brand_discount` int(3) NOT NULL,
+  `brand_size` varchar(255) NOT NULL,
+  `brand_weight` varchar(255) NOT NULL,
+  `brand_launch` varchar(255) NOT NULL,
+  `brand_image` varchar(255) NOT NULL,
   `brand_link` varchar(255) NOT NULL,
   `brand_pub` enum('88','99') NOT NULL DEFAULT '88'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -114,13 +128,13 @@ CREATE TABLE `lwd_brand` (
 -- Dumping data for table `lwd_brand`
 --
 
-INSERT INTO `lwd_brand` (`brand_id`, `brand_name`, `brand_link`, `brand_pub`) VALUES
-(15, 'Avenue', 'avenue', '99'),
-(16, 'Floral', 'floral', '99'),
-(17, 'Stella By Seoul', 'stella-by-seoul', '99'),
-(18, 'Selection', 'selection', '99'),
-(19, 'Feliz', 'feliz', '99'),
-(20, 'Remember', 'remember', '99');
+INSERT INTO `lwd_brand` (`brand_id`, `category_id`, `motif_id`, `brand_name`, `brand_price`, `brand_price_strip`, `brand_discount`, `brand_size`, `brand_weight`, `brand_launch`, `brand_image`, `brand_link`, `brand_pub`) VALUES
+(15, 16, 3, 'Avenue', '1075000', '2000000', 10, '1,06m x 15,6m = 15,6m2', '5,5 Kg', '2017', '-2055.jpg', 'avenue', '99'),
+(16, 16, 3, 'Floral', '125000', '225000', 25, '1,06m x 15,6m = 15,6m2', '6,7 Kg', '2014', '-8205.jpg', 'floral', '99'),
+(17, 16, 4, 'Stella By Seoul', '1240000', '2240000', 60, '1,06m x 15,6m = 15,6m2', '2,5 Kg', '2015', '-7883.jpg', 'stella-by-seoul', '99'),
+(18, 16, 5, 'Selection', '1250000', '2250000', 35, '1,06m x 15,6m = 15,6m2', '5,5 Kg', '2016', '-3093.jpg', 'selection', '99'),
+(19, 16, 4, 'Feliz', '1275000', '2275000', 20, '1,06m x 15,6m = 15,6m2', '5,5 Kg', '2016', '-1533.jpg', 'feliz', '99'),
+(20, 16, 4, 'Remember', '123500', '223500', 50, '1,06m x 15,6m = 15,6m2', '4,3 Kg', '2012', '-7911.jpg', 'remember', '99');
 
 -- --------------------------------------------------------
 
@@ -147,9 +161,9 @@ CREATE TABLE `lwd_category` (
 
 INSERT INTO `lwd_category` (`category_id`, `category_name`, `category_name_en`, `category_desc`, `category_desc_en`, `category_alt`, `category_seq`, `category_pub`, `category_image`, `category_link`) VALUES
 (16, 'Wallpaper', '', '', '', '', 0, '99', '', 'wallpaper'),
-(17, 'Vinyl', '', '', '', '', 0, '88', '', 'vinyl'),
-(18, 'Carpet Tile', '', '', '', '', 0, '88', '', 'carpet-tile'),
-(19, 'Lem Wallpaper', '', '', '', '', 0, '88', '', 'lem-wallpaper');
+(17, 'Vinyl', '', '', '', '', 0, '99', '', 'vinyl'),
+(18, 'Carpet Tile', '', '', '', '', 0, '99', '', 'carpet-tile'),
+(19, 'Lem Wallpaper', '', '', '', '', 0, '99', '', 'lem-wallpaper');
 
 -- --------------------------------------------------------
 
@@ -724,13 +738,14 @@ INSERT INTO `lwd_color` (`color_id`, `color_name`, `color_pub`, `color_link`) VA
 CREATE TABLE `lwd_contact` (
   `contact_id` int(11) NOT NULL,
   `contact_phone` varchar(255) NOT NULL,
-  `contact_fax` varchar(255) NOT NULL,
+  `contact_wa` varchar(255) NOT NULL,
+  `contact_cs` varchar(255) NOT NULL,
   `contact_email` varchar(255) NOT NULL,
   `contact_address` text NOT NULL,
   `contact_maps` text NOT NULL,
   `contact_fb` varchar(255) NOT NULL,
   `contact_tw` varchar(255) NOT NULL,
-  `contact_ig` varchar(255) NOT NULL,
+  `contact_yt` varchar(255) NOT NULL,
   `contact_in` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -738,8 +753,8 @@ CREATE TABLE `lwd_contact` (
 -- Dumping data for table `lwd_contact`
 --
 
-INSERT INTO `lwd_contact` (`contact_id`, `contact_phone`, `contact_fax`, `contact_email`, `contact_address`, `contact_maps`, `contact_fb`, `contact_tw`, `contact_ig`, `contact_in`) VALUES
-(1, '0812-5222-2252', '021-554-3330', 'info@erakomp.com', 'Lorem ipsum dolor sit amet, \r\nconsectetur adipiscing elit.', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7525098568462!2d106.81402831418737!3d-6.163889995537388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f677cce67d73%3A0x8aac357702faa9cf!2sErakomp+Infonusa.+PT!5e0!3m2!1sen!2sid!4v1490612844468\" width=\"100%\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', 'http://facebook.com', 'http://twitter.com', 'http://instagram.com', '');
+INSERT INTO `lwd_contact` (`contact_id`, `contact_phone`, `contact_wa`, `contact_cs`, `contact_email`, `contact_address`, `contact_maps`, `contact_fb`, `contact_tw`, `contact_yt`, `contact_in`) VALUES
+(1, '0812-5222-2252', '021-29471924', '021-554-3330', 'info@your-website.com', 'Lorem ipsum dolor sit amet, \r\nconsectetur adipiscing elit.', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7525098568462!2d106.81402831418737!3d-6.163889995537388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f677cce67d73%3A0x8aac357702faa9cf!2sErakomp+Infonusa.+PT!5e0!3m2!1sen!2sid!4v1490612844468\" width=\"100%\" height=\"450\" frameborder=\"0\" style=\"border:0\" allowfullscreen></iframe>', 'http://facebook.com', 'http://twitter.com', 'http://youtube.com', '');
 
 -- --------------------------------------------------------
 
@@ -760,69 +775,42 @@ CREATE TABLE `lwd_image` (
 --
 
 INSERT INTO `lwd_image` (`image_id`, `parent_id`, `image_parent_name`, `image_name`, `image_seq`) VALUES
-(133, 87, 'product', 'product-industry-2-9322.jpg', 0),
-(134, 87, 'product', 'product-industry-2-7753.png', 1),
-(135, 87, 'product', 'product-industry-2-7754.png', 2),
-(136, 87, 'product', 'product-industry-2-7755.jpg', 3),
-(137, 87, 'product', 'product-industry-2-53.jpg', 4),
-(138, 87, 'product', 'product-industry-2-8339.png', 5),
-(139, 88, 'product', 'sand-making-machine-8916.png', 0),
-(140, 88, 'product', 'sand-making-machine-3019.png', 1),
-(141, 88, 'product', 'sand-making-machine-3020.png', 2),
-(142, 88, 'product', 'sand-making-machine-2615.png', 3),
-(143, 88, 'product', 'sand-making-machine-3022.png', 4),
-(144, 88, 'product', 'sand-making-machine-2617.png', 5),
-(149, 89, 'product', '1-4944.png', 0),
-(150, 89, 'product', '', 1),
-(151, 89, 'product', '', 2),
-(152, 89, 'product', '', 3),
-(153, 89, 'product', '', 4),
-(154, 89, 'product', '', 5),
-(155, 6, 'article', 'term-and-conditions-3848.png', 0),
-(162, 90, 'product', 'epson-printer-lx-310-6908.jpg', 0),
-(163, 90, 'product', '', 1),
-(164, 90, 'product', '', 2),
-(165, 90, 'product', '', 3),
-(166, 90, 'product', '', 4),
-(167, 90, 'product', '', 5),
-(174, 92, 'product', 'asus-bu201la-core-i7-os-pro-9496.jpg', 0),
-(175, 92, 'product', '', 1),
-(176, 92, 'product', '', 2),
-(177, 92, 'product', '', 3),
-(178, 92, 'product', '', 4),
-(179, 92, 'product', '', 5),
-(180, 93, 'product', 'printer-hp-deskjet-gt5820-8863.jpg', 0),
-(181, 93, 'product', '', 1),
-(182, 93, 'product', '', 2),
-(183, 93, 'product', '', 3),
-(184, 93, 'product', '', 4),
-(185, 93, 'product', '', 5),
-(186, 94, 'product', 'pc-hp-aio-pro-one-400-g1-9762.jpg', 0),
-(187, 94, 'product', '', 1),
-(188, 94, 'product', '', 2),
-(189, 94, 'product', '', 3),
-(190, 94, 'product', '', 4),
-(191, 94, 'product', '', 5),
-(192, 95, 'product', 'hp-pro-one-400-g2-free-dos-850.jpg', 0),
-(193, 95, 'product', '', 1),
-(194, 95, 'product', '', 2),
-(195, 95, 'product', '', 3),
-(196, 95, 'product', '', 4),
-(197, 95, 'product', '', 5),
-(198, 96, 'product', 'lenovo-ideacentre-b40-30-yid-black-1232.jpg', 0),
-(199, 96, 'product', '', 1),
-(200, 96, 'product', '', 2),
-(201, 96, 'product', '', 3),
-(202, 96, 'product', '', 4),
-(203, 96, 'product', '', 5),
-(210, 13, 'article', 'a-8035.jpg', 0),
-(214, 17, 'article', 'a-4282.jpg', 0),
-(221, 99, 'product', 'asd-3378.jpg', 0),
-(222, 99, 'product', 'asd-3379.jpg', 1),
-(223, 99, 'product', 'asd-3380.jpg', 2),
-(224, 99, 'product', 'asd-3381.jpg', 3),
-(225, 99, 'product', 'asd-3382.jpg', 4),
-(226, 99, 'product', 'asd-3383.jpg', 5);
+(255, 1, 'article', 'testy-7050.JPG', 0),
+(256, 104, 'product', 'alt-5962.jpg', 0),
+(257, 104, 'product', 'alt-5963.png', 1),
+(258, 104, 'product', 'alt-5964.jpg', 2),
+(259, 104, 'product', 'alt-5965.jpg', 3),
+(260, 104, 'product', 'alt-5966.jpg', 4),
+(261, 104, 'product', 'alt-5967.jpg', 5),
+(262, 104, 'product', 'alt-5968.jpg', 6),
+(263, 105, 'product', 'tada-9718.jpg', 0),
+(264, 105, 'product', 'tada-9719.png', 1),
+(265, 105, 'product', 'tada-9720.jpg', 2),
+(266, 105, 'product', 'tada-9721.jpg', 3),
+(267, 105, 'product', 'tada-9722.jpg', 4),
+(268, 105, 'product', 'tada-9723.jpg', 5),
+(269, 105, 'product', 'tada-9724.jpg', 6),
+(270, 106, 'product', 'wat-1319.jpg', 0),
+(271, 106, 'product', 'wat-1320.png', 1),
+(272, 106, 'product', 'wat-1321.jpg', 2),
+(273, 106, 'product', 'wat-1322.jpg', 3),
+(274, 106, 'product', 'wat-1323.jpg', 4),
+(275, 106, 'product', 'wat-1324.jpg', 5),
+(276, 106, 'product', 'wat-1325.jpg', 6),
+(277, 107, 'product', 'attr-7901.jpg', 0),
+(278, 107, 'product', 'attr-7902.png', 1),
+(279, 107, 'product', 'attr-7903.jpg', 2),
+(280, 107, 'product', 'attr-7904.jpg', 3),
+(281, 107, 'product', 'attr-7905.jpg', 4),
+(282, 107, 'product', 'attr-7906.jpg', 5),
+(283, 107, 'product', 'attr-7907.jpg', 6),
+(284, 108, 'product', 'asd-5520.jpg', 0),
+(285, 108, 'product', 'asd-5521.png', 1),
+(286, 108, 'product', 'asd-5522.jpg', 2),
+(287, 108, 'product', 'asd-5523.jpg', 3),
+(288, 108, 'product', 'asd-5524.jpg', 4),
+(289, 108, 'product', 'asd-5525.jpg', 5),
+(290, 108, 'product', 'asd-5526.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -928,6 +916,13 @@ CREATE TABLE `lwd_order` (
   `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lwd_order`
+--
+
+INSERT INTO `lwd_order` (`order_id`, `order_no`, `product_id`, `order_price`, `order_qty`, `order_subtotal`, `order_weight`, `order_date`) VALUES
+(5, '39694', 104, '250000', 2, '500000', 2, '2018-07-13 14:48:22');
+
 -- --------------------------------------------------------
 
 --
@@ -956,7 +951,6 @@ CREATE TABLE `lwd_payment` (
 CREATE TABLE `lwd_product` (
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `motif_id` int(8) NOT NULL,
   `color_id` int(8) NOT NULL,
   `brand_id` int(11) NOT NULL,
   `product_code` varchar(100) NOT NULL,
@@ -970,7 +964,6 @@ CREATE TABLE `lwd_product` (
   `product_pub` enum('88','99') NOT NULL COMMENT '99 = publish',
   `product_seq` int(11) NOT NULL,
   `product_link` varchar(255) NOT NULL,
-  `product_launching` year(4) NOT NULL,
   `product_discount` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -978,8 +971,12 @@ CREATE TABLE `lwd_product` (
 -- Dumping data for table `lwd_product`
 --
 
-INSERT INTO `lwd_product` (`product_id`, `category_id`, `motif_id`, `color_id`, `brand_id`, `product_code`, `product_name`, `product_alt`, `product_price`, `product_stock`, `product_price_strip`, `product_weight`, `product_dimension`, `product_pub`, `product_seq`, `product_link`, `product_launching`, `product_discount`) VALUES
-(99, 19, 4, 3, 19, '123asd', 'qweqwe', 'asd', '12312', 122, '123123', 22, '213, 12', '88', 0, 'qweqwe', 2017, 20);
+INSERT INTO `lwd_product` (`product_id`, `category_id`, `color_id`, `brand_id`, `product_code`, `product_name`, `product_alt`, `product_price`, `product_stock`, `product_price_strip`, `product_weight`, `product_dimension`, `product_pub`, `product_seq`, `product_link`, `product_discount`) VALUES
+(104, 16, 1, 15, '102-345', 'Wallpaper Example 102-3', 'alt', '250000', 23, '500000', 2, '150, 300', '99', 1, 'wallpaper-example-102-3', 10),
+(105, 16, 3, 16, '202-356', 'Wallpaper Example 202', 'tada', '300000', 26, '400000', 2, '340, 400', '99', 2, 'wallpaper-example-202', 10),
+(106, 16, 4, 20, '302-354', 'Wallpaper Example 302-3', 'wat', '400000', 50, '550000', 23, '240, 300', '99', 3, 'wallpaper-example-302-3', 50),
+(107, 16, 4, 20, '402-334', 'Wallpaper Example 402-334', 'attr', '450000', 42, '600000', 4, '450, 500', '99', 4, 'wallpaper-example-402-334', 35),
+(108, 16, 4, 16, '121241ff', 'qweqwe', 'asd', '123123', 21, '123123', 12, '21, 21', '99', 2, 'qweqwe', 12);
 
 -- --------------------------------------------------------
 
@@ -1150,6 +1147,29 @@ INSERT INTO `lwd_tag` (`tag_id`, `tag_name`, `tag_name_en`, `tag_pub`, `tag_link
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lwd_testi`
+--
+
+CREATE TABLE `lwd_testi` (
+  `testi_id` int(8) NOT NULL,
+  `testi_name` varchar(255) NOT NULL,
+  `testi_desc` varchar(255) NOT NULL,
+  `testi_job` varchar(255) NOT NULL,
+  `testi_pub` enum('88','99') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lwd_testi`
+--
+
+INSERT INTO `lwd_testi` (`testi_id`, `testi_name`, `testi_desc`, `testi_job`, `testi_pub`) VALUES
+(1, 'Adit Walihadi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Web Developer', '99'),
+(3, 'Elsa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Designer', '99'),
+(4, 'Yuli', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Apoteker', '99');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lwd_transaction`
 --
 
@@ -1198,6 +1218,13 @@ CREATE TABLE `lwd_transaction_item` (
   `transaction_item_subtotal` decimal(10,0) NOT NULL,
   `transaction_item_weight` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lwd_transaction_item`
+--
+
+INSERT INTO `lwd_transaction_item` (`transaction_item_id`, `order_no`, `product_id`, `transaction_item_price`, `transaction_item_qty`, `transaction_item_subtotal`, `transaction_item_weight`) VALUES
+(1, '39694', 104, '250000', 2, '500000', 2);
 
 -- --------------------------------------------------------
 
@@ -1266,7 +1293,7 @@ CREATE TABLE `lwd_voucher` (
 --
 
 INSERT INTO `lwd_voucher` (`voucher_id`, `voucher_code`, `voucher_discount`, `voucher_expired`, `voucher_limit`, `voucher_pub`) VALUES
-(1, 'aya123', 20000, '2018-07-28', 21, '88');
+(0, 'novoucher', 0, '9999-12-31', 99, '99');
 
 --
 -- Indexes for dumped tables
@@ -1375,8 +1402,7 @@ ALTER TABLE `lwd_product`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `category_id` (`category_id`),
   ADD KEY `brand_id` (`brand_id`),
-  ADD KEY `color_id` (`color_id`),
-  ADD KEY `motif_id` (`motif_id`);
+  ADD KEY `color_id` (`color_id`);
 
 --
 -- Indexes for table `lwd_province`
@@ -1413,6 +1439,12 @@ ALTER TABLE `lwd_site`
 --
 ALTER TABLE `lwd_tag`
   ADD PRIMARY KEY (`tag_id`);
+
+--
+-- Indexes for table `lwd_testi`
+--
+ALTER TABLE `lwd_testi`
+  ADD PRIMARY KEY (`testi_id`);
 
 --
 -- Indexes for table `lwd_transaction`
@@ -1456,7 +1488,7 @@ ALTER TABLE `lwd_voucher`
 -- AUTO_INCREMENT for table `lwd_article`
 --
 ALTER TABLE `lwd_article`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lwd_bank`
@@ -1468,7 +1500,7 @@ ALTER TABLE `lwd_bank`
 -- AUTO_INCREMENT for table `lwd_banner`
 --
 ALTER TABLE `lwd_banner`
-  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `banner_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `lwd_brand`
@@ -1510,7 +1542,7 @@ ALTER TABLE `lwd_contact`
 -- AUTO_INCREMENT for table `lwd_image`
 --
 ALTER TABLE `lwd_image`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
 
 --
 -- AUTO_INCREMENT for table `lwd_info`
@@ -1534,7 +1566,7 @@ ALTER TABLE `lwd_motif`
 -- AUTO_INCREMENT for table `lwd_order`
 --
 ALTER TABLE `lwd_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `lwd_payment`
@@ -1546,7 +1578,7 @@ ALTER TABLE `lwd_payment`
 -- AUTO_INCREMENT for table `lwd_product`
 --
 ALTER TABLE `lwd_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `lwd_province`
@@ -1579,16 +1611,22 @@ ALTER TABLE `lwd_tag`
   MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT for table `lwd_testi`
+--
+ALTER TABLE `lwd_testi`
+  MODIFY `testi_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `lwd_transaction`
 --
 ALTER TABLE `lwd_transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lwd_transaction_item`
 --
 ALTER TABLE `lwd_transaction_item`
-  MODIFY `transaction_item_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lwd_trans_status`
@@ -1637,8 +1675,7 @@ ALTER TABLE `lwd_payment`
 ALTER TABLE `lwd_product`
   ADD CONSTRAINT `lwd_product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `lwd_category` (`category_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `lwd_product_ibfk_2` FOREIGN KEY (`brand_id`) REFERENCES `lwd_brand` (`brand_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `lwd_product_ibfk_3` FOREIGN KEY (`color_id`) REFERENCES `lwd_color` (`color_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `lwd_product_ibfk_4` FOREIGN KEY (`motif_id`) REFERENCES `lwd_motif` (`motif_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `lwd_product_ibfk_3` FOREIGN KEY (`color_id`) REFERENCES `lwd_color` (`color_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `lwd_transaction`

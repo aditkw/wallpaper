@@ -2,7 +2,7 @@
 
 /**
 * Library Lawave_image diciptakan untuk mengolah data gambar/image (Upload, Delete dan membuat Thumbnail).
-* 
+*
 */
 class Lawave_image
 {
@@ -11,12 +11,12 @@ class Lawave_image
 	const DS = DIRECTORY_SEPARATOR;
 
 	/*
-	| DIRECTORY_SEPARATOR digunakan untuk memisahkan directory sesuai sistem operasi yang digunakan 
+	| DIRECTORY_SEPARATOR digunakan untuk memisahkan directory sesuai sistem operasi yang digunakan
 	*/
 
 	/*
 	* upload_image digunakan untuk mengupload 1 file gambar,
-	* parameter yang dibutuhkan, yaitu : 
+	* parameter yang dibutuhkan, yaitu :
 		1. $img_path 		-> lokasi tujuan file yang diupload
 		2. $field_name 	-> nilai dari attribut "name" pada tag input bertipe file
 		3. $alt 				-> merupakan alt untuk gambar yang juga digunakan untuk mengganti nama gambar yang diupload
@@ -50,7 +50,7 @@ class Lawave_image
 		| konfigurasi tipe gambar (ekstensi) yang diizinkan
 		| mendapatkan array nama dan ekstensi file
 		*/
-		
+
 		$_FILES[$field_name]['name'] = $alt.'-'.$rand.'.'.$ext[1];
 
 		/*
@@ -59,7 +59,7 @@ class Lawave_image
 
 		$_this->upload->initialize($config);
 		$_this->upload->do_upload($field_name);
-		
+
 		/*
 		| upload file
 		*/
@@ -69,7 +69,7 @@ class Lawave_image
 		/*
 		| memasukan data file yang diupload kedalam "$image"
 		*/
-		
+
 		$data['image'] 			= $image;
 		$data['image_path'] = $this->image_path;
 
@@ -84,7 +84,7 @@ class Lawave_image
 
 	/*
 	* upload_images digunakan untuk mengupload lebih dari 1 file gambar,
-	* parameter yang dibutuhkan, yaitu : 
+	* parameter yang dibutuhkan, yaitu :
 		1. $img_path 		-> lokasi tujuan file yang diupload
 		2. $field_name 	-> nilai dari attribut "name" pada tag input bertipe file
 		3. $alt 				-> merupakan alt untuk gambar yang juga digunakan untuk mengganti nama gambar yang diupload
@@ -100,8 +100,11 @@ class Lawave_image
 		$this->image_path = realpath(APPPATH . $this->path.$img_path);
 
 		$files 				= $_FILES[$field_name];
+		$itungFiles		= $_FILES[$field_name]['name'];
 		$num_rand			= rand(11, 10000);
-		$count_files	= count($files) + 1;
+		$count_files	= count($itungFiles) + 1;
+
+		// die($count_files);
 
 		/*
 		| "$count_files" menghitung jumlah $_FILES yang digunakan
@@ -113,7 +116,7 @@ class Lawave_image
 		for ($i=0; $i < $count_files; $i++) {
 
 			if (!empty($files['name'][$i])) {
-				$unique_rand = $num_rand + $i; 
+				$unique_rand = $num_rand + $i;
 				$ext															= explode('.', $files['name'][$i]);
 				$_FILES[$field_name]['name'] 			= $alt.'-'.$unique_rand.'.'.$ext[1];
 				$_FILES[$field_name]['type'] 			= $files['type'][$i];
@@ -151,7 +154,7 @@ class Lawave_image
 			}
 
 			/*
-			| seluruh data nama file (baik yang terisi ataupun tidak) akan ditampung dalam "$new_name" 
+			| seluruh data nama file (baik yang terisi ataupun tidak) akan ditampung dalam "$new_name"
 			*/
 		}
 
@@ -160,7 +163,7 @@ class Lawave_image
 
 	/*
 	* delete_image digunakan untuk menghapus 1 file gambar,
-	* parameter yang dibutuhkan, yaitu : 
+	* parameter yang dibutuhkan, yaitu :
 		1. $img_path 		-> lokasi tujuan file yang diupload
 		2. $image_name 	-> nilai (berupa nama) dari file yang akan dihapus
 		3. $thumb 			-> bernilai prefix dari thumbnail gambar yang akan dihapus
@@ -177,7 +180,7 @@ class Lawave_image
 			/*
 			| gambar dihapus jika parameter pertama tidak kosong (empty)
 			*/
-			
+
 			if ($thumb){
 				unlink($this->image_path.self::DS.$thumb.$image_name);
 

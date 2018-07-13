@@ -1,15 +1,15 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Category_model extends MY_Model
 {
-	
+
 	protected $_table_name = 'category';
 	protected $_primary_key = 'category_id';
 	protected $_order_by = 'category_id';
-	protected $_order_by_type = 'DESC';
+	protected $_order_by_type = 'ASC';
 	public $rules;
 
 	function __construct()
@@ -22,7 +22,7 @@ class Category_model extends MY_Model
 		$get_data = $this->get($id);
 
 		if ($value == $get_data->$field) {
-			$require = '';	
+			$require = '';
 		}
 
 		else {

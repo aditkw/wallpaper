@@ -1,11 +1,11 @@
 <?php
 
 /**
-* 
+*
 */
 class Contact extends Backend_Controller
 {
-	
+
 	public function index()
 	{
 		$id = 1;
@@ -25,7 +25,8 @@ class Contact extends Backend_Controller
 		if ($form == 'contact') {
 			$array_data = array(
 				'contact_phone' => $post['phone'],
-				'contact_fax' => $post['fax'],
+				'contact_cs' => $post['cs'],
+				'contact_wa' => $post['wa'],
 				'contact_email' => $post['email']
 				);
 		} else if ($form == 'address') {
@@ -37,7 +38,7 @@ class Contact extends Backend_Controller
 			$array_data = array(
 				'contact_fb' => $post['fb'],
 				'contact_tw' => $post['tw'],
-				'contact_ig' => $post['ig']
+				'contact_yt' => $post['yt']
 				);
 		}
 

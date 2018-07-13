@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -63,8 +63,8 @@
 							<tr>
 								<th width="5%">#</th>
 								<th width="15%">Image</th>
-								<th width="30%">Title</th>
-								<th width="15%">Category</th>
+								<th>Title</th>
+								<!-- <th width="15%">Category</th> -->
 								<th>Tag</th>
 								<th width="15%">Action</th>
 							</tr>
@@ -77,7 +77,7 @@
 										<img src="<?php echo base_url('uploads/img/article/'.$thumb_pre.$article->image_name);?>" class="img img-responsive" alt="<?php echo $article->article_alt;?>">
 									</td>
 									<td><?php echo ucwords($article->article_title);?></td>
-									<td><?php echo ucwords($article->article_cat_name);?></td>
+									<!-- <td><?php echo ucwords($article->article_cat_name);?></td> -->
 									<td><?php echo $article->article_tag ?></td>
 									<td>
 										<!-- Action -->
@@ -105,7 +105,7 @@
 								<th>#</th>
 								<th>Image</th>
 								<th>Title</th>
-								<th>Category</th>
+								<!-- <th>Category</th> -->
 								<th>Tag</th>
 								<th>Action</th>
 							</tr>

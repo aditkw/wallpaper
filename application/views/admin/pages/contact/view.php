@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -73,8 +73,12 @@
 								<input type="text" name="phone" class="form-control" value="<?php echo $contact->contact_phone;?>" placeholder="phone number">
 							</div>
 							<div class="form-group">
-								<label for="title">Fax</label>
-								<input type="text" name="fax" class="form-control" value="<?php echo $contact->contact_fax;?>" placeholder="fax">
+								<label for="title">CS Number</label>
+								<input type="text" name="cs" class="form-control" value="<?php echo $contact->contact_cs;?>" placeholder="cs phone">
+							</div>
+							<div class="form-group">
+								<label for="title">WhatsApp Number</label>
+								<input type="text" name="wa" class="form-control" value="<?php echo $contact->contact_wa;?>" placeholder="wa number">
 							</div>
 							<div class="form-group">
 								<label for="title">Email</label>
@@ -86,7 +90,7 @@
 							</div>
 							<?php echo form_close();?>
 						</div><!-- /.tab-pane -->
-					
+
 						<div class="tab-pane" id="tab_2">
 							<?php echo form_open('admin/contact/update/address');?>
 							<div class="form-group">
@@ -117,8 +121,8 @@
 								<input type="text" name="tw" class="form-control" value="<?php echo $contact->contact_tw;?>" placeholder="twitter">
 							</div>
 							<div class="form-group">
-								<label for="title">Instagram</label>
-								<input type="text" name="ig" class="form-control" value="<?php echo $contact->contact_ig;?>" placeholder="instagram">
+								<label for="title">Youtube</label>
+								<input type="text" name="yt" class="form-control" value="<?php echo $contact->contact_yt;?>" placeholder="youtube">
 							</div>
 							<div class="form-group">
 								<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
@@ -126,7 +130,7 @@
 							</div>
 							<?php echo form_close();?>
 						</div><!-- /.tab-pane -->
-					
+
 					</div><!-- /.tab-content -->
 				</div><!-- /.nav-tabs-custom -->
 
@@ -134,7 +138,7 @@
 		</div><!-- /.box -->
 
 	</section><!-- /.content -->
-</div><!-- /.content-wrapper -->	
+</div><!-- /.content-wrapper -->
 
 <!-- Modal -->
 <div class="modal fade" id="helpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

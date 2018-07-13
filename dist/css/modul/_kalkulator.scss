@@ -1,0 +1,50 @@
+.kalkulator{
+  section#konten{
+    padding: 5vh 0;
+    border-top: 1px solid $abu;
+    .container{
+      & > div > div > div.row{
+        margin-bottom: 2vh;
+        p{font-weight: bold}
+      }
+      .selectU{
+        width: 100%;
+        border: 1px solid $babu;
+        padding: 5px 10px;
+      }
+      button.hitung{
+        width: 100%;
+        padding: 8px 0;
+        background: transparent;
+        border: 1px solid $biru;
+        color: $biru;
+        font-weight: bold;
+      }
+      .bungkus{
+        border: 1px solid $babu;
+        &:after{
+          content: "";
+          clear:both;
+          display: block;
+        }
+        input[type='text']{
+          float: left;
+          width: 80%;
+          border: none;
+          padding: 5px 10px;
+        }
+        .satuan{
+          background-color: $biru;
+          color: $putih;
+          float: left;
+          width: 20%;
+          height: 30px;
+          p{
+            margin: 0;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+  }
+}

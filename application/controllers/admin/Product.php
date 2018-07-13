@@ -31,7 +31,6 @@ class Product extends Backend_Controller
 		$this->data['category'] 	= $this->category_model->get();
 		$this->data['brand'] 			= $this->brand_model->get();
 		$this->data['color'] 			= $this->color_model->get();
-		$this->data['motif'] 			= $this->motif_model->get();
 		$this->data['path_file']	= $this->img_path.$this->modul_file;
 
 		$this->load->view('admin/media', $this->data);
@@ -44,6 +43,8 @@ class Product extends Backend_Controller
 		$alt 				= title_url($post['alt']);
 		$link 			= title_url($post['name']);
 		$dimension 	= $post['width'].', '.$post['height'];
+
+		// $get_brand = $this->brand_model->get($post['brand']);
 
 		$this->form_validation->set_rules('code','Product Code','required|is_unique[{PRE}product.product_code]');
 		$this->form_validation->set_rules($rules);
@@ -59,7 +60,7 @@ class Product extends Backend_Controller
 			$array_data['product_code'] 				= $post['code'];
 			$array_data['category_id'] 					= $post['category'];
 			$array_data['brand_id'] 						= $post['brand'];
-			$array_data['motif_id'] 						= $post['motif'];
+			// $array_data['motif_id'] 						= $get_brand->motif_id;
 			$array_data['color_id'] 						= $post['color'];
 			// $array_data['statusprd_id'] 				= $post['status'];
 			$array_data['product_name'] 				= $post['name'];
@@ -71,12 +72,14 @@ class Product extends Backend_Controller
 			$array_data['product_dimension'] 		= $dimension;
 			$array_data['product_alt'] 					= $post['alt'];
 			$array_data['product_link']					= $link;
-			$array_data['product_launching']	  = $post['launching'];
+			$array_data['product_seq']	  			= $post['page'];
 			$array_data['product_discount']	    = $post['discount'];
 
 			$product_id = $this->product_model->insert($array_data);
 
-			for ($i=0; $i < 6; $i++) {
+			// $this->brandcateg_model->insert(array('category_id' => $post['category'], 'brand_id' => $post['brand'], 'product_id' => $product_id));
+
+			for ($i=0; $i < 7; $i++) {
 				$array_img[] = array(
 					'parent_id' 				=> $product_id,
 					'image_parent_name'	=> 'product',
@@ -96,11 +99,13 @@ class Product extends Backend_Controller
 	public function edit($id)
 	{
 		$where_img_index		= array('parent_id' => $id, 'image_parent_name' => 'product', 'image_seq' => 0);
+		$where_img_banner		= array('parent_id' => $id, 'image_parent_name' => 'product', 'image_seq' => 1);
 		$where_img					= array('parent_id' => $id, 'image_parent_name' => 'product');
 
 		$this->data['content'] 		= 'admin/pages/product/edit';
 		$this->data['product'] 		= $this->product_model->get($id);
 		$this->data['image_index']= $this->image_model->get_by($where_img_index, NULL, NULL, TRUE);
+		$this->data['image_banner']= $this->image_model->get_by($where_img_banner, NULL, NULL, TRUE);
 		$this->data['image'] 			= $this->image_model->get_by($where_img);
 		$this->data['thumb_pre']	= $this->thumb_pre;
 		$this->data['category'] 	= $this->category_model->get();
@@ -126,6 +131,8 @@ class Product extends Backend_Controller
 		$files 			= $_FILES[$this->image_input_name]['name'];
 		$count_file = count($files);
 
+		// $get_brand = $this->brand_model->get($post['brand']);
+
 		$alt 				= title_url($post['alt']);
 		$link 			= title_url($post['name']);
 		$dimension 	= $post['width'].', '.$post['height'];
@@ -133,7 +140,7 @@ class Product extends Backend_Controller
 		$array_data['product_code'] 				= $post['code'];
 		$array_data['category_id'] 					= $post['category'];
 		$array_data['brand_id'] 						= $post['brand'];
-		$array_data['motif_id'] 						= $post['motif'];
+		// $array_data['motif_id'] 						= $get_brand->motif_id;
 		$array_data['color_id'] 						= $post['color'];
 		// $array_data['statusprd_id'] 				= $post['status'];
 		$array_data['product_name'] 				= $post['name'];
@@ -145,7 +152,7 @@ class Product extends Backend_Controller
 		$array_data['product_dimension'] 		= $dimension;
 		$array_data['product_alt'] 					= $post['alt'];
 		$array_data['product_link']					= $link;
-		$array_data['product_launching']	  = $post['launching'];
+		$array_data['product_seq']	  			= $post['page'];
 		$array_data['product_discount']	    = $post['discount'];
 
 		$is_unique = $this->product_model->unique_update($post['code'], $id, 'product_code');
@@ -162,6 +169,8 @@ class Product extends Backend_Controller
 			// update data produk
 			$this->product_model->update($array_data, $array_id);
 
+			// $this->brandcateg_model->update(array('category_id' => $post['category'], 'brand_id' => $post['brand']), $array_id);
+
 			// upload gambar baru
 			$upload_image = $this->lawave_image->upload_images($this->modul_file, $this->image_input_name, $alt, $this->thumb_pre, $this->wt, $this->ht);
 
@@ -173,6 +182,7 @@ class Product extends Backend_Controller
 
 				// jika _file[image][name] tidak kosong
 				if (!empty($post['delete_image_'.$i])) {
+					die('kok gamasuk ya');
 					$image 	= $this->image_model->get($post['id_image_'.$i]);
 					// hapus gambar lama
 					$this->lawave_image->delete_image($this->modul_file, $image->image_name, $this->thumb_pre);
@@ -215,6 +225,7 @@ class Product extends Backend_Controller
 		// hapus data
 		$this->product_model->delete($id);
 		$this->image_model->delete_by($where_image);
+		// $this->brandcateg_model->delete_by(array('product_id' => $id));
 		$this->session->set_flashdata('success',$this->delete_text);
 
 		redirect(site_url('admin/product'));
@@ -273,20 +284,23 @@ class Product extends Backend_Controller
 		}
 	}
 
-	public function ajax_subcat()
+	public function ajax_brand()
 	{
 		$id 					= $this->input->post('dataID');
 		$array_where 	= array('category_id' => $id);
-		$get_data 		= $this->subcat_model->get_by($array_where);
-		$output 			= '';
+		$get_data 		= $this->brand_model->get_by($array_where);
+		$output 			= '<option disabled selected>No Brand</option>';
 
 		if ($get_data) {
-			$output .= '<option disabled selected>Select Sub Category</option>';
+			$output = '<option disabled selected>Select Brand</option>';
 			foreach ($get_data as $result) {
-				$output .= '<option value="'.$result->subcat_id.'">';
-				$output .= ucwords($result->subcat_name);
+				$output .= '<option value="'.$result->brand_id.'">';
+				$output .= ucwords($result->brand_name);
 				$output .= '</option>';
 			}
+			echo $output;
+		}
+		else {
 			echo $output;
 		}
 	}

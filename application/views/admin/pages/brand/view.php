@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -61,9 +61,12 @@
 					<thead>
 						<tr>
 							<th width="5%">#</th>
-							<!-- <th width="15%">Image</th> -->
-							<th width="80%">Brand Name</th>
-							<!-- <th>Description</th> -->
+							<th width="15%">Image</th>
+							<th>Category</th>
+							<th>Motif</th>
+							<th>Brand Name</th>
+							<th>Brand Price</th>
+							<th>Brand Size</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -71,17 +74,17 @@
 						<?php $no = 1; foreach ($brand as $brand): ?>
 							<tr>
 								<td><?php echo $no;?></td>
-								<!-- <td> -->
-									<!-- <img src="<?php echo base_url($path_file.'/'.$thumb_pre.$brand->brand_image);?>" class="img img-responsive" alt="<?php echo $brand->brand_alt;?>"> -->
-								<!-- </td> -->
+								 <td>
+									 <img src="<?php echo base_url($path_file.'/'.$thumb_pre.$brand->brand_image);?>" class="img img-responsive" alt="">
+								</td>
+								<td><?php echo $brand->category_name;?></td>
+								<td><?php echo $brand->motif_name;?></td>
 								<td><?php echo $brand->brand_name;?></td>
-								<!-- <td> -->
-									<!-- <div class="text-scroll"> -->
-										<!-- <?php echo nl2br($brand->brand_desc);?> -->
-									<!-- </div> -->
-								<!-- </td> -->
-								<td>
+								<td><?php echo $brand->brand_price;?></td>
+								<td><?php echo $brand->brand_size;?></td>
+
 									<!-- Action -->
+									<td>
 									<?php if ($brand->brand_pub == '88'): ?>
 										<a href="<?php echo site_url('admin/brand/publish/'.$brand->brand_id);?>" class="btn btn-flat btn-danger" title="Publish">
 											<i class="fa fa-bullhorn"></i>
@@ -104,9 +107,12 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<!-- <th>Image</th> -->
-							<th>brand Name</th>
-							<!-- <th>Description</th> -->
+							<th>Image</th>
+							<th>Category</th>
+							<th>Motif</th>
+							<th>Brand Name</th>
+							<th>Brand Price</th>
+							<th>Brand Size</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -128,24 +134,79 @@
 			</div>
 			<?php echo form_open_multipart('admin/brand/insert');?>
 			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="category">Select Category</label>
+							<select name="category" id="" class="form-control">
+								<?php foreach ($category as $cat): ?>
+									<option value="<?=$cat->category_id?>"><?=$cat->category_name?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="category">Select Motif</label>
+							<select name="motif" id="" class="form-control">
+								<?php foreach ($motif as $mot): ?>
+									<option value="<?=$mot->motif_id?>"><?=$mot->motif_name?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+				</div>
 				<div class="form-group">
 					<label for="brand">Brand Name</label>
 					<input type="text" name="name" class="form-control" placeholder="brand name" required>
 				</div>
-<!-- 
-				<div class="form-group">
-					<label for="brand">Description (max 300 chars)</label>
-					<textarea name="desc" class="form-control" placeholder="description" rows="5" maxlength="300" required></textarea>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Price</label>
+							<input type="number" name="price" class="form-control" placeholder="brand price" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Price Strip</label>
+							<input type="number" name="price_strip" class="form-control" placeholder="brand price strip" required>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="brand">Image Alt</label>
-					<input type="text" name="alt" class="form-control" placeholder="brand image alt" required>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Discount</label>
+							<input type="number" name="discount" class="form-control" placeholder="brand discount" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Size</label>
+							<input type="text" name="size" class="form-control" placeholder="brand size" required>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Weight</label>
+							<input type="text" name="weight" class="form-control" placeholder="brand weight" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Launch</label>
+							<input type="text" name="launch" class="form-control" placeholder="brand launch" required>
+						</div>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="brand">Image</label>
 					<input type="file" name="image" class="form-control">
 				</div>
- -->				
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
@@ -168,25 +229,82 @@
 			</div>
 			<?php echo form_open_multipart('admin/brand/update');?>
 			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="category">Select Category</label>
+							<select name="category" id="category" class="form-control">
+								<?php foreach ($category as $cat): ?>
+									<option value="<?=$cat->category_id?>"><?=$cat->category_name?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="category">Select Motif</label>
+							<select name="motif" id="motif" class="form-control">
+								<?php foreach ($motif as $mot): ?>
+									<option value="<?=$mot->motif_id?>"><?=$mot->motif_name?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					</div>
+				</div>
 				<div class="form-group">
 					<label for="brand">Brand Name</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="brand name" required>
 				</div>
-<!-- 
-				<div class="form-group">
-					<label for="brand">Review (max 300 chars)</label>
-					<textarea id="desc" name="desc" class="form-control" placeholder="description" rows="5" maxlength="300" required></textarea>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Price</label>
+							<input id="price" type="number" name="price" class="form-control" placeholder="brand price" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Price Strip</label>
+							<input id="price_strip" type="number" name="price_strip" class="form-control" placeholder="brand price strip" required>
+						</div>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="brand">Image Alt</label>
-					<input id="alt" type="text" name="alt" class="form-control" placeholder="brand image alt" required>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Discount</label>
+							<input id="discount" type="number" name="discount" class="form-control" placeholder="brand discount" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Size</label>
+							<input id="size" type="text" name="size" class="form-control" placeholder="brand size" required>
+						</div>
+					</div>
 				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Weight</label>
+							<input id="weight" type="text" name="weight" class="form-control" placeholder="brand weight" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="brand">Brand Launch</label>
+							<input id="launch" type="text" name="launch" class="form-control" placeholder="brand launch" required>
+						</div>
+					</div>
+				</div>
+
 				<div class="form-group">
 					<label for="brand">Image</label>
 					<input type="file" name="image" class="form-control">
 				</div>
- -->				
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>

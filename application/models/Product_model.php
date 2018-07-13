@@ -44,9 +44,9 @@ class Product_model extends MY_Model
 			'label' => 'Product Weight',
 			'rules' => 'required'
 			),
-		'launching' => array(
-			'field' => 'launching',
-			'label' => 'Product Launching',
+		'page' => array(
+			'field' => 'page',
+			'label' => 'Product Page',
 			'rules' => 'required'
 			),
 		'width' => array(
@@ -66,10 +66,12 @@ class Product_model extends MY_Model
 		parent::__construct();
 	}
 
-	public function get_product($where = NULL, $limit = NULL, $offset= NULL, $single=FALSE, $select=NULL, $like = NULL, $order = NULL)
+	public function get_product($where = NULL, $limit = NULL, $offset= NULL, $single=FALSE, $select=NULL, $like = NULL, $order = NULL, $color = NULL)
 	{
 		$this->db->join('{PRE}'.'category', '{PRE}'.'category.category_id = {PRE}'.$this->_table_name.'.category_id');
 		$this->db->join('{PRE}'.'brand', '{PRE}'.'brand.brand_id = {PRE}'.$this->_table_name.'.brand_id');
+		$this->db->join('{PRE}'.'motif', '{PRE}motif.motif_id = {PRE}brand.motif_id');
+		$this->db->join('{PRE}'.'color', '{PRE}color.color_id = {PRE}product.color_id');
 		$this->db->join('{PRE}'.'image', '{PRE}'.'image.parent_id = {PRE}'.$this->_table_name.'.product_id');
 		if ($like) {
 			$this->db->like($like);
@@ -79,11 +81,27 @@ class Product_model extends MY_Model
 				$this->db->order_by($key, $value);
 			}
 		}
+		if ($color) {
+			$i=0;
+			$count = count($color) - 1;
+			foreach ($color as $color) {
+				if ($i==0) {
+					$this->db->where("({PRE}product.color_id = $color->color_id");
+				}elseif($i==$count) {
+					$this->db->or_where("{PRE}product.color_id=  $color->color_id)");
+				}else {
+					$this->db->or_where("{PRE}product.color_id=  $color->color_id");
+				}
+				$i++;
+			}
+		}
 		return parent::get_by($where,$limit,$offset,$single,$select);
 	}
 
 	public function count_product($where = NULL, $like = NULL)
 	{
+		$this->db->join('{PRE}'.'image', '{PRE}'.'image.parent_id = {PRE}'.$this->_table_name.'.product_id');
+		$this->db->join('{PRE}'.'brand', '{PRE}'.'brand.brand_id = {PRE}'.$this->_table_name.'.brand_id');
 		if ($like) {
 			$this->db->like($like);
 		}

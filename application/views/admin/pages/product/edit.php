@@ -25,7 +25,7 @@
 						<div class="form-group">
 							<label for="product">Image Index</label>
 							<input type="hidden" name="id_image_0" value="<?php echo $image_index->image_id;?>">
-							<input id="image-index" type="file" name="image[]" class="form-control">
+							<input type="file" name="image[]" class="img-preview form-control">
 							<img id="preview-image" src="<?php echo base_url($path_file.'/'.$image_index->image_name);?>" class="img img-responsive" alt="image index">
 						</div>
 					</div>
@@ -55,7 +55,7 @@
 								<div class="form-group">
 									<label for="product">Brand</label>
 									<select id="brand" name="brand" class="form-control" required>
-										<option disabled selected>Select Brand</option>
+										<!-- <option disabled selected>Select Brand</option> -->
 										<?php foreach ($brand as $brand): ?>
 											<option value="<?php echo $brand->brand_id;?>" <?php if ($product->brand_id == $brand->brand_id): ?> selected <?php endif ?>>
 												<?php echo ucwords($brand->brand_name);?>
@@ -66,7 +66,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-offset-2 col-md-4 col-lg-4">
+							<div class="col-md-offset-2 col-md-8 col-lg-8">
 								<div class="form-group">
 									<label for="product">Color</label>
 									<select id="color" name="color" class="form-control" required>
@@ -79,7 +79,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-4 col-lg-4">
+							<!-- <div class="col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="product">Motif</label>
 									<select id="motif" name="motif" class="form-control" required>
@@ -91,7 +91,7 @@
 										<?php endforeach ?>
 									</select>
 								</div>
-							</div>
+							</div> -->
 						</div>
 						<hr>
 						<div class="row">
@@ -134,7 +134,7 @@
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="product">Discount(%)</label>
-							<input type="number" name="discount" class="form-control" value="<?php echo $product->product_discount;?>" placeholder="product discount" required>
+							<input type="number" name="discount" class="form-control" value="<?php echo $product->product_discount;?>" placeholder="product discount">
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4">
@@ -176,7 +176,15 @@
 				</div>
 				<hr> -->
 				<div class="row">
-					<div class="col-md-4 col-md-offset-2 col-lg-4">
+					<div class="col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="product">Image Banner</label>
+							<input type="hidden" name="id_image_1" value="<?php echo $image_banner->image_id;?>">
+							<input type="file" name="image[]" class="img-preview form-control">
+							<img id="preview-image" src="<?php echo base_url($path_file.'/'.$image_banner->image_name);?>" class="img img-responsive" alt="image index">
+						</div>
+					</div>
+					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="product">Image Alt</label>
 							<input type="text" name="alt" class="form-control" value="<?php echo $product->product_alt;?>" placeholder="image alt" required>
@@ -184,8 +192,8 @@
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Product Launching (Year)</label>
-							<input type="number" name="launching" class="form-control" value="<?php echo $product->product_launching;?>" placeholder="product launching" required>
+							<label for="product">Product Page</label>
+							<input type="number" name="page" class="form-control" value="<?php echo $product->product_seq;?>" placeholder="product page" required>
 						</div>
 					</div>
 				</div>
@@ -200,7 +208,8 @@
 						</div>
 					</div>
 					<?php $no = 0; foreach ($image as $image): ?>
-						<?php if ($image->image_seq != 0): ?>
+						<?php $a = array(0,1) ?>
+						<?php if (!in_array($image->image_seq, $a)): ?>
 							<div class="col-md-5ths col-lg-5ths col-sm-6 col-xs-10">
 								<div class="form-group">
 									<label for="product">Image </label>
@@ -211,11 +220,11 @@
 									<?php else: ?>
 										<img src="<?php echo base_url('dist/img/assets/no-image-1.jpg');?>" class="preview-image img img-responsive" alt="product image">
 									<?php endif?>
-									<?php if (!empty($image->image_name)): ?>
+									<!-- <?php if (!empty($image->image_name)): ?>
 										<input type="checkbox" name="delete_image_<?=$no?>" class="minimal" value="delete"> Delete image
 									<?php else: ?>
 										<input type="checkbox" name="delete_image_<?=$no?>" class="minimal hidden" disabled> Delete image
-									<?php endif?>
+									<?php endif?> -->
 								</div>
 							</div>
 						<?php endif ?>

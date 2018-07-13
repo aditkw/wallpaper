@@ -70,6 +70,10 @@ $route['logout'] 										= 'login/logout';
 
 /* FRONT END */
 $route['produk/(:num)'] 			= 'produk/index/$1';
+$route['produk/(:any)'] 			= 'produk/kategori/$1';
+$route['produk/(:any)/(:num)']= 'produk/kategori/$1';
+$route['produk/(:any)/(:any)']= 'produk/kategori/$1/$2';
+$route['produk/(:any)/(:any)/(:num)']= 'produk/kategori/$1/$2';
 $route['member-login']				= 'member/login';
 $route['registrasi']					= 'member/registrasi';
 $route['member-area']					= 'member/index';

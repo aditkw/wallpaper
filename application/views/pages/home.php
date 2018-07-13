@@ -1,27 +1,33 @@
 <section>
   <div class="homepage">
     <div id="homeslide" class="owl-carousel">
-      <img class="img-responsive" src="<?=site_url('dist/img/assets/slide.jpg')?>" alt="">
+      <?php foreach ($slide as $sld): ?>
+        <img class="max-width middle w-auto" src="<?=site_url("uploads/img/slide/$sld->banner_image")?>" alt="">
+      <?php endforeach; ?>
     </div>
     <div class="container">
       <div class="row info-slide">
         <div class="col-md-4">
-          <img class="fleft max-width" src="<?=site_url('dist/img/assets/kalku.jpg')?>" alt="">
-          <div class="fleft text">
+          <a href="<?=site_url('kalkulator')?>">
+            <img class="pull-left max-width" src="<?=site_url('dist/img/assets/kalku.jpg')?>" alt="">
+          </a>
+          <div class="pull-left text">
             <p class="f-philo">KALKULATOR WALLPAPER</p>
             <p>Hitung kebutuhan wallpaper mu</p>
           </div>
         </div>
         <div class="col-md-4">
-          <img class="fleft max-width" src="<?=site_url('dist/img/assets/howto.jpg')?>" alt="">
-          <div class="fleft text">
+          <a href="<?=site_url('cara-belanja')?>">
+            <img class="pull-left max-width" src="<?=site_url('dist/img/assets/howto.jpg')?>" alt="">
+          </a>
+          <div class="pull-left text">
             <p class="f-philo">CARA PEMBELIAN</p>
             <p>Pelajari cara pembelian sebelum membeli</p>
           </div>
         </div>
         <div class="col-md-4">
-          <img class="fleft max-width" src="<?=site_url('dist/img/assets/promo.jpg')?>" alt="">
-          <div class="fleft text">
+          <img class="pull-left max-width" src="<?=site_url('dist/img/assets/promo.jpg')?>" alt="">
+          <div class="pull-left text">
             <p class="f-philo">PROMO LEBARAN</p>
             <p>Cek promo lebaran yang kami punya</p>
           </div>
@@ -43,25 +49,29 @@
         <p class="text-center text-biru">PRODUK KAMI</p>
         <p class="text-center f-times">Wallpaper Promo</p>
 
-        <?php for($a=1;$a<3;$a++): for($i=1;$i<5;$i++): ?>
-        <div class="col-md-3 box-prod">
-          <div class="img-hover relative">
-            <img class="max-width" src="<?=site_url('dist/img/assets/wall'.$i.'.jpg')?>" alt="">
-            <div class="hover-detail">
-              <a href="#"><i class="fa fa-search"></i></a>
+        <?php foreach($promo_wp as $wp): ?>
+        <?php if ($wp->product_discount): ?>
+          <div class="col-md-3 box-prod">
+            <div class="img-hover relative">
+              <img class="max-width" src="<?=site_url("uploads/img/product/$wp->image_name")?>" alt="">
+              <div class="hover-detail">
+                <a href="#"><i class="fa fa-search"></i></a>
+              </div>
+            </div>
+            <div class="info relative no-margin-p">
+              <p class="f-mont"><?=$wp->product_name?></p>
+              <p class="f-mont"><span class="strip"><?=rupiah($wp->product_price_strip)?></span> <?=rupiah($wp->product_price)?></p>
+              <?php if ($wp->product_discount): ?>
+                <div class="disc text-center"><p><strong>DISC<br><?=$wp->product_discount?>%</strong></p></div>
+              <?php endif; ?>
             </div>
           </div>
-          <div class="info relative no-margin-p">
-            <p class="f-mont">WALLPAPER 50.000/ROLL</p>
-            <p class="f-mont"><span class="strip">Rp 803.000</span> Rp 90.000</p>
-            <div class="disc text-center"><p><strong>DISC<br>20%</strong></p></div>
-          </div>
-        </div>
-        <?php endfor; endfor; ?>
+        <?php endif; ?>
+        <?php endforeach; ?>
       </div>
     </div>
 
-    <div class="container-fluid banner">
+    <div class="container banner">
       <div class="row">
         <div class="col-md-6">
           <img class="img-responsive" src="<?=site_url('dist/img/assets/banner1.jpg')?>" alt="">
@@ -80,50 +90,47 @@
           <li>
             MERK
             <ul class="active">
-              <li>Avenue</li>
-              <li>Floral</li>
-              <li>Stella By Seoul</li>
-              <li>Selection</li>
-              <li>Feliz</li>
+              <?php foreach ($merk as $merk): ?>
+                <li><?=$merk->brand_name?></li>
+              <?php endforeach; ?>
             </ul>
           </li>
           <li class="garis">
             WARNA
             <ul>
-              <li>Merah</li>
-              <li>Jingga</li>
-              <li>Kuning</li>
-              <li>Hijau</li>
-              <li>Biru</li>
+              <?php foreach ($color as $color): ?>
+                <li><?=$color->color_name?></li>
+              <?php endforeach; ?>
             </ul>
           </li>
           <li>
             MOTIF
             <ul>
-              <li>Bunga</li>
-              <li>Lucu</li>
-              <li>Korea</li>
-              <li>Polos</li>
+              <?php foreach ($motif as $motif): ?>
+                <li><?=$motif->motif_name?></li>
+              <?php endforeach; ?>
             </ul>
           </li>
         </ul>
-        <?php for($i=1;$i<5;$i++): ?>
-        <div class="col-md-3 box-prod">
-          <div class="img-hover relative">
-            <img class="max-width" src="<?=site_url('dist/img/assets/wall'.$i.'.jpg')?>" alt="">
-            <div class="hover-detail">
-              <a href="#"><i class="fa fa-search"></i></a>
+        <?php foreach($brand_wp as $brand): ?>
+          <div class="col-md-3 box-prod">
+            <div class="img-hover relative">
+              <img class="max-width" src="<?=site_url("uploads/img/brand/$brand->brand_image")?>" alt="">
+              <div class="hover-detail">
+                <a href="<?=site_url('produk/'.$wallpaper->category_link.'/'.$brand->brand_link)?>"><i class="fa fa-search"></i></a>
+              </div>
+            </div>
+            <div class="info relative no-margin-p">
+              <p class="f-mont"><img src="<?=site_url('dist/img/assets/brand.png')?>" style="width:20px;vertical-align:text-bottom"> <?=$brand->brand_name?></p>
+              <p class="f-mont"><span class="strip"><?=rupiah($brand->brand_price_strip)?></span> <?=rupiah($brand->brand_price)?></p>
+              <?php if ($brand->brand_discount): ?>
+                <div class="disc text-center"><p><strong>DISC<br><?=$brand->brand_discount?>%</strong></p></div>
+              <?php endif; ?>
             </div>
           </div>
-          <div class="info relative no-margin-p">
-            <p class="f-mont"><img src="<?=site_url('dist/img/assets/brand.png')?>" style="width:20px;vertical-align:text-bottom"> ARTNOUVEAU</p>
-            <p class="f-mont"><span class="strip">Rp 803.000</span> Rp 90.000</p>
-            <div class="disc text-center"><p><strong>DISC<br>20%</strong></p></div>
-          </div>
-        </div>
-        <?php endfor; ?>
-        <p class="all-product text-center"><a class="text-xbabu" href="#">LIHAT SEMUA PRODUK <i class="fa fa-long-arrow-right text-biru"></i></a></p>
+        <?php endforeach; ?>
       </div>
+      <p class="all-product text-center"><a class="text-xbabu" href="#">LIHAT SEMUA PRODUK <i class="fa fa-long-arrow-right text-biru"></i></a></p>
      </div>
 
      <div class="testimonial relative">
@@ -131,12 +138,12 @@
        <p class="text-center f-mont">Hal terpenting dalam bisnis adalah memiliki <span class="text-biru">Pelanggan Yang Senang <br>
         Berbelanja Pada Kami.</span> Kami memberikan pelayanan terbaik.</p>
        <div id="testislide" class="owl-carousel middle">
-        <?php for ($i=0; $i <4; $i++):?>
+        <?php foreach ($testimonial as $testi):?>
          <div class="item text-center">
-           <p class="f-times text-xbabu"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</em></p>
-           <p class="member"><strong>MARRY WELL</strong> - <span class="text-babu">Designer</span></p>
+           <p class="f-times text-xbabu"><em><?=$testi->testi_desc?></em></p>
+           <p class="member"><strong><?=$testi->testi_name?></strong> - <span class="text-babu"><?=$testi->testi_job?></span></p>
          </div>
-       <?php endfor; ?>
+       <?php endforeach; ?>
        </div>
        <div class="am-prev">
          <i class="fa fa-angle-left"></i>

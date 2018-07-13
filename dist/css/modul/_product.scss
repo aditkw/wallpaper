@@ -1,0 +1,283 @@
+.product-brand{
+  section#konten{
+    .sorting{
+      padding: 3vh 0;
+      .col-md-3:first-child{
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+    ul.pane-browse{
+      padding: 0;
+      display: table;
+      margin: 0 auto;
+      li{
+        cursor: pointer;
+        list-style: none;
+        font-weight: bold;
+        display: inline-block;
+        padding: 10px 20px;
+        position: relative;
+        cursor: pointer;
+        &.garis{
+          border-left: 1px solid $abu;
+          border-right: 1px solid $abu;
+        }
+        &:hover{
+          & > li{
+            color: $biru;
+          }
+        }
+      }
+    }
+  }
+}
+
+.detail-brand{
+  #atas-brand{
+    .box-info{
+      table{
+        tr{
+          td{
+            padding-right: 5px;
+            padding-top: 5px;
+          }
+        }
+      }
+      .f-mont{
+        font-weight: bold;
+        &:first-child{
+          font-size: 1.6em;
+          &+p{
+            margin-top: 7px;
+          }
+        }
+      }
+      position: absolute;
+      bottom: -6vh;
+      right: 10vh;
+      background-color: #ffffff;
+      padding: 5vh 1vw 3vh 2vw;
+      box-shadow: 0px 4px 4px #bfb7b7;
+      min-width: 40vw;
+    }
+    .box-gambar{
+      position: absolute;
+      bottom: -5vh;
+      left: 8vw;
+      max-width: 43vw;
+      img{
+        padding: 0 2px;
+        min-height: 45px;
+      }
+    }
+  }
+
+  #konten{
+    padding-top: 10vh;
+    .breadcrumb{
+      padding: 8px 0;
+    }
+    .row.bread{
+      border-bottom: 1px solid $abu;
+      margin-bottom: 2vh;
+    }
+    .menu-sort{
+      .merk{
+        margin-bottom: 5vh;
+        & > p:first-child{
+          font-size: 1.2em;
+          border-bottom: 1px solid $abu;
+          padding-bottom: 5px;
+        }
+        & > p:nth-child(n+2){
+          margin-bottom: 5px;
+          padding-left: 15px;
+          a{
+            color: $xbabu;
+          }
+        }
+      }
+      .filter{
+        @extend .merk;
+        p{
+          margin-bottom: 5px;
+        }
+        .motif{
+          padding: 5px 0 10px 0;
+          border-bottom: 1px solid $abu;
+        }
+        .warna{
+          @extend .motif;
+          padding: 10px 0 10px 0;
+        }
+        .harga{
+          &>div{
+            width: 48%;
+          }
+          padding: 10px 0 10px 0;
+        }
+      }
+    }
+  }
+}
+
+.detail-produk{
+  section#konten{
+    .garis-bread{
+      padding: 2vh 0;
+      border-top: 2px solid $abu;
+      border-bottom: 2px solid $abu;
+      ol.breadcrumb{
+        margin: 0;
+      }
+    }
+    .produk-det{
+      padding: 5vh 0;
+      .samping-gambar{
+        .ket-harga{
+          padding: 2vh 0;
+          border-top: 2px solid $abu;
+          border-bottom: 2px solid $abu;
+          table{
+            tr{
+              td:first-child{
+                padding-right: 1.6em;
+              }
+              td:nth-child(2){
+                padding-right: 5px;
+              }
+            }
+          }
+          .harga{
+            .text-ijo, .text-merah{
+              font-size: 1.2em;
+            }
+          }
+          .nominal{
+            font-size: 2em;
+            .harga-coret{
+              font-size: 0.6em;
+              text-decoration: line-through;
+            }
+          }
+        }
+        .add-to-cart{
+          padding: 2vh 0;
+          border-bottom: 2px solid $abu;
+          .kuantitas{
+            padding: 10px 20px 10px 0;
+            input{
+              width: 30px;
+              text-align: center;
+            }
+          }
+          .btn-cart{
+            button{
+              background-color: $biru;
+              border: none;
+              border-radius: 20px;
+              padding: 0.7em 5.7em;
+              color: $putih;
+              font-weight: bold;
+            }
+          }
+          .sosmed{
+            padding: 10px 0px 10px 20px;
+          }
+        }
+        .info-warna{
+          padding: 2vh 0;
+          border-bottom: 2px solid $abu;
+          p{margin: 0}
+        }
+        .kalkulator{
+          padding: 2vh 0;
+          img{margin-right: 20px; }
+          button{
+            background-color: $kuning;
+            border: none;
+            border-radius: 10px;
+            padding: 0.5em 1em;
+            color: $putih;
+            font-weight: bold;
+          }
+        }
+      }
+      .related{
+        .col-md-12:first-child{
+          p.f-times{
+            font-size: 1.5em;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cart{
+  #konten{
+    margin: 25px 0;
+}
+  .panel-heading {
+    color: #333;
+    background-color: $biru;
+    border-color: #ddd;
+    font-size: 16px;
+}
+
+.alert-info{
+  margin: 15px 0;
+}
+
+.tab-pane{
+  padding: 15px 10px;
+}
+  /*** KERANJANG ***/
+.box-keranjang {
+  // margin:25px 0;
+  padding: 20px;
+  border: 1px solid rgba(204, 204, 204, 0.5); }
+  .box-keranjang .table {
+    margin-bottom: 0px; }
+  .box-keranjang thead {
+    font-family: "Opensans Bold";
+    color: #FFF;
+    background: $biru;
+    font-weight: normal;
+    border: none !Important; }
+    .box-keranjang thead th {
+      border-bottom: none !Important; }
+  .box-keranjang tbody td {
+    font-family: "Opensans Light";
+    padding-top: 20px !Important;
+    padding-bottom: 20px !Important;
+    border-top: none !Important;
+    border-bottom: 1px solid #DDD; }
+  .box-keranjang tbody tr:last-child td {
+    border-bottom: none; }
+  .box-keranjang .detil-pro {
+    font-family: "Opensans Reguler";
+    font-size: 13px; }
+
+.vmiddle {
+  vertical-align: middle !Important; }
+
+.detail-bayar {
+  padding-top: 10px;
+  border-top: 2px solid #EEE; }
+  .detail-bayar table {
+    width: 100%; }
+    .detail-bayar table td {
+      padding-top: 5px !Important;
+      padding-bottom: 5px !Important;
+      border-bottom: none; }
+    .detail-bayar table th {
+      padding-top: 15px;
+      border-top: 1px solid #EEE; }
+
+.box-cart {
+  padding-top: 20px; }
+
+/*** KERANJANG ***/
+}

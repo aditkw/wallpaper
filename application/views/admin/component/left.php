@@ -51,9 +51,9 @@
 								<li class="<?php echo active_menu($uri_2, 'bank') ?>">
 									<a href="<?php echo site_url('admin/bank');?>"><i class="fa fa-circle-o"></i> Bank </a>
 								</li>
-								<!-- <li class="<?php echo active_menu($uri_2, 'shipment') ?>">
-									<a href="<?php echo site_url('admin/shipment');?>"><i class="fa fa-circle-o"></i> Shipment</a>
-								</li> -->
+								<li class="<?php echo active_menu($uri_2, 'testi') ?>">
+									<a href="<?php echo site_url('admin/testi');?>"><i class="fa fa-circle-o"></i> Testimonial</a>
+								</li>
 							</ul>
 						</li>
 						<li class="treeview <?php echo active_perent($uri_2, $menu['article']) ?>">

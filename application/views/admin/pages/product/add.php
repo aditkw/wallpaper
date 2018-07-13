@@ -24,8 +24,8 @@
 					<div class="col-md-3 col-lg-3">
 						<div class="form-group">
 							<label for="product">Image Index</label>
-							<input id="image-index" type="file" name="image[]" class="form-control" required>
-							<img id="preview-image" src="<?php echo base_url('dist/img/assets/no-image-1.jpg');?>" class="preview-image img img-responsive" alt="image index">
+							<input type="file" name="image[]" class="form-control img-preview" required>
+							<img src="<?php echo base_url('dist/img/assets/no-image-1.jpg');?>" class="preview-image img img-responsive" alt="image index">
 						</div>
 					</div>
 					<div class="col-md-9 col-lg-9">
@@ -53,18 +53,13 @@
 								<div class="form-group">
 									<label for="product">Brand</label>
 									<select id="brand" name="brand" class="form-control" required>
-										<option disabled selected>Select Brand</option>
-										<?php foreach ($brand as $brand): ?>
-											<option value="<?php echo $brand->brand_id;?>">
-												<?php echo ucwords($brand->brand_name);?>
-											</option>
-										<?php endforeach ?>
+										<option disabled selected>Choose category</option>
 									</select>
 								</div>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-md-offset-2 col-md-4 col-lg-4">
+							<div class="col-md-offset-2 col-md-8 col-lg-8">
 								<div class="form-group">
 									<label for="product">Color</label>
 									<select id="color" name="color" class="form-control" required>
@@ -77,19 +72,14 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-4 col-lg-4">
+							<!-- <div class="col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="product">Motif</label>
 									<select id="motif" name="motif" class="form-control" required>
 										<option disabled selected>Select Motif</option>
-										<?php foreach ($motif as $motif): ?>
-											<option value="<?php echo $motif->motif_id;?>">
-												<?php echo ucwords($motif->motif_name);?>
-											</option>
-										<?php endforeach ?>
 									</select>
 								</div>
-							</div>
+							</div> -->
 						</div>
 						<hr>
 						<div class="row">
@@ -127,7 +117,7 @@
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="product">Discount(%)</label>
-							<input type="number" name="discount" class="form-control" value="" placeholder="product discount" required>
+							<input type="number" name="discount" class="form-control" value="" placeholder="product discount">
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4">
@@ -174,7 +164,14 @@
 				</div>
 				<hr> -->
 				<div class="row">
-					<div class="col-md-4 col-md-offset-2 col-lg-4">
+					<div class="col-md-4 col-lg-4">
+						<div class="form-group">
+							<label for="product">Image Banner</label>
+							<input type="file" name="image[]" class="form-control img-preview" required>
+							<img src="<?php echo base_url('dist/img/assets/no-image-1.jpg');?>" class="preview-image img img-responsive" alt="image index">
+						</div>
+					</div>
+					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
 							<label for="product">Image Alt</label>
 							<input type="text" name="alt" class="form-control" value="" placeholder="image alt" required>
@@ -182,8 +179,8 @@
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Product Launching (Year)</label>
-							<input type="number" name="launching" class="form-control" value="" placeholder="tahun terbit" required>
+							<label for="product">Product Page</label>
+							<input type="number" name="page" class="form-control" value="" placeholder="halaman" required>
 						</div>
 					</div>
 				</div>
@@ -192,7 +189,7 @@
 						<div class="form-group">
 							<div class="callout callout-warning">
 								<h4><i class="fa fa-warning"></i></h4>
-								<p>lorem ipsum </p>
+								<p>Image index dan image banner diatas wajib diisi </p>
 							</div>
 						</div>
 					</div>
@@ -200,10 +197,8 @@
 						<div class="<?php echo ($i==1) ? 'col-md-offset-1 ' : '';?>col-md-2 col-lg-2">
 							<div class="form-group">
 								<label for="product">Image </label>
-								<input type="file" name="image[]" class="form-control">
-								<!-- <div style="border: 1px solid #ddd; margin-top: 5px; padding: 5px;">
-									<img id="preview-image<?php echo $i;?>" src="" class="img img-responsive" alt="product image">
-								</div> -->
+								<input type="file" name="image[]" class="form-control img-preview" required>
+								<img src="<?php echo base_url('dist/img/assets/no-image-1.jpg');?>" class="preview-image img img-responsive" alt="image index">
 							</div>
 						</div>
 					<?php endfor ?>

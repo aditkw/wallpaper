@@ -21,7 +21,6 @@ else {
 		<meta name="description" content="<?php echo $description ?>">
 		<meta name="keywords" content="<?php echo $keywords ?>">
 
-
 		<title><?php echo $title ?></title>
 		<!-- Bootstrap -->
 		<link href="<?php echo base_url();?>plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,6 +37,6 @@ else {
 		<link href="<?php echo base_url();?>plugins/zebra-datepicker/public/css/default.css" type="text/css" rel="stylesheet">
 		<!-- LWD Style -->
 		<link href="<?php echo base_url();?>dist/css/lwd.style.css" rel="stylesheet">
-		<link href="<?php echo base_url();?>dist/img/assets/fav.png?" rel="shortcut icon" type="image/ico">
+		<!-- <link href="<?php echo base_url();?>dist/img/assets/fav.png?" rel="shortcut icon" type="image/ico"> -->
 	</head>
 <body>

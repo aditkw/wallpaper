@@ -30,7 +30,7 @@ class MY_Controller extends CI_Controller
 	*	@service = menampilkan service yang ingin disediakan dari jasa pengiriman. | digunakan setiap melakukan pengulangan (foreach) untuk menampilkan paket pengiriman
 	*/
 	/*-----------------*/
-	protected $invoice_site = 'erakomp';
+	protected $invoice_site = 'wallpaper';
 	protected $origin_type = 'city';
 	protected $origin_code = '152';
 	protected $destination_type = 'subdistrict';
@@ -85,7 +85,7 @@ class MY_Controller extends CI_Controller
 				'bank_model',
 				'user_model',
 				'contact_model',
-				'shipment_model',
+				'testi_model',
 				'product_model',
 				'banner_model',
 				'slide_model',
@@ -98,6 +98,7 @@ class MY_Controller extends CI_Controller
 				'tag_model',
 				'article_model',
 				'brand_model',
+				// 'brandcateg_model',
 				'province_model',
 				'city_model',
 				'order_model',
@@ -157,6 +158,7 @@ class Frontend_Controller extends MY_Controller
 		$this->where_product['{PRE}image.image_seq'] 			= '0';
 		$this->where_count_product['product_pub']					= '99';
 		$this->sort 																			= array();
+		$this->sort_brand																	= array();
 		$this->like_product																= array();
 		$this->like_count_product													= array();
 		$http_build																				= array();
@@ -250,11 +252,11 @@ class Frontend_Controller extends MY_Controller
 		if (!empty($_GET['sort'])) {
 			/*sortir produk berdasarkan $_GET['sort']*/
 			if ($_GET['sort'] == 'terbaru') {
-				$this->sort 	= array('product_id' => 'ASC');
+				$this->sort 	= array('product_id' => 'DESC');
 			}
 
 			if ($_GET['sort'] == 'terlama') {
-				$this->sort 	= array('product_id' => 'DESC');
+				$this->sort 	= array('product_id' => 'ASC');
 			}
 
 			if ($_GET['sort'] == 'termahal') {
@@ -266,6 +268,39 @@ class Frontend_Controller extends MY_Controller
 			}
 			/*membuat http $_get sort*/
 			$http_build['sort']		= $_GET['sort'];
+		}
+
+		if (!empty($_GET['motif'])) {
+			$http_build['motif'] = $_GET['motif'];
+		}
+
+		if (!empty($_GET['tampil'])) {
+			$http_build['tampil'] = $_GET['tampil'];
+		}
+
+		if (!empty($_GET['color'])) {
+			$http_build['color'] = $_GET['color'];
+		}
+
+		if (!empty($_GET['sort_brand'])) {
+			/*sortir produk berdasarkan $_GET['sort']*/
+			if ($_GET['sort_brand'] == 'terbaru') {
+				$this->sort_brand 	= array('brand_id' => 'DESC');
+			}
+
+			if ($_GET['sort_brand'] == 'terlama') {
+				$this->sort_brand 	= array('brand_id' => 'ASC');
+			}
+
+			if ($_GET['sort_brand'] == 'termahal') {
+				$this->sort_brand 	= array('brand_price' => 'DESC');
+			}
+
+			if ($_GET['sort_brand'] == 'termurah') {
+				$this->sort_brand 	= array('brand_price' => 'ASC');
+			}
+			/*membuat http $_get sort*/
+			$http_build['sort_brand']		= $_GET['sort_brand'];
 		}
 
 		/*pengaturan metadata*/
@@ -305,8 +340,14 @@ class Frontend_Controller extends MY_Controller
 		/*bagian side halaman*/
 		$this->data['side_member']						= 'component/sidebar-member';
 		$this->data['categories'] 						= $this->category_model->get_by(array('category_pub' => '99'));
-		$this->data['side_category']					= $this->category_model->get_by(array('category_pub' => '99'));
-		$this->data['side_brand']							= $this->brand_model->get_by(array('brand_pub' => '99'));
+		$this->data['wallpaper'] 						  = $this->category_model->get(16);
+		$this->data['vinyl']		 						  = $this->category_model->get(17);
+		$this->data['carpet']		 						  = $this->category_model->get(18);
+		$this->data['lem']			 						  = $this->category_model->get(19);
+		$this->data['side_brand']							= $this->brand_model->get_brand(array('brand_pub' => '99'), 5);
+		$this->data['side_brand_off']					= $this->brand_model->get_brand(array('brand_pub' => '99'), 5, 5);
+
+		$this->data['ruang_tulis'] = "Ini adalah ruang yang bagus untuk menulis teks panjang tentang perusahaan Anda dan layanan Anda. Anda dapat menggunakan ruang ini untuk membahas lebih detail tentang perusahaan Anda. Bicara tentang layanan apa yang Anda berikan.";
 	}
 }
 
@@ -341,7 +382,7 @@ class Backend_Controller extends MY_Controller
 
 		/*array active menu = digunakan untuk menentukan menu utama yang aktif ketika halaman / modul tertentu dibuka */
 		$this->data['menu'] = array(
-			'content' => array('about', 'contact', 'service', 'social-media', 'term-and-condition', 'faq', 'bank', 'shipment', 'how-to-buy', 'howto' ),
+			'content' => array('about', 'contact', 'service', 'social-media', 'term-and-condition', 'faq', 'bank', 'testi', 'how-to-buy', 'howto' ),
 			'profile' => array('about', 'contact' ),
 			'article' => array('tag', 'article-category', 'article'),
 			'product' => array('category', 'color', 'brand', 'motif', 'product'),

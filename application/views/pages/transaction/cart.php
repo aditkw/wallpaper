@@ -1,17 +1,16 @@
-<div class="map-halaman map-khusus">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url() ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Keranjang Belanja</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
+<div class="cart">
+<section id="atas">
+	<div class="nav-text text-center middle">
+		<ol class="breadcrumb">
+			<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+			<li><a href="#">KERANJANG</a></li>
+		</ol>
+		<h2 class="ftimes">Keranjang</h2>
+		<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+	</div><!-- /.map-halaman -->
+</section>
 
-<div id="konten">
+<section id="konten">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -31,10 +30,10 @@
 									</thead>
 									<tbody>
 										<?php foreach ($order as $order): ?>
-											<?php $product_id = hash_link_encode($this->encrypt->encode($order->product_id)); ?> 
+											<?php $product_id = hash_link_encode($this->encrypt->encode($order->product_id)); ?>
 											<tr>
 												<td class="text-center" width="130">
-													<img src="<?php echo site_url('uploads/img/product/thumb-'.$order->image_name) ?>" width="100%">
+													<img style="max-width:100%" src="<?php echo site_url('uploads/img/product/'.$order->image_name) ?>">
 												</td>
 												<td class="vmiddle">
 													<a href="<?php echo site_url('produk/detail/'.$order->product_code.'/'.$order->product_link); ?>"><?php echo $order->product_name ?></a>
@@ -54,49 +53,16 @@
 												</td>
 											</tr>
 										<?php endforeach ?>
-											<!-- <tr>
-												<td colspan="3" align="right">
-													<strong>
-														Paket pengiriman
-													</strong>
-												</td>		
-												<td colspan="3">
-													<select id="shipment" name="shipment" class="form-control">
-														<option disabled selected>Pilih Paket Pengiriman</option>
-
-														<?php foreach ($cost['rajaongkir']['results'] as $res): ?>
-															<optgroup label="<?php echo strtoupper($res['code']) ?>">
-
-																<?php foreach ($res['costs'] as $cont): ?>
-
-																	<?php foreach ($cont['cost'] as $value): ?>
-
-																		<?php if (array_search($cont['service'], $service)): ?>
-																			<option value="<?php echo $res['code'].':'.$cont['service'] ?>">
-																				<?php echo $cont['service'].' - '.$cont['description'].' - '.rupiah($value['value']) ?>
-																			</option>
-																		<?php endif ?>
-
-																	<?php endforeach ?>
-
-																<?php endforeach ?>
-
-															</optgroup>
-														<?php endforeach ?>
-
-													</select>
-												</td>
-											</tr> -->
 									</tbody>
 								</table>
 							<?php else: ?>
 								<div class="alert alert-info">
 									<h4>Keranjang anda masih kosong.</h4>
 								</div>
-							<?php endif ?>	
-								
+							<?php endif ?>
+
 						</div><!-- /.table-responsive -->
-						
+
 						<div class="detail-bayar">
 							<?php if ($cart_count > 0): ?>
 								<table>
@@ -104,16 +70,8 @@
 										<td class="text-right">Total Belanja</td>
 										<td class="text-right" width="150"><strong><?php echo rupiah($total_sub) ?></strong></td>
 									</tr>
-									<!-- <tr>
-										<td class="text-right">Ongkos Kirim</td>
-											<td class="text-right"><strong id="on_process">On Process</strong></td>
-									</tr>
 									<tr>
-										<td class="text-right" style="padding-bottom:15px !important;">Total Pembayaran</td>
-										<td class="text-right" style="padding-bottom:15px !important;"><strong><?php echo rupiah($total_sub) ?></strong></td>
-									</tr> -->
-									<tr>
-										<th class="text-right" colspan="2">									
+										<th class="text-right" colspan="2">
 											<button class="btn btn-primary btn-checkout text-uppercase" type="submit" name="update">Update Cart</button>
 											<a class="btn btn-success btn-checkout text-uppercase" href="<?php echo site_url('keranjang-checkout') ?>">Checkout</a>
 										</th>
@@ -126,7 +84,8 @@
 			</div><!-- /.col -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->
-</div><!-- /#koneten-home -->
+</section><!-- /#koneten-home -->
+</div>
 
 <div class="modal fade modal-lwd" id="tambah">
 	<div class="modal-dialog">
@@ -155,4 +114,3 @@
 		</div>
 	</div>
 </div><!-- /.modal -->
-	

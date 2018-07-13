@@ -173,11 +173,11 @@
 				});
 			});
 			// get shipment (edit)
-			$('.btn-edit-shipment').click(function() {
+			$('.btn-edit-testi').click(function() {
 				var id = $(this).attr('data-id');
 				$.ajax({
 					type: "POST",
-					url: "<?php echo site_url('admin/shipment/update_load');?>",
+					url: "<?php echo site_url('admin/testi/update_load');?>",
 					data: { dataID: id},
 					timeout : 3000,
 					dataType: "JSON",
@@ -187,7 +187,8 @@
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
-						$("#web").val(data.web);
+						$("#desc").val(data.desc);
+						$("#job").val(data.job);
 						$("#update").modal('show');
 					}
 				});
@@ -222,12 +223,21 @@
 					data: { dataID: id},
 					timeout : 3000,
 					dataType: "JSON",
-					error: function() {
-						alert("ERROR!");
+					error: function(xhr, ajaxOptions, thrownError) {
+						alert(xhr.status);
+		        alert(thrownError);
 					},
 					success: function(data) {
 						$("#id").val(data.id);
 						$("#name").val(data.name);
+						$("#category").val(data.category).prop('selected','selected');
+						$("#motif").val(data.motif).prop('selected','selected');
+						$("#price").val(data.price);
+						$("#price_strip").val(data.price_strip);
+						$("#discount").val(data.discount);
+						$("#size").val(data.size);
+						$("#weight").val(data.weight);
+						$("#launch").val(data.launch);
 						$("#update").modal('show');
 					}
 				});
@@ -434,10 +444,10 @@
 					// alert(id_category);
 					$.ajax({
 						type: 'POST',
-						url: '<?=site_url('admin/product/ajax_subcat')?>',
+						url: '<?=site_url('admin/product/ajax_brand')?>',
 						data: { dataID: id},
 						success: function(response) {
-							$('#subcat').html(response);
+							$('#brand').html(response);
 						}
 					});
 				});
@@ -445,17 +455,25 @@
 		});
 
 		// Review Image
-		function previewImage(input) {
+		// function previewImage(input) {
+		//
+		//
+		// }
 
-			if (input.files && input.files[0]) {
-				var fileReader = new FileReader();
-				var imageFile = input.files[0];
+		$(".img-preview").change(function(){
+			var input = $(this);
+			if (input[0].files && input[0].files[0]) {
+				console.log(input[0].files);
+				// let inputClass = '#'+input.class;
+				let fileReader = new FileReader();
+				let imageFile = input[0].files[0];
+				let preview = $(this).next();
 
 				if(imageFile.type == "image/png" || imageFile.type == "image/jpeg") {
 					fileReader.readAsDataURL(imageFile);
 
 					fileReader.onload = function (e) {
-						$('#preview-image').attr('src', e.target.result);
+						preview.attr('src', e.target.result);
 					}
 				}
 
@@ -463,14 +481,6 @@
 					alert("your file is not image");
 				}
 			}
-		}
-
-		$("[name='image']").change(function(){
-				previewImage(this);
-		});
-
-		$("[id='image-index']").change(function(){
-				previewImage(this);
 		});
 
 		//iCheck for checkbox and radio inputs

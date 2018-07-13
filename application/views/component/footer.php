@@ -17,12 +17,12 @@
           <img class="max-width" src="<?=site_url('dist/img/assets/logo-foot.png')?>" alt="">
         </div>
         <div class="col-md-7">
-          <a class="text-putih" href="#">Beranda</a>
-          <a class="text-putih" href="#">Tentang Kami</a>
-          <a class="text-putih" href="#">Produk</a>
-          <a class="text-putih" href="#">Testimonial</a>
-          <a class="text-putih" href="#">Berita/Event</a>
-          <a class="text-putih" href="#">Hubungi Kami</a>
+          <a class="text-putih" href="<?=site_url()?>">Beranda</a>
+          <a class="text-putih" href="<?=site_url('tentang-kami')?>">Tentang Kami</a>
+          <a class="text-putih" href="<?=site_url('#produk')?>">Produk</a>
+          <a class="text-putih" href="<?=site_url('#testimonial')?>">Testimonial</a>
+          <a class="text-putih" href="<?=site_url('news')?>">Berita/Event</a>
+          <a class="text-putih" href="<?=site_url('hubungi-kami')?>">Hubungi Kami</a>
         </div>
         <div class="col-md-2">
           <div class="sosmed">
@@ -43,12 +43,11 @@
           <div class="row">
             <div class="col-md-6">
               <p><strong>Kantor Pusat</strong></p>
-              <p>l. Perintis Kemerdekaan 1,<br>
-                No. 12 Kota Tangerang</p>
+              <p><?=nl2br($contact->contact_address)?></p>
               <!-- phone first -->
-              <p class="text-gede no-margin"><strong>+6221 - 7279 1867</strong></p>
+              <p class="text-gede no-margin"><strong><?=$contact->contact_phone?></strong></p>
               <!-- mail first -->
-              <p>info@your-website.com</p>
+              <p><?=$contact->contact_email?></p>
             </div>
             <div class="col-md-6">
               <p><strong>Jam Operasi</strong></p>
@@ -68,8 +67,8 @@
           <div class="row">
             <div class="col-md-12">
               <p><a class="text-putih" href="<?=site_url('member-login')?>">Login</a></p>
-              <p><a class="text-putih" href="<?=site_url('cart')?>">Keranjang Belanja</a></p>
-              <p><a class="text-putih" href="<?=site_url('confirmation')?>">Konfirmasi Pembayaran</a></p>
+              <p><a class="text-putih" href="<?=site_url('keranjang')?>">Keranjang Belanja</a></p>
+              <p><a class="text-putih" href="<?=site_url('konfirmasi')?>">Konfirmasi Pembayaran</a></p>
               <p><a class="text-putih" style="cursor:pointer" id="search-btn">Cek Status Order</a></p>
             </div>
           </div>
@@ -82,10 +81,9 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p><a class="text-putih" href="#">Wallpaper</a></p>
-              <p><a class="text-putih" href="#">Vinyl</a></p>
-              <p><a class="text-putih" href="#">Carpet Tile</a></p>
-              <p><a class="text-putih" href="#">Lem Wallpaper</a></p>
+              <?php foreach ($categories as $category): ?>
+              <p><a class="text-putih" href="<?=site_url('produk/'.$category->category_link)?>"><?=$category->category_name?></a></p>
+              <?php endforeach; ?>
             </div>
           </div>
         </div>
@@ -97,25 +95,21 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <p><a class="text-putih" href="#">Avenue</a></p>
-              <p><a class="text-putih" href="#">Floral</a></p>
-              <p><a class="text-putih" href="#">Stella By Seoul</a></p>
-              <p><a class="text-putih" href="#">Selection</a></p>
-              <p><a class="text-putih" href="#">Feliz</a></p>
+              <?php foreach ($side_brand as $brand): ?>
+              <p><a class="text-putih" href="<?=site_url('produk/'.$brand->category_link.'/'.$brand->brand_link)?>"><?=$brand->brand_name?></a></p>
+              <?php endforeach; ?>
             </div>
             <div class="col-md-6">
-              <p><a class="text-putih" href="#">Remember</a></p>
-              <p><a class="text-putih" href="#">Vivance</a></p>
-              <p><a class="text-putih" href="#">Emporium</a></p>
-              <p><a class="text-putih" href="#">Bonjour</a></p>
-              <p><a class="text-putih" href="#">Feliz</a></p>
+              <?php foreach ($side_brand_off as $brand): ?>
+                <p><a class="text-putih" href="<?=site_url('produk/'.$brand->category_link.'/'.$brand->brand_link)?>"><?=$brand->brand_name?></a></p>
+              <?php endforeach; ?>
               <p><a class="text-putih" href="<?=site_url("product")?>">All Brands</a></p>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12">
+        <div style="margin-top: 5vh;" class="col-md-12">
           <p>Copyright © 2018 Wallpaper Indonesia - Designed & Powered by LawaveDesign.com - Disclaimer</p>
         </div>
       </div>

@@ -1,16 +1,16 @@
 <?php
 
 /**
-* 
+*
 */
 class Category extends Backend_Controller
 {
 	protected $max_size					= 1024 * 2048;
 	protected $width_thumbnail 	= 70;
-	protected $height_thumbnail = 0; 
+	protected $height_thumbnail = 0;
 	protected $image_input_name = 'image';
-	protected $modul_file 			= 'category'; 
-	
+	protected $modul_file 			= 'category';
+
 	function index()
 	{
 		$this->data['content'] 	= 'admin/pages/category/view';
@@ -23,6 +23,7 @@ class Category extends Backend_Controller
 
 	public function insert()
 	{
+		die('ups maap, ndak bisa diinsert');
 		$post = $this->input->post();
 
 		$array_data['category_name'] = $post['name'];
@@ -56,13 +57,13 @@ class Category extends Backend_Controller
 						->save_pa($this->thumb_pre,'');
 
 					$array_data['category_image'] = $upload_image['image']['file_name'];
-					
+
 					$this->category_model->insert($array_data);
 					$this->session->set_flashdata('success', $this->add_text);
 
 					redirect(site_url('admin/category'));
-				} 
-			} 
+				}
+			}
 
 			else {
 				$this->category_model->insert($array_data);
@@ -85,7 +86,7 @@ class Category extends Backend_Controller
 		$array_data['category_link'] = title_url($post['name']);
 		// $array_data['category_desc'] = $post['desc'];
 		// $array_data['category_alt']  = $post['alt'];
-		
+
 		$is_unique = $this->category_model->unique_update($post['name'], $id, 'category_name');
 
 		$this->form_validation->set_rules('name', 'Category Name', 'required'.$is_unique);
@@ -115,13 +116,13 @@ class Category extends Backend_Controller
 						->save_pa($this->thumb_pre,'');
 
 					$array_data['category_image'] = $upload_image['image']['file_name'];
-					
+
 					$this->category_model->update($array_data, $array_id);
 					$this->session->set_flashdata('success', $this->add_text);
 
 					redirect(site_url('admin/category'));
-				} 
-			} 
+				}
+			}
 
 			else {
 				$this->category_model->update($array_data, $array_id);
@@ -134,10 +135,11 @@ class Category extends Backend_Controller
 
 	public function delete($id)
 	{
+		die('ups maap, ndak bisa diapus');
 		$get_data = $this->category_model->get($id);
-		
+
 		$this->lawave_image->delete_image($this->modul_file, $get_data->category_image, $this->thumb_pre);
-		
+
 		$this->category_model->delete($id);
 		$this->session->set_flashdata('success', $this->delete_text);
 
@@ -153,7 +155,7 @@ class Category extends Backend_Controller
 		if ($get_data->category_pub == '88') {
 			$array_data['category_pub'] = '99';
 			$text_msg = $this->publish_text;
-		} 
+		}
 
 		else {
 			$array_data['category_pub'] = '88';
@@ -167,7 +169,7 @@ class Category extends Backend_Controller
 	}
 
 	public function update_load()
-	{	
+	{
 		$id 			= $this->input->post('dataID');
 		$get_data = $this->category_model->get($id);
 
@@ -177,5 +179,5 @@ class Category extends Backend_Controller
 		$this->data['alt'] 	= $get_data->category_alt;
 
 		echo json_encode($this->data);
-	}	
+	}
 }

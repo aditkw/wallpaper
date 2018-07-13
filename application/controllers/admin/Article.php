@@ -1,13 +1,13 @@
 <?php
 
 /**
-* 
+*
 */
 class Article extends Backend_Controller
 {
 	protected $max_size					= 1024 * 200;
 	protected $wt 							= 70;
-	protected $ht 							= 0; 
+	protected $ht 							= 0;
 	protected $image_input_name = 'image';
 	protected $modul_file 			= 'article';
 
@@ -28,7 +28,7 @@ class Article extends Backend_Controller
 	public function add()
 	{
 		$this->data['content'] 		= 'admin/pages/article/add';
-		$this->data['category'] 	= $this->articlecat_model->get();
+		// $this->data['category'] 	= $this->articlecat_model->get();
 		$this->data['tag'] 				= $this->tag_model->get_by(array('tag_pub' => '99'));
 		$this->data['path_file']	= $this->img_path.$this->modul_file;
 
@@ -36,7 +36,7 @@ class Article extends Backend_Controller
 	}
 
 	public function insert()
-	{	
+	{
 		$post 			= $this->input->post(NULL, TRUE);
 		$rules 			= $this->article_model->rules;
 		$tag 				= implode(', ', $post['tag']);
@@ -60,7 +60,7 @@ class Article extends Backend_Controller
 			->save_pa($this->thumb_pre,'');
 
 			$array_data['article_title'] 				= $post['title'];
-			$array_data['article_cat_id'] 			= $post['category'];
+			// $array_data['article_cat_id'] 			= $post['category'];
 			$array_data['article_tag'] 					=	$tag;
 			$array_data['article_desc'] 				= $post['desc'];
 			$array_data['article_date'] 				= $date;
@@ -74,7 +74,7 @@ class Article extends Backend_Controller
 			$array_img['image_name']				= $upload_image['image']['file_name'];
 			$array_img['image_seq']					= 0;
 
-			$this->image_model->insert($array_img); 
+			$this->image_model->insert($array_img);
 
 			$this->session->set_flashdata('success',$this->add_text);
 
@@ -90,7 +90,7 @@ class Article extends Backend_Controller
 		$this->data['article'] 		= $this->article_model->get($id);
 		$this->data['image_index']= $this->image_model->get_by($where_img_index, NULL, NULL, TRUE);
 		$this->data['thumb_pre']	= $this->thumb_pre;
-		$this->data['category'] 	= $this->articlecat_model->get();
+		// $this->data['category'] 	= $this->articlecat_model->get();
 		$this->data['tag'] 				= $this->tag_model->get();
 		$this->data['path_file']	= $this->img_path.$this->modul_file;
 
@@ -105,7 +105,7 @@ class Article extends Backend_Controller
 		$get_data 	= $this->article_model->get($id);
 		$get_image 	= $this->image_model->get_by($where_img, NULL, NULL, TRUE);
 		$rules 			= $this->article_model->rules;
-		$array_id 	= array('article_id' => $id);	
+		$array_id 	= array('article_id' => $id);
 		$tag 				= implode(', ', $post['tag']);
 		$files 			= $_FILES[$this->image_input_name]['name'];
 
@@ -113,7 +113,7 @@ class Article extends Backend_Controller
 		$link 			= title_url($post['title']);
 
 		$array_data['article_title'] 				= $post['title'];
-		$array_data['article_cat_id'] 			= $post['category'];
+		// $array_data['article_cat_id'] 			= $post['category'];
 		$array_data['article_tag'] 					=	$tag;
 		$array_data['article_desc'] 				= $post['desc'];
 		$array_data['article_alt'] 					= $post['title'];
@@ -132,7 +132,7 @@ class Article extends Backend_Controller
 		else {
 			// update data produk
 			$this->article_model->update($array_data, $array_id);
-			
+
 			if (!empty($files)) {
 				$this->lawave_image->delete_image($this->modul_file, $get_image->image_name, $this->thumb_pre);
 
@@ -144,7 +144,7 @@ class Article extends Backend_Controller
 
 				$array_img['image_name']				= $upload_image['image']['file_name'];
 
-				$this->image_model->update($array_img, array('image_id' => $get_image->image_id)); 
+				$this->image_model->update($array_img, array('image_id' => $get_image->image_id));
 			}
 
 			$this->session->set_flashdata('success', $this->edit_text);
@@ -179,7 +179,7 @@ class Article extends Backend_Controller
 		if ($get_data->article_pub == '88') {
 			$array_data['article_pub'] = '99';
 			$text_msg = $this->publish_text;
-		} 
+		}
 
 		else {
 			$array_data['article_pub'] = '88';
@@ -193,7 +193,7 @@ class Article extends Backend_Controller
 	}
 
 	public function ajax_subcat()
-	{	
+	{
 		$id 					= $this->input->post('dataID');
 		$array_where 	= array('article_cat_id' => $id);
 		$get_data 		= $this->subcat_model->get_by($array_where);
@@ -208,5 +208,5 @@ class Article extends Backend_Controller
 			}
 			echo $output;
 		}
-	}	
+	}
 }

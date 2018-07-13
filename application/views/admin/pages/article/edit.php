@@ -24,8 +24,8 @@
 					<div class="col-md-3 col-lg-3">
 						<div class="form-group">
 							<label for="article">Image Index</label>
-							<input id="image-index" type="file" name="image" class="form-control">
-							<img id="preview-image" src="<?php echo base_url($path_file.'/'.$image_index->image_name);?>" class="preview-image img img-responsive" alt="image index">
+							<input type="file" name="image" class="img-preview form-control">
+							<img src="<?php echo base_url($path_file.'/'.$image_index->image_name);?>" class="preview-image img img-responsive" alt="image index">
 						</div>
 					</div>
 					<div class="col-md-9 col-lg-9">
@@ -40,7 +40,7 @@
 						</div>
 						<hr>
 						<div class="row">
-							<div class="col-md-4 col-lg-4">
+							<!-- <div class="col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="article">Category</label>
 									<select id="category" name="category" class="form-control" required>
@@ -52,8 +52,8 @@
 										<?php endforeach ?>
 									</select>
 								</div>
-							</div>
-							<div class="col-md-8 col-lg-8">
+							</div> -->
+							<div class="col-md-4 col-lg-4">
 								<div class="form-group">
 									<label for="article">Tags</label>
 									<select name="tag[]" class="form-control select2" multiple="multiple" data-placeholder="select tags">

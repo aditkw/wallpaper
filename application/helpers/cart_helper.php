@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
 	@total_sub
@@ -17,6 +17,35 @@ function total_sub($data, $suffix)
 	foreach ($data as $value) {
 		$sub_weight[$i] = $value->$weight_field *  $value->$qty_field;
 		$sub_price[$i] = $value->$price_field *  $value->$qty_field;
+		$sub_qty[$i] = $value->$qty_field;
+		$i++;
+	}
+
+	$result['total_weight'] = array_sum($sub_weight);
+	$result['total_price'] = array_sum($sub_price);
+	$result['total_qty'] = array_sum($sub_qty);
+
+	return $result;
+}
+
+function totalSubDisc($data, $suffix)
+{
+	$i = 1;
+	$weight_field = $suffix.'_weight';
+	$price_field = $suffix.'_price';
+	$qty_field = $suffix.'_qty';
+	$disc_field = 'product_discount';
+
+	foreach ($data as $value) {
+		$sub_weight[$i] = $value->$weight_field *  $value->$qty_field;
+
+		$discount = $value->disc_field;
+		if ($discount)
+			$harga_disc = ($discount * $value->$price_field) / 100;
+		else
+			$harga_disc = $value->$price_field;
+
+		$sub_price[$i] = $harga_disc *  $value->$qty_field;
 		$sub_qty[$i] = $value->$qty_field;
 		$i++;
 	}
@@ -50,7 +79,7 @@ function uang($data)
 **/
 function in_cart($id, $src)
 {
-	$array_data = explode(',', $src); 
+	$array_data = explode(',', $src);
 
 	if (array_search($id, $array_data)) {
 		return TRUE;

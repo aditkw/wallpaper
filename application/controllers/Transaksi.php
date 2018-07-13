@@ -1,23 +1,23 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Transaksi extends Frontend_Controller
 {
-	
+
 	function order()
 	{
 
 		if (!empty($this->data['cart_session'])) {
 			$post = $this->input->post(NULL, TRUE);
 			/*mengambil data order dari database*/
-			$get_order = $this->order_model->get_by(array('order_no' => $this->data['cart_session']));
+			$get_order = $this->order_model->get_order(array('order_no' => $this->data['cart_session'], 'image_parent_name' => 'product', 'image_seq' => 0));
 			/*menghitung data order di database sesuai order_no = cart_session*/
 			$order_count = $this->transaction_model->count(array('order_no' => $this->data['cart_session']));
 			/*menghitung data transaksi di database sesuai order_no = cart_session*/
 			$trans_count = $this->transaction_model->count(array('order_no' => $this->data['cart_session']));
-			
+
 			/*mendapatkan id member, jika bukan member, id_member bernilai 0 (nol)*/
 			$member_id = (!empty($this->session->userdata('member_session')))
 				?
@@ -25,16 +25,16 @@ class Transaksi extends Frontend_Controller
 						:
 						 0;
 
-			$sub = total_sub($get_order, 'order');
+			$sub = totalSubDisc($get_order, 'order');
 			/*mendapatkan code kurir dan layanan*/
 			$shipping_code = explode(':', $post['shipment']);
-			
+
 			$shipcost	= $this->lawave_shipment->cost(
-				$this->origin_code, 
-				$this->origin_type, 
-				$post['kecamatan'], 
-				$this->destination_type, 
-				$sub['total_weight'], 
+				$this->origin_code,
+				$this->origin_type,
+				$post['kecamatan'],
+				$this->destination_type,
+				$sub['total_weight'],
 				$this->courier
 				);
 
@@ -183,7 +183,7 @@ class Transaksi extends Frontend_Controller
 			$this->data['trans'] = $this->transaction_model->get_transaction(array('{PRE}transaction.order_no' => $order_no), 1, NULL, TRUE);
 			$this->data['trans_item'] = $this->transaction_item_model->get_transaction_item(
 				array(
-					'{PRE}transaction_item.order_no' => $order_no, 
+					'{PRE}transaction_item.order_no' => $order_no,
 					'{PRE}image.image_seq' => 0)
 				);
 			$this->data['bank'] = $this->bank_model->get();

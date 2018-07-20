@@ -1,7 +1,7 @@
 <?php
 
 /**
-* 
+*
 */
 class Transaction extends Backend_Controller
 {
@@ -82,7 +82,7 @@ class Transaction extends Backend_Controller
 		if (isset($_GET['from'])) {
 			$where_payment['{PRE}transaction.transaction_date >='] = $_GET['from'];
 			$this->data['from'] = '/'.$_GET['from'].'/';
-			
+
 			if (!empty($_GET['to'])) {
 				$where_payment['{PRE}transaction.transaction_date <='] = $_GET['to'];
 				$this->data['to'] = $_GET['to'];
@@ -97,10 +97,10 @@ class Transaction extends Backend_Controller
 		/*num_link, banyaknya link yang ditampilkan sebelum dan sesudah link aktif*/
 		$url 				='admin/transaction/'.$this->uri->segment(3);
 		$num_rows		=	$this->payment_model->count_payment($where_payment);
-		$per_page 	= 2;
+		$per_page 	= 10;
 		$num_links	= 2;
 
-		paging($url, $num_rows, $per_page, $num_links);
+		$this->lawave_paging->pagination($url, $num_rows, $per_page, $num_links);
 		/*pagination($url = NULL, $num_rows = NULL, $per_page = NULL, $num_links = NULL)*/
 
 		/*konfigurasi nilai offset dan informasi halaman*/
@@ -156,7 +156,7 @@ class Transaction extends Backend_Controller
 		$this->pdf->render();
 		$this->pdf->stream($pdf_name);
 		/*------*/
-		
+
 		/*MPDF*/
 		// $pdf->WriteHTML($html);
 		// $output = 'report_sales_' . date('Y_m_d_H_i_s') . '_.pdf';
@@ -209,7 +209,7 @@ class Transaction extends Backend_Controller
 			$this->data['district'] = $this->lawave_shipment->district($subdistrict, $this->data['transaction']->district_id);
 
 			$this->load->view('admin/media', $this->data);
-		} 
+		}
 
 		else {
 			redirect(site_url('admin/transaction'));
@@ -240,10 +240,12 @@ class Transaction extends Backend_Controller
 				);
 
 			$array_data['trans_status_id'] = 3;
+			$array_pay['payment_status'] = '99';
 
 			$this->transaction_model->update($array_data, array('transaction_id' => $transaction->transaction_id));
+			$this->payment_model->update($array_pay, array('transaction_id' => $transaction->transaction_id));
 
-			redirect(site_url('admin/transaction/transaction-detail/'.$transaction->order_no.'/'.hash_link_encode($this->encrypt->encode($transaction->trans_status_id)))); 
+			redirect(site_url('admin/transaction/transaction-detail/'.$transaction->order_no.'/'.hash_link_encode($this->encrypt->encode($transaction->trans_status_id))));
 		}
 	}
 
@@ -255,7 +257,7 @@ class Transaction extends Backend_Controller
 			$array_data['transaction_shipping_date'] = $post['date'];
 			$array_data['transaction_shipping_no'] = $post['shipping_no'];
 
-			$array_where['transaction_id'] = $post['id']; 
+			$array_where['transaction_id'] = $post['id'];
 
 			$this->transaction_model->update($array_data, $array_where);
 
@@ -271,7 +273,7 @@ class Transaction extends Backend_Controller
 				lwd_send_email($this->data['transaction']->transaction_email, $this->customer_order, $email);
 			}
 			/**/
-			
+
 			$this->session->set_flashdata('success','Order no '.$post['order_no'].'. '.$this->edit_text);
 
 			redirect(site_url('admin/transaction/delivery'));
@@ -322,7 +324,7 @@ class Transaction extends Backend_Controller
 			$subdistrict = $this->lawave_shipment->subdistrict($this->data['transaction']->city_id);
 			$this->data['district'] = $this->lawave_shipment->district($subdistrict, $this->data['transaction']->district_id);
 
-			
+
 			/*DOMPDF*/
 			$pdf_name = 'Invoice_'.$order_no;
 			$this->pdf->set_paper('A5','landscape');
@@ -331,7 +333,7 @@ class Transaction extends Backend_Controller
 			$this->pdf->stream($pdf_name);
 			/*------*/
 			// $this->load->view($content, $this->data);
-		} 
+		}
 
 		else {
 			redirect(site_url('admin/transaction'));
@@ -339,7 +341,7 @@ class Transaction extends Backend_Controller
 	}
 
 	public function update_load()
-	{	
+	{
 		$id 			= $this->input->post('dataID');
 		$get_data = $this->transaction_model->get($id);
 
@@ -347,5 +349,5 @@ class Transaction extends Backend_Controller
 		$this->data['order_no']	= $get_data->order_no;
 
 		echo json_encode($this->data);
-	}	
+	}
 }

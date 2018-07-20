@@ -9,6 +9,7 @@ $babu  : #999999;
 $xbabu : #585858;
 $putih : #ffffff;
 $kuning: #feb810;
+$abs: "http://localhost/wallpaper/";
 
 .text-biru{color: $biru}
 .text-ijo{color: $ijo}
@@ -22,7 +23,7 @@ $kuning: #feb810;
 .text-tebel{font-weight: bold}
 .border-bot{border-bottom: 1px solid $xbabu}
 .relative{position: relative;}
-.hidden{display: none}
+.ngumpet{display: none}
 .block{display: block}
 .w-auto{width: auto !important}
 .inline{display: inline-block}
@@ -42,6 +43,9 @@ $kuning: #feb810;
 
 p, li, a, td{font-family: "Segoe Ui"}
 @include box-prod;
+@include box-login;
+@include member-area;
+@include contact;
 ol.breadcrumb{
   background-color: transparent;
   li > a{
@@ -55,4 +59,27 @@ section#atas{
   .nav-text{
     width: 60%;
   }
+}
+
+#konten{
+  padding: 25px 0;
+}
+
+.yuorder{
+  .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: opensans;
+    }
+
+    .alert-info{
+      margin: 15px 0;
+    }
+
+    .tab-pane{
+      padding: 15px 10px;
+    }
 }

@@ -1,29 +1,35 @@
-<div class="map-halaman map-khusus">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url() ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Transaksi</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
+<div class="dashboard-member">
+	<section id="atas">
+		<div class="nav-text text-center middle">
+			<ol class="breadcrumb">
+				<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+				<li><a href="#">MEMBER AREA</a></li>
+			</ol>
+			<h2 class="ftimes">TRANSAKSI</h2>
+			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+		</div><!-- /.map-halaman -->
+	</section>
 
 <div id="konten">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="box-content box-about">					
+				<div class="box-content box-about">
 					<div class="row">
 						<div class="col-md-3">
 							<?php $this->load->view($side_member) ?>
 						</div><!-- /.col -->
 						<div class="col-md-9">
 							<div class="konten-member">
+								<?php if ($this->session->flashdata('success')): ?>
+									<div class="alert alert-success">
+										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+										<strong><i class="fa fa-check text-success"></i></strong>
+										<?php echo $this->session->flashdata('success') ?>
+									</div>
+								<?php endif ?>
 								<div class="tag-konten-member"><strong>My Orders</strong></div>
-								
+
 								<div class="table-responsive">
 									<table class="table table-bordered table-striped table-member">
 										<thead>
@@ -36,7 +42,7 @@
 										<tbody>
 											<?php if ($count_trans > 0): ?>
 												<?php foreach ($transaction as $trans): ?>
-													<?php 
+													<?php
 													$date = indonesian_date($trans->transaction_date);
 													?>
 													<tr>
@@ -81,4 +87,4 @@
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#koneten-home -->
-	
+</div>

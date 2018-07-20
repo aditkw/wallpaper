@@ -56,7 +56,14 @@ class Produk extends Frontend_Controller
 		}
 
 		else {
-			$where_product = array('brand_link' => $brand, 'image_parent_name' => 'product', 'image_seq' => '0');
+			$get_brand = $this->brand_model->get_by(array('brand_link' => $brand), null, null, true);
+			if(!$get_brand && $brand!='all') redirect(site_url());
+
+			if ($brand == 'all') {
+				$where_product = array('image_parent_name' => 'product', 'image_seq' => '0');
+			}else {
+				$where_product = array('brand_link' => $brand, 'image_parent_name' => 'product', 'image_seq' => '0');
+			}
 			$this->data['brands'] = $this->brand_model->get_brand(array('category_link' => $category));
 			$this->data['motif'] = $this->motif_model->get();
 			$this->data['color'] = $this->color_model->get();
@@ -145,7 +152,7 @@ class Produk extends Frontend_Controller
 		$get_data 	= $this->product_model->get_by(array('product_code' => $code, 'product_link' => $link), NULL, NULL, TRUE);
 
 		if (empty($get_data->product_id)) {
-			redirect(site_url('produk'));
+			redirect(site_url());
 		}
 
 		// else {

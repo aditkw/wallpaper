@@ -154,7 +154,7 @@ class Member extends Frontend_Controller
 					);
 				$this->data['count_trans'] = $this->transaction_model->count(
 					array(
-						'trans_status_id' => 1,
+						// 'trans_status_id' => 1,
 						'member_id' => $member_id,
 						'transaction_hide' => '88'
 						)

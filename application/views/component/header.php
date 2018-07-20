@@ -12,8 +12,12 @@
 					<p>Customer Servives: <strong><?=$contact->contact_cs?></strong></p>
 					<p>Telephone: <strong><?=$contact->contact_phone?></strong></p>
 					<p>WhatsApp: <strong><?=$contact->contact_wa?></strong></p>
-					<p><a href="#">Testimonial</a></p>
-					<p>Please, <a href="#">login</a></p>
+					<p><a class="text-putih" href="#">Testimonial</a></p>
+					<?php if ($member_access): ?>
+					<p><a class="text-putih" href="<?=site_url('member-area')?>"><i class="fa fa-user"></i> Member Area</a></p>
+					<?php else: ?>
+					<p>Please, <a class="text-putih" href="<?=site_url('member-login')?>">login</a></p>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
@@ -53,13 +57,13 @@
 			<div class="col-lg-2">
 				<div class="cart-head">
 					<div class="img">
-						<a href="<?=site_url()?>">
+						<a href="<?=site_url('keranjang')?>">
 							<img src="<?=site_url('dist/img/assets/cart.png')?>" alt="">
 						</a>
 					</div>
 					<div class="info-cart">
 						<p>My Cart</p>
-						<p><strong>2 Product</strong> <i class="fa fa-angle-down"></i></p>
+						<p><strong><?=$cart_count?> Product</strong> <!--<i class="fa fa-angle-down"></i> --></p>
 					</div>
 					<div class="clear"></div>
 				</div>

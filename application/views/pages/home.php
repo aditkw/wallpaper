@@ -55,7 +55,7 @@
             <div class="img-hover relative">
               <img class="max-width" src="<?=site_url("uploads/img/product/$wp->image_name")?>" alt="">
               <div class="hover-detail">
-                <a href="#"><i class="fa fa-search"></i></a>
+                <a href="<?=site_url('produk/detail/'.$wp->product_code.'/'.$wp->product_link)?>"><i class="fa fa-search"></i></a>
               </div>
             </div>
             <div class="info relative no-margin-p">
@@ -91,7 +91,7 @@
             MERK
             <ul class="active">
               <?php foreach ($merk as $merk): ?>
-                <li><?=$merk->brand_name?></li>
+                <li><a href="<?=site_url("produk/$wallpaper->category_link/$merk->brand_link")?>"><?=$merk->brand_name?></a></li>
               <?php endforeach; ?>
             </ul>
           </li>
@@ -107,7 +107,7 @@
             MOTIF
             <ul>
               <?php foreach ($motif as $motif): ?>
-                <li><?=$motif->motif_name?></li>
+                <li><a href="<?=site_url("produk/$wallpaper->category_link?motif=$motif->motif_link")?>"><?=$motif->motif_name?></a></li>
               <?php endforeach; ?>
             </ul>
           </li>
@@ -130,7 +130,7 @@
           </div>
         <?php endforeach; ?>
       </div>
-      <p class="all-product text-center"><a class="text-xbabu" href="#">LIHAT SEMUA PRODUK <i class="fa fa-long-arrow-right text-biru"></i></a></p>
+      <p class="all-product text-center"><a class="text-xbabu" href="<?=site_url('produk/'.$wallpaper->category_link)?>">LIHAT SEMUA PRODUK <i class="fa fa-long-arrow-right text-biru"></i></a></p>
      </div>
 
      <div class="testimonial relative">

@@ -20,21 +20,21 @@
 
 							<div class="form-group">
 								<label class="col-md-3 control-label">Nama Lengkap <span class="required">*</span></label>
-								<div class="col-md-6">
+								<div class="col-md-7">
 									<input class="form-control" type="text" name="nama" value="<?php if (!empty($member_sesion)) echo $member->member_name; ?>" placeholder="Nama Depan" required>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3 control-label">Telepon / Hp <span class="required">*</span></label>
-								<div class="col-md-6">
+								<div class="col-md-7">
 									<input class="form-control" type="text" name="telp" value="<?php if (!empty($member_sesion)) echo $member->member_phone ?>" placeholder="Nomor Telepon / Hp" required>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label class="col-md-3 control-label">Email <span class="required">*</span></label>
-								<div class="col-md-6">
+								<div class="col-md-7">
 									<input class="form-control" type="email" name="email" value="<?php if (!empty($member_sesion)) echo $member->member_email ?>" placeholder="Alamat Email" required>
 								</div>
 							</div>
@@ -43,7 +43,7 @@
 
 							<div class="form-group">
 								<label class="col-md-3 control-label">Alamat Lengkap <span class="required">*</span></label>
-								<div class="col-md-6">
+								<div class="col-md-7">
 									<textarea class="form-control" name="alamat" placeholder="Alamat Lengkap" required><?php if (!empty($member_sesion)) echo $member->member_address ?></textarea>
 								</div>
 							</div>
@@ -58,7 +58,7 @@
 										<?php endforeach ?>
 									</select>
 								</div>
-								<div class="col-md-2">
+								<div class="col-md-3">
 									<select class="form-control" id="city" name="city" required>
 										<option selected disabled>Pilih Kota</option>
 										<?php foreach ($member_city as $city): ?>
@@ -95,7 +95,7 @@
 
 							<div class="form-group">
 								<label class="col-md-3 control-label">Catatan anda</label>
-								<div class="col-md-6">
+								<div class="col-md-7">
 									<textarea class="form-control" name="catatan" placeholder="Tambahkan catatan anda"></textarea>
 								</div>
 							</div>
@@ -103,7 +103,7 @@
 							<hr>
 							<div class="form-group">
 								<label class="col-md-3"></label>
-								<div class="col-md-6 text-right">
+								<div class="col-md-7 text-right">
 									<button class="btn btn-success btn-checkout text-uppercase" type="submit" name="kirim">Continue</button>
 								</div>
 							</div>

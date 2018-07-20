@@ -3,7 +3,7 @@
 		<tr>
 			<td>
 				<h3 style="color: #5d9ec3;">
-					Pesan dari pengunjung Erakomp.com
+					Pesan dari pengunjung Wallpaper Indonesia
 				</h3>
 			</td>
 		</tr>

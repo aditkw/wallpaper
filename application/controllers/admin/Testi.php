@@ -109,9 +109,7 @@ class Testi extends Backend_Controller
 
 		$this->testi_model->delete($id);
 
-		/*
-		| proses delete row table
-		*/
+		$this->transaction_model->update(array('testi_id' => NULL), array('testi_id' => $id));
 
 		$this->session->set_flashdata('success',$this->delete_text);
 

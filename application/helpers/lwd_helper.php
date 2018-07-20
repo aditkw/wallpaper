@@ -1,5 +1,12 @@
 <?php
 
+function active_menu_front($uri, $link)
+{
+	if ($uri == $link) {
+		return 'menu-toc-current';
+	}
+}
+
 /*clean url*/
 function title_url($str, $replace=array(), $delimiter='-')
 {
@@ -17,6 +24,7 @@ function title_url($str, $replace=array(), $delimiter='-')
 
 	return $clean;
 }
+
 
 function parse_http_lwd($http, $index)
 {
@@ -61,18 +69,38 @@ function lwd_send_email($to, $subject, $email)
 	$_this =& get_instance();
 	$_this->load->library('email');
 	$_this->load->helper('email');
-	$config['protocol'] = "smtp";
-	$config['smtp_host'] = "ssl://smtp.gmail.com";
-	$config['smtp_port'] = "25";
-	$config['smtp_user'] = "syariflwd@gmail.com";
-	$config['smtp_pass'] = "syarif12345";
+
+	// $config['protocol'] = "smtp";
+	// $config['smtp_host'] = "smtp.gmail.com";
+	// $config['smtp_port'] = "587";
+	// $config['smtp_user'] = "aditwalihadi14@gmail.com";
+	// $config['smtp_pass'] = "";
 	$config['charset'] = "utf-8";
 	$config['mailtype'] = "html";
 	$config['newline'] = "\r\n";
 
 	$_this->email->initialize($config);
 
-	$_this->email->from('syariflwd@gmail.com');
+	$_this->email->from('aditwalihadi14@gmail.com');
+	$_this->email->to($to);
+	$_this->email->subject($subject);
+	$_this->email->message($email);
+	$_this->email->send();
+}
+
+function email_send($from, $to, $subject, $email)
+{
+	$_this =& get_instance();
+	$_this->load->library('email');
+	$_this->load->helper('email');
+
+	$config['charset'] = "utf-8";
+	$config['mailtype'] = "html";
+	$config['newline'] = "\r\n";
+
+	$_this->email->initialize($config);
+
+	$_this->email->from($from);
 	$_this->email->to($to);
 	$_this->email->subject($subject);
 	$_this->email->message($email);
@@ -104,12 +132,12 @@ function sort_date($date)
 	return $i;
 }
 
-/**
+/*
 	@data, string gabungan dari id_statusprd.
 	@status_id, nilai id dari produk.
 	fungsi ini mengecek dan mengembalikan @status_id ketika di dalam @data (array $array_data) terdapat nilai @status_id
 	fungsi ini digunakan untuk mengetahui status produk. seperti favorit, best seller dan lain-lain.
-**/
+*/
 function status_product($data, $status_id)
 {
 	$array_data = explode(',', $data);
@@ -135,26 +163,14 @@ function status_product($data, $status_id)
 */
 function is_logged_in()
 {
-
 	$_this =& get_instance();
 	$userdata = $_this->session->userdata;
+	$id 			= $_this->encrypt->decode(hash_link_decode($userdata['user_session']));
+	$get_user = $_this->user_model->get($id);
 
-	if (isset($userdata['is_login']) && $userdata['is_login'] == TRUE && isset($userdata['user_session'])) {
-		$id = $_this->encrypt->decode(hash_link_decode($userdata['user_session']));
-		$user_log = $_this->login_model->get($id);
-
-		if ($id === $user_log->user_id) {
-			return TRUE;
-		}
-
-		else {
-			return FALSE;
-		}
-	}
-
-	else {
-		redirect(site_url('login'));
-	}
+	$userdata['is_login'] == TRUE &&
+		$id == $get_user->user_id ||
+			redirect(site_url('login'));
 
 	/*VALIDASI LAMA*/
 	// $id = $this->encrypt->decode(hash_link_decode($this->session->userdata('user_session')));
@@ -166,69 +182,27 @@ function is_logged_in()
 	// 	|| redirect(site_url());
 }
 
-function paging($url = NULL, $num_rows = NULL, $per_page = NULL, $num_links = NULL)
-{
-	$_this =& get_instance();
+function limitKalimat($kalimat, $limit=40){
+		$synopsis='';
+		if (strpos($kalimat, "</p>")) {
+			if (strlen($kalimat) > $limit){
+				$synopsis = explode("</p>", $kalimat);
+				$synopsis = reset($synopsis);
+				$synopsis = substr($synopsis, 0, $limit) . '...</p>';
+			}else {
+				$synopsis = $kalimat;
+				$synopsis = explode("</p>", $synopsis);
+				$synopsis = reset($synopsis).'</p>';
+			}
+		}
 
-	$config['base_url'] = base_url($url);
-	/*jumlah rows yang ditampilkan*/
-	$config['total_rows'] = $num_rows;
-	/*TRUE, artinya akan tetap menggunakan url yang ada selain base_url*/
-	$config['reuse_query_string'] = TRUE;
-
-	/*banyaknya record yang ditampilkan dalam 1 halaman*/
-	if ($per_page) {
-		$config['per_page'] = $per_page;
+		else {
+			if (strlen($kalimat) > $limit){
+				$synopsis = substr($kalimat, 0, $limit) . '...';
+			}
+			else {
+				$synopsis = $kalimat;
+			}
+		}
+		return $synopsis;
 	}
-
-	else {
-		$config['per_page'] = 10;
-	}
-
-	/*jumlah link sebelum dan sesudah link aktif*/
-	if ($num_links) {
-		$config['num_links'] = $num_links;
-	}
-
-	else {
-		$config['num_links'] = 2;
-	}
-
-	$config['use_page_numbers'] = TRUE;
-
-	/* Configurasi Style. Default library ini menggunakan bootstrap */
-	/*full tag / tag induk*/
-	$config['full_tag_open'] = '<ul class="pagination">';
-	$config['full_tag_close'] = '</ul>';
-
-	/*first / ling menuju pej wan*/
-	$config['first_link'] = 'First';
-	$config['first_tag_open'] = '<li>';
-	$config['first_tag_close'] = '</li>';
-
-	/*last / link menuju pej paling akhir*/
-	$config['last_link'] = 'Last';
-	$config['last_tag_open'] = '<li>';
-	$config['last_tag_close'] = '</li>';
-
-	/*next / link page selanjutnya*/
-	$config['next_link'] = 'Next';
-	$config['next_tag_open'] = '<li>';
-	$config['next_tag_close'] = '</li>';
-
-	/*prev / link page sebelumnya*/
-	$config['prev_link'] = 'Prev';
-	$config['prev_tag_open'] = '<li>';
-	$config['prev_tag_close'] = '</li>';
-
-	/*active / link aktiv*/
-	$config['cur_tag_open'] = '<li class="active"><a href="#">';
-	$config['cur_tag_close'] = '</a></li>';
-
-	/*nomor / penutup link nomor*/
-	$config['num_tag_open'] = '<li>';
-	$config['num_tag_close'] = '</li>';
-
-	/*inisialisasi*/
-	$_this->pagination->initialize($config);
-}

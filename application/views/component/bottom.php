@@ -1,13 +1,6 @@
 <?php // $cekslider = mysql_query("SELECT id_slider FROM slider WHERE status='1'"); $csld = mysql_num_rows($cekslider); ?>
-<script src="<?php echo base_url();?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<script src="<?php echo base_url();?>plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php echo base_url();?>plugins/bxslider/jquery.bxslider.min.js"></script>
-<script src="<?php echo base_url();?>plugins/owl-carousel/dist/owl.carousel.js"></script>
-<script src="<?php echo base_url();?>plugins/fancyapp/source/jquery.fancybox.js?v=2.1.5"></script>
-<script src="<?php echo base_url();?>plugins/fancyapp/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
-<script type="text/javascript" src="<?php echo base_url();?>plugins/zebra-datepicker/public/javascript/zebra_datepicker.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>dist/js/smoothscroll.min.js"></script>
 <script src="<?php echo base_url();?>dist/js/ajax.js"></script>
+<script src="<?php echo base_url();?>dist/js/lwd.js"></script>
 <script src="<?php echo base_url();?>dist/js/lwd.js"></script>
 
 <script type="text/javascript">
@@ -48,75 +41,12 @@ $(document).ready(function(){
 				}
 			});
 		});
-		/* Select Cost */
-		/*$('#district').change(function() {
-			var id = $(this).val();
-			// alert(id_category);
-			$.ajax({
-				type: 'POST',
-				url: '<?php echo site_url('keranjang/ajax_shipment')?>',
-				data: { dataID: id},
-				error: function () {
-					alert('error');
-				},
-				success: function(response) {
-					$('#shipment').html(response);
-				}
-			});
-		});*/
 
 	/* Peta */
 	$('.peta').click(function () {
 		$('.peta iframe').css("pointer-events", "auto");
 	});
 	/* End Peta */
-	var currentLocation = window.location.href
-	$(".colorcheck").change(function() {
-      var ini = $(this);
-      var simpen = [];
-      <?php if(!empty($_GET['color'])): ?>
-        masukin = "<?=$_GET['color']?>";
-        simpen.push(masukin);
-      <?php endif; ?>
-      if (this.checked) {
-        simpen.push(ini.val());
-      }
-      else {
-        simpen = simpen.join();
-        simpen = simpen.split(',');
-        var index = simpen.indexOf(ini.val());
-        if (index !== -1) simpen.splice(index, 1);
-      }
-
-      var cari = currentLocation.search('color=');
-      var carilagi = currentLocation.search('&');
-      if (cari > 0 && carilagi < 0) {
-        var current = currentLocation.split("=");
-        current.pop();
-        currentLocation = current+"="+simpen.join();
-        window.location.href = currentLocation;
-      }else {
-        if (carilagi > 0 && cari < 0) {
-          window.location.href = currentLocation+"color="+simpen.join();
-        }
-        else if (cari > 0) {
-          var current = currentLocation.split("color=");
-          current.pop();
-          window.location.href = current+"color="+simpen.join();
-        }
-        else {
-          window.location.href = currentLocation+"?color="+simpen.join();
-        }
-      }
-    });
-
-		$(".motifcheck").change(function() {
-			var ini = $(this);
-			var kateg = currentLocation.split("/");
-			console.log(ini.val());
-			kateg = kateg[kateg.length - 2];
-      window.location.href = "<?=site_url('produk')?>/"+kateg+"?motif="+ini.val();
-    });
 
 	/* Jquery Bxslider */
 	$('.bxslider').bxSlider({
@@ -203,31 +133,6 @@ $(document).ready(function(){
 			},
 			1000:{
 				items:4
-			}
-		}
-	});
-
-	$("#prodBrand").owlCarousel({
-		loop:false,
-		autoplay: true,
-		smartSpeed: 1000,
-		responsiveClass:true,
-		autoplayHoverPause: false,
-		responsive:{
-			320:{
-				items:1
-			},
-			480:{
-				items:2
-			},
-			600:{
-				items:3
-			},
-			768:{
-				items:4
-			},
-			1000:{
-				items:5
 			}
 		}
 	});

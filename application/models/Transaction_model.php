@@ -1,10 +1,10 @@
 <?php
 /**
-* 
+*
 */
 class Transaction_model extends MY_Model
 {
-	
+
 	protected $_table_name 		= 'transaction';
 	protected $_primary_key 	= 'transaction_id';
 	protected $_order_by 			= 'transaction_id';
@@ -23,8 +23,9 @@ class Transaction_model extends MY_Model
 		$this->db->join('{PRE}'.'province', 'province.province_id = {PRE}'.$this->_table_name.'.province_id');
 		$this->db->join('{PRE}'.'trans_status', '{PRE}'.'trans_status.trans_status_id = {PRE}'.$this->_table_name.'.trans_status_id');
 		$this->db->join('{PRE}'.'transaction_item', '{PRE}'.'transaction_item.order_no = {PRE}'.$this->_table_name.'.order_no');
+		$this->db->join('{PRE}'.'voucher', '{PRE}'.'voucher.voucher_id = {PRE}'.$this->_table_name.'.voucher_id');
 		$this->db->group_by('{PRE}'.'transaction_item.order_no');
-		return parent::get_by($where,$limit,$offset,$single,$select);		
+		return parent::get_by($where,$limit,$offset,$single,$select);
 	}
 
 	public function get_transaction_member($where = NULL, $limit = NULL, $offset = NULL, $single = FALSE, $select = NULL)

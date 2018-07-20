@@ -8,8 +8,8 @@ class Testi_model extends MY_Model
 
 	protected $_table_name = 'testi';
 	protected $_primary_key = 'testi_id';
-	protected $_order_by = 'testi_name';
-	protected $_order_by_type = 'ASC';
+	protected $_order_by = 'testi_id';
+	protected $_order_by_type = 'DESC';
 	public $rules =  array(
 		'desc' => array(
 			'field' => 'desc',

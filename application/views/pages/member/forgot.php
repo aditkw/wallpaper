@@ -1,15 +1,13 @@
-<div class="map-halaman map-khusus">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Reset Password</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
+<section id="atas">
+	<div class="nav-text text-center middle">
+		<ol class="breadcrumb">
+			<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+			<li><a href="#">RESET PASSWORD</a></li>
+		</ol>
+		<h2 class="ftimes">RESET PASSWORD</h2>
+		<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+	</div><!-- /.map-halaman -->
+</section>
 
 <div id="konten">
 	<div class="container">
@@ -42,7 +40,7 @@
 							<div class="tab-pane active" id="login-form">
 								<div class="box-login">
 									<div class="tag-login text-uppercase text-center">Reset Password</div>
-									
+
 									<?php echo form_open('member/respass/'.$uri_3.'/'.$this->uri->segment(4)); ?>
 										<div class="form-group">
 											<label>Password Baru<span class="required">*</span></label>
@@ -56,12 +54,12 @@
 												<input class="form-control" type="password" name="pass2" placeholder="Password" required>
 											</div>
 										</div>
-										
+
 										<div class="form-group">
 											<button class="btn btn-success btn-login text-uppercase" type="submit" name="login" value="login">Ganti Password</button>
 										</div>
 									<?php echo form_close(); ?>
-									
+
 								</div><!-- /.box-cart -->
 							</div><!-- /.tab-pane -->
 						</div><!-- /.tab-content -->

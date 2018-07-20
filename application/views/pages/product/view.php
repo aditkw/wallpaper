@@ -10,7 +10,7 @@
 				<li><a href="<?=site_url('produk/'.$uri_2)?>"><?=strtoupper(str_replace('-',' ',$uri_2))?></a></li>
 			</ol>
 			<h2 class="ftimes">Our Brands</h2>
-			<p class="ftimes text-xbabu"><em>Ini adalah ruang yang bagus untuk menulis teks panjang tentang perusahaan Anda dan layanan Anda. Anda dapat menggunakan ruang ini untuk membahas lebih detail tentang perusahaan Anda. Bicara tentang layanan apa yang Anda berikan.</em></p>
+			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
 		</div><!-- /.map-halaman -->
 	</section>
 

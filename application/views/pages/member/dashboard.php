@@ -1,15 +1,14 @@
-<div class="map-halaman map-khusus">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url() ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Member Area</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
+<div class="dashboard-member">
+	<section id="atas">
+		<div class="nav-text text-center middle">
+			<ol class="breadcrumb">
+				<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+				<li><a href="#">MEMBER AREA</a></li>
+			</ol>
+			<h2 class="ftimes">DASHBOARD</h2>
+			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+		</div><!-- /.map-halaman -->
+	</section>
 
 <div id="konten">
 	<div class="container">
@@ -19,33 +18,33 @@
 					<div class="col-md-3">
 						<?php $this->load->view($side_member) ?>
 					</div><!-- /.col -->
-					
+
 					<div class="col-md-9">
 						<div class="konten-member">
 							<div class="tag-konten-member"><strong>Welcome</strong> <?php echo $member->member_name ?></div>
-							
+
 							<div class="box-item-sorkat">
 								<div class="row">
 									<div class="col-sm-6">
 										<a class="item-sorkat text-center" href="<?php echo site_url('member-area?menu=profile') ?>">
 											<i class="glyphicon glyphicon-user"></i>
 											<div class="jud-item-sorkat">Profile</div>
-										</a>	
+										</a>
 									</div>
-									
+
 									<div class="col-sm-6">
 										<a class="item-sorkat text-center" href="<?php echo site_url('member-area?menu=transaksi') ?>">
 											<i class="glyphicon glyphicon-shopping-cart"></i>
 											<div class="jud-item-sorkat">My Orders</div>
-										</a>	
+										</a>
 									</div>
 								</div><!-- /.row -->
 							</div><!-- /.box-item-sorkat -->
-							
+
 							<div class="tag-konten">
 								<div class="nama-tag-konten font-20">UNPAID ORDER</div>
 							</div><!-- /.tag-konten -->
-							
+
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped table-member">
 									<thead>
@@ -57,7 +56,7 @@
 									<tbody>
 										<?php if ($count_trans > 0): ?>
 											<?php foreach ($transaction as $trans): ?>
-												<?php 
+												<?php
 												$date = indonesian_date($trans->transaction_date);
  												?>
 												<tr>
@@ -81,7 +80,7 @@
 									</tbody>
 								</table>
 							</div><!-- /.table-responsive -->
-							
+
 							<div class="page text-right">
 								<?php // echo $pagination; ?>
 							</div><!-- /.page -->
@@ -92,4 +91,4 @@
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#koneten-home -->
-	
+</div>

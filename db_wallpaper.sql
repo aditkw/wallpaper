@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2018 at 12:51 PM
+-- Generation Time: Jul 20, 2018 at 01:53 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -161,9 +161,9 @@ CREATE TABLE `lwd_category` (
 
 INSERT INTO `lwd_category` (`category_id`, `category_name`, `category_name_en`, `category_desc`, `category_desc_en`, `category_alt`, `category_seq`, `category_pub`, `category_image`, `category_link`) VALUES
 (16, 'Wallpaper', '', '', '', '', 0, '99', '', 'wallpaper'),
-(17, 'Vinyl', '', '', '', '', 0, '99', '', 'vinyl'),
-(18, 'Carpet Tile', '', '', '', '', 0, '99', '', 'carpet-tile'),
-(19, 'Lem Wallpaper', '', '', '', '', 0, '99', '', 'lem-wallpaper');
+(17, 'Vinyl', '', '', '', '', 0, '88', '', 'vinyl'),
+(18, 'Carpet Tile', '', '', '', '', 0, '88', '', 'carpet-tile'),
+(19, 'Lem Wallpaper', '', '', '', '', 0, '88', '', 'lem-wallpaper');
 
 -- --------------------------------------------------------
 
@@ -791,7 +791,7 @@ INSERT INTO `lwd_image` (`image_id`, `parent_id`, `image_parent_name`, `image_na
 (268, 105, 'product', 'tada-9723.jpg', 5),
 (269, 105, 'product', 'tada-9724.jpg', 6),
 (270, 106, 'product', 'wat-1319.jpg', 0),
-(271, 106, 'product', 'wat-1320.png', 1),
+(271, 106, 'product', 'wat-4357.jpg', 1),
 (272, 106, 'product', 'wat-1321.jpg', 2),
 (273, 106, 'product', 'wat-1322.jpg', 3),
 (274, 106, 'product', 'wat-1323.jpg', 4),
@@ -874,7 +874,8 @@ INSERT INTO `lwd_member` (`member_id`, `province_id`, `city_id`, `district_id`, 
 (0, 0, 0, 0, 0, 'the buyer is not a member', '', '', '', '', '', 'verified', 'active', ''),
 (7, 0, 0, 0, 1, 'Syarif Syabana', 'syarif@gmail.com', '081906096810', '', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'unverified', 'active', ''),
 (8, 3, 456, 6308, 3, 'Muhamad Syarif SyaBana', 'syariflwd@gmail.com', '02155740759', 'Kebon nanas', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'verified', 'active', ''),
-(9, 6, 152, 2096, 0, 'Syarif Lwd', 'syarif@lawavedesign.com', '081906096810', 'Kebon Nanas RT 006/02, No B96 Kel Panunggangan Utara', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'verified', 'active', '');
+(9, 6, 152, 2096, 0, 'Syarif Lwd', 'syarif@lawavedesign.com', '081906096810', 'Kebon Nanas RT 006/02, No B96 Kel Panunggangan Utara', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'verified', 'active', ''),
+(10, 0, 0, 0, 0, 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', '', '', '875814e930290eced1fb938f8c7451d199997826', 'verified', 'active', '');
 
 -- --------------------------------------------------------
 
@@ -910,18 +911,12 @@ CREATE TABLE `lwd_order` (
   `order_no` varchar(100) NOT NULL,
   `product_id` int(11) NOT NULL,
   `order_price` decimal(10,0) NOT NULL,
+  `order_price_disc` decimal(10,0) NOT NULL,
   `order_qty` int(11) NOT NULL,
   `order_subtotal` decimal(10,0) NOT NULL,
   `order_weight` int(11) NOT NULL,
   `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `lwd_order`
---
-
-INSERT INTO `lwd_order` (`order_id`, `order_no`, `product_id`, `order_price`, `order_qty`, `order_subtotal`, `order_weight`, `order_date`) VALUES
-(5, '39694', 104, '250000', 2, '500000', 2, '2018-07-13 14:48:22');
 
 -- --------------------------------------------------------
 
@@ -941,6 +936,18 @@ CREATE TABLE `lwd_payment` (
   `payment_confirm_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` enum('88','99') NOT NULL DEFAULT '88'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lwd_payment`
+--
+
+INSERT INTO `lwd_payment` (`payment_id`, `transaction_id`, `bank_id`, `payment_account`, `payment_no`, `payment_bank`, `payment_total`, `payment_date`, `payment_confirm_date`, `payment_status`) VALUES
+(1, 4, 14, 'dini', '123123', 'BRO', '1143000', '2018-07-17', '2018-07-17 10:47:08', '99'),
+(2, 3, 15, 'Meliodas', '923125123', 'Bank Lawave', '160000', '2018-07-18', '2018-07-17 11:16:05', '99'),
+(3, 5, 15, 'Anis', '85635352', 'BCA', '369000', '2018-07-17', '2018-07-17 16:46:55', '99'),
+(4, 6, 15, 'qwe', 'qwe', 'qwe', '264000', '2018-07-19', '2018-07-19 13:14:30', '99'),
+(6, 7, 15, 'joyo', '9123123', 'BCA', '239000', '2018-07-20', '2018-07-20 14:31:04', '99'),
+(7, 8, 15, 'joyo', '912839123', 'BCA', '144000', '2018-07-20', '2018-07-20 14:59:13', '99');
 
 -- --------------------------------------------------------
 
@@ -972,8 +979,8 @@ CREATE TABLE `lwd_product` (
 --
 
 INSERT INTO `lwd_product` (`product_id`, `category_id`, `color_id`, `brand_id`, `product_code`, `product_name`, `product_alt`, `product_price`, `product_stock`, `product_price_strip`, `product_weight`, `product_dimension`, `product_pub`, `product_seq`, `product_link`, `product_discount`) VALUES
-(104, 16, 1, 15, '102-345', 'Wallpaper Example 102-3', 'alt', '250000', 23, '500000', 2, '150, 300', '99', 1, 'wallpaper-example-102-3', 10),
-(105, 16, 3, 16, '202-356', 'Wallpaper Example 202', 'tada', '300000', 26, '400000', 2, '340, 400', '99', 2, 'wallpaper-example-202', 10),
+(104, 16, 1, 15, '102-345', 'Wallpaper Example 102-3', 'alt', '250000', 10, '500000', 2, '150, 300', '99', 1, 'wallpaper-example-102-3', 10),
+(105, 16, 3, 16, '202-356', 'Wallpaper Example 202', 'tada', '300000', 17, '400000', 2, '340, 400', '99', 2, 'wallpaper-example-202', 15),
 (106, 16, 4, 20, '302-354', 'Wallpaper Example 302-3', 'wat', '400000', 50, '550000', 23, '240, 300', '99', 3, 'wallpaper-example-302-3', 50),
 (107, 16, 4, 20, '402-334', 'Wallpaper Example 402-334', 'attr', '450000', 42, '600000', 4, '450, 500', '99', 4, 'wallpaper-example-402-334', 35),
 (108, 16, 4, 16, '121241ff', 'qweqwe', 'asd', '123123', 21, '123123', 12, '21, 21', '99', 2, 'qweqwe', 12);
@@ -1165,7 +1172,8 @@ CREATE TABLE `lwd_testi` (
 INSERT INTO `lwd_testi` (`testi_id`, `testi_name`, `testi_desc`, `testi_job`, `testi_pub`) VALUES
 (1, 'Adit Walihadi', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Web Developer', '99'),
 (3, 'Elsa', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Designer', '99'),
-(4, 'Yuli', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Apoteker', '99');
+(4, 'Yuli', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis', 'Apoteker', '99'),
+(9, 'adit walihadi', 'ya', 'ya', '88');
 
 -- --------------------------------------------------------
 
@@ -1177,6 +1185,7 @@ CREATE TABLE `lwd_transaction` (
   `transaction_id` int(11) NOT NULL,
   `order_no` varchar(100) NOT NULL,
   `voucher_id` int(8) NOT NULL,
+  `testi_id` int(11) DEFAULT NULL,
   `member_id` int(11) NOT NULL,
   `province_id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,
@@ -1203,6 +1212,18 @@ CREATE TABLE `lwd_transaction` (
   `transaction_close_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `lwd_transaction`
+--
+
+INSERT INTO `lwd_transaction` (`transaction_id`, `order_no`, `voucher_id`, `testi_id`, `member_id`, `province_id`, `city_id`, `district_id`, `trans_status_id`, `transaction_cancel`, `transaction_hide`, `transaction_no`, `transaction_date`, `transaction_name`, `transaction_email`, `transaction_phone`, `transaction_address`, `transaction_shipping`, `transaction_shipping_cost`, `transaction_cost`, `transaction_weight`, `transaction_total`, `transaction_shipping_date`, `transaction_shipping_no`, `transaction_note`, `transaction_receive_note`, `transaction_receive_date`, `transaction_close_date`) VALUES
+(3, '49608', 1, NULL, 0, 3, 456, 6297, 3, '88', '88', '49608/3/wallpaper/16/07/2018', '2018-07-16 17:34:08', 'adit walihadi', 'aditwalihadi@lawavedesign.com', '087881908586', 'adasd', 'Jalur Nugraha Ekakurir (JNE) | (REG) Layanan Reguler', '9000', '250000', 2, '169000', '0000-00-00', '', 'maaf saya bayarnya kurang.. ', '', '0000-00-00', '0000-00-00 00:00:00'),
+(4, '20468', 1, NULL, 0, 3, 456, 6297, 3, '88', '88', '20468/4/wallpaper/16/07/2018', '2018-07-16 18:32:41', 'adit walihadi', 'aditlawave@gmail.com', '123123', 'asdas', 'Jalur Nugraha Ekakurir (JNE) | (YES) Yakin Esok Sampai', '18000', '1215000', 22, '1143000', '2018-07-19', 'dsada12123', 'Hai admin nolep, saya udah bayar nih', '', '0000-00-00', '0000-00-00 00:00:00'),
+(5, '93504', 1, 9, 10, 3, 456, 6297, 4, '88', '88', '93504/5/wallpaper/17/07/2018', '2018-07-17 16:11:39', 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', 'test', 'Jalur Nugraha Ekakurir (JNE) | (REG) Layanan Reguler', '9000', '450000', 4, '369000', '2018-07-17', '12412412412', 'tolong kirim cepat yaa', 'oke!', '2018-07-17', '0000-00-00 00:00:00'),
+(6, '38916', 0, NULL, 10, 3, 456, 6297, 3, '88', '88', '38916/6/wallpaper/17/07/2018', '2018-07-17 17:01:12', 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', 'batucepper', 'Jalur Nugraha Ekakurir (JNE) | (REG) Layanan Reguler', '9000', '255000', 2, '264000', '0000-00-00', '', 'qwe', '', '0000-00-00', '0000-00-00 00:00:00'),
+(7, '56240', 0, NULL, 10, 3, 331, 4663, 3, '88', '88', '56240/7/wallpaper/19/07/2018', '2018-07-19 15:14:38', 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', 'qwe', 'Jalur Nugraha Ekakurir (JNE) | (REG) Layanan Reguler', '14000', '225000', 2, '239000', '2018-07-20', '123123123', 'test', '', '0000-00-00', '0000-00-00 00:00:00'),
+(8, '108000', 1, NULL, 10, 3, 456, 6297, 4, '88', '88', '108000/8/wallpaper/20/07/2018', '2018-07-20 14:47:31', 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', 'sdf', 'Jalur Nugraha Ekakurir (JNE) | (REG) Layanan Reguler', '9000', '225000', 2, '144000', '0000-00-00', '', 'sudah konfirmasi', 'bagus', '2018-07-20', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -1214,6 +1235,7 @@ CREATE TABLE `lwd_transaction_item` (
   `order_no` varchar(100) NOT NULL,
   `product_id` int(11) NOT NULL,
   `transaction_item_price` decimal(10,0) NOT NULL,
+  `transaction_item_price_disc` decimal(10,0) NOT NULL,
   `transaction_item_qty` int(11) NOT NULL,
   `transaction_item_subtotal` decimal(10,0) NOT NULL,
   `transaction_item_weight` int(11) NOT NULL
@@ -1223,8 +1245,14 @@ CREATE TABLE `lwd_transaction_item` (
 -- Dumping data for table `lwd_transaction_item`
 --
 
-INSERT INTO `lwd_transaction_item` (`transaction_item_id`, `order_no`, `product_id`, `transaction_item_price`, `transaction_item_qty`, `transaction_item_subtotal`, `transaction_item_weight`) VALUES
-(1, '39694', 104, '250000', 2, '500000', 2);
+INSERT INTO `lwd_transaction_item` (`transaction_item_id`, `order_no`, `product_id`, `transaction_item_price`, `transaction_item_price_disc`, `transaction_item_qty`, `transaction_item_subtotal`, `transaction_item_weight`) VALUES
+(8, '49608', 104, '250000', '250000', 1, '250000', 2),
+(9, '20468', 104, '250000', '225000', 2, '450000', 2),
+(10, '20468', 105, '300000', '255000', 3, '765000', 6),
+(11, '93504', 104, '250000', '225000', 2, '450000', 2),
+(12, '38916', 105, '300000', '255000', 1, '255000', 2),
+(13, '56240', 104, '250000', '225000', 1, '225000', 2),
+(14, '108000', 104, '250000', '225000', 1, '225000', 2);
 
 -- --------------------------------------------------------
 
@@ -1293,7 +1321,8 @@ CREATE TABLE `lwd_voucher` (
 --
 
 INSERT INTO `lwd_voucher` (`voucher_id`, `voucher_code`, `voucher_discount`, `voucher_expired`, `voucher_limit`, `voucher_pub`) VALUES
-(0, 'novoucher', 0, '9999-12-31', 99, '99');
+(0, 'novoucher', 0, '9999-12-31', 99, '99'),
+(1, 'freevoucher', 90000, '2018-07-18', 3, '99');
 
 --
 -- Indexes for dumped tables
@@ -1554,7 +1583,7 @@ ALTER TABLE `lwd_info`
 -- AUTO_INCREMENT for table `lwd_member`
 --
 ALTER TABLE `lwd_member`
-  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `lwd_motif`
@@ -1566,13 +1595,13 @@ ALTER TABLE `lwd_motif`
 -- AUTO_INCREMENT for table `lwd_order`
 --
 ALTER TABLE `lwd_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lwd_payment`
 --
 ALTER TABLE `lwd_payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `lwd_product`
@@ -1614,19 +1643,19 @@ ALTER TABLE `lwd_tag`
 -- AUTO_INCREMENT for table `lwd_testi`
 --
 ALTER TABLE `lwd_testi`
-  MODIFY `testi_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `testi_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `lwd_transaction`
 --
 ALTER TABLE `lwd_transaction`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `lwd_transaction_item`
 --
 ALTER TABLE `lwd_transaction_item`
-  MODIFY `transaction_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `transaction_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `lwd_trans_status`

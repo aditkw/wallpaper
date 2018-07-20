@@ -82,7 +82,7 @@
 .relative {
   position: relative; }
 
-.hidden {
+.ngumpet {
   display: none; }
 
 .block {
@@ -190,6 +190,302 @@ p, li, a, td {
       padding: 0;
       margin: 0; }
 
+.box-login {
+  padding: 20px;
+  border: 1px solid #DDD; }
+  .box-login .voucher {
+    margin: 15px 0; }
+    .box-login .voucher input {
+      padding: 4px;
+      border-radius: 3px;
+      border: 1px solid #999999; }
+
+.box-login .tag-login {
+  font-size: 20px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  font-family: "Opensans Bold";
+  color: #444;
+  border-bottom: 1px solid #EEE; }
+
+.box-login label {
+  font-family: "Opensans Bold";
+  color: #555; }
+
+.box-login .form-control {
+  border-radius: 0px;
+  box-shadow: none; }
+
+.box-login .btn-login {
+  width: 100%;
+  font-family: "Opensans Bold"; }
+
+.box-login .text-daftar {
+  font-family: "Opensans Reguler";
+  font-size: 13px;
+  color: #666; }
+
+.tag-konten {
+  position: relative;
+  margin-bottom: 30px;
+  text-align: center; }
+
+.tag-konten:before {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  background: #DDD;
+  transform: translate(0, -50%); }
+
+.tag-konten .nama-tag-konten {
+  position: relative;
+  display: inline-block;
+  font-family: "Opensans Bold";
+  font-size: 22px;
+  color: #4C4C4C;
+  z-index: 2; }
+
+.tag-konten .nama-tag-konten:before {
+  position: absolute;
+  content: '';
+  left: 50%;
+  top: 50%;
+  width: 140%;
+  height: 2px;
+  background: #FFF;
+  transform: translate(-50%, -50%);
+  z-index: -1; }
+
+.dashboard-member #konten {
+  margin: 25px 0;
+  /*** MEMBER ***/
+  /*** END MEMBER ***/ }
+  .dashboard-member #konten a {
+    text-decoration: none; }
+  .dashboard-member #konten .sidebar-member {
+    margin-bottom: 30px; }
+  .dashboard-member #konten .sidebar-member li {
+    display: block; }
+  .dashboard-member #konten .sidebar-member li a {
+    display: block;
+    padding: 10px 15px;
+    color: #333;
+    border: 1px solid rgba(204, 204, 204, 0.7);
+    border-top: none; }
+  .dashboard-member #konten .sidebar-member li a:hover {
+    color: #FFF;
+    background: #4acaf5;
+    border: 1px solid #4acaf5;
+    border-top: none; }
+  .dashboard-member #konten .sidebar-member li:first-child a {
+    border-top: 1px solid rgba(204, 204, 204, 0.7); }
+  .dashboard-member #konten .sidebar-member li:first-child a:hover {
+    border-top: 1px solid #4acaf5; }
+  .dashboard-member #konten .sidebar-member li.active a {
+    color: #FFF;
+    background: #4acaf5;
+    border: 1px solid #4acaf5;
+    border-top: none; }
+  .dashboard-member #konten .sidebar-member li.active:first-child a {
+    border-top: 1px solid #4acaf5; }
+  .dashboard-member #konten .sidebar-member li .fa {
+    margin-top: 3px; }
+  .dashboard-member #konten .sidebar-member ul {
+    padding: 0; }
+  .dashboard-member #konten .tag-konten-member {
+    margin-bottom: 8px;
+    font-size: 22px;
+    color: #444; }
+  .dashboard-member #konten .tagline-konten-member {
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #777; }
+  .dashboard-member #konten .box-item-sorkat {
+    margin-bottom: 30px; }
+  .dashboard-member #konten .item-sorkat {
+    display: block;
+    padding: 30px 10px;
+    background: rgba(204, 204, 204, 0.4); }
+  .dashboard-member #konten .item-sorkat:hover {
+    background: #4acaf5;
+    transition: 0.2s; }
+  .dashboard-member #konten .item-sorkat:hover .glyphicon, .dashboard-member #konten .item-sorkat:hover .jud-item-sorkat {
+    color: #FFF;
+    transition: 0.2s; }
+  .dashboard-member #konten .item-sorkat .glyphicon {
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #777; }
+  .dashboard-member #konten .item-sorkat .jud-item-sorkat {
+    font-size: 22px;
+    color: #444; }
+  .dashboard-member #konten .table-member thead {
+    color: #FFF;
+    background: #4acaf5; }
+  .dashboard-member #konten .table-member th {
+    border-bottom: none !important; }
+  .dashboard-member #konten .bold-idorder {
+    color: #5599bf; }
+  .dashboard-member #konten .label {
+    font-size: 13px;
+    font-weight: normal; }
+  .dashboard-member #konten .head-invoice {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(204, 204, 204, 0.6); }
+  .dashboard-member #konten .tabel-invoice-member {
+    margin-bottom: 0px;
+    font-size: 13px; }
+  .dashboard-member #konten .tabel-invoice-member th, .dashboard-member #konten .tabel-invoice-member td {
+    color: #666;
+    border: none !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important; }
+  .dashboard-member #konten .tabel-invoice-member th {
+    font-weight: normal; }
+  .dashboard-member #konten .body-invoice table th {
+    font-size: 13px; }
+  .dashboard-member #konten .body-invoice table td {
+    font-size: 13px; }
+  .dashboard-member #konten .tag-review {
+    margin-bottom: 10px;
+    font-family: "Opensans Bold";
+    font-size: 24px;
+    color: #5599bf; }
+  .dashboard-member #konten .tag-idorder {
+    font-size: 16px;
+    color: #444; }
+  .dashboard-member #konten .tag-idorder strong {
+    font-size: 16px;
+    color: #C10000; }
+  .dashboard-member #konten .text-review {
+    margin-bottom: 25px;
+    font-size: 14px; }
+  .dashboard-member #konten .table-review thead {
+    background: #75b9df; }
+  .dashboard-member #konten .table-review thead th {
+    font-size: 18px;
+    color: #FFF;
+    border-bottom: none !important; }
+  .dashboard-member #konten .review-nama {
+    font-size: 16px; }
+  .dashboard-member #konten .review-harga {
+    font-size: 14px;
+    color: #555; }
+  .dashboard-member #konten .list-review {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(204, 204, 204, 0.5); }
+  .dashboard-member #konten .list-review li {
+    display: block;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.5); }
+  .dashboard-member #konten .list-review li:last-child {
+    border-bottom: none; }
+  .dashboard-member #konten .box-tab {
+    padding-top: 30px; }
+  .dashboard-member #konten .box-logo-bank {
+    padding-top: 10px; }
+  .dashboard-member #konten .box-logo-bank img {
+    margin-bottom: 10px; }
+  .dashboard-member #konten .tag-review-info {
+    color: #444;
+    margin-bottom: 5px; }
+  .dashboard-member #konten .list-bank {
+    margin-bottom: 15px; }
+  .dashboard-member #konten .list-bank li {
+    padding: 5px 0px; }
+  .dashboard-member #konten .list-bank li .fa {
+    margin-right: 5px; }
+  .dashboard-member #konten .free-text {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .dashboard-member #konten .alert-payment {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    width: 80%;
+    padding: 10px 0;
+    color: #0a7f04;
+    text-align: center;
+    background: #d8fbce;
+    border: 1px solid #b2f79f;
+    border-radius: 3px;
+    transform: translate(-50%, 0);
+    z-index: 9999; }
+  .dashboard-member #konten .text-review-info {
+    font-size: 14px;
+    color: #333;
+    line-height: 23px; }
+  .dashboard-member #konten .btn-login {
+    width: 100%;
+    font-size: 16px;
+    padding: 8px 25px; }
+  .dashboard-member #konten .text-daftar {
+    color: #555; }
+
+.kontak {
+  /*** END HUBUNGI KAMI ***/ }
+  .kontak .box-form label {
+    font-size: 14px;
+    color: #5E5E5E;
+    font-weight: normal; }
+  .kontak .box-form .form-control {
+    border: 2px solid #E1E3E4;
+    box-shadow: none;
+    border-radius: 4px; }
+  .kontak .box-form .form-control:focus {
+    border: 2px solid #75b9df;
+    transition: 0.2s; }
+  .kontak .btn-kontak {
+    width: 100%;
+    padding: 10px 10px;
+    color: #FFF;
+    background: #5599bf;
+    border-color: #5d9ec3; }
+  .kontak .btn-kontak:hover, .kontak .btn-kontak:focus {
+    background: #5d9ec3 !important;
+    border-color: #5599bf !important; }
+  .kontak .peta iframe {
+    width: 100%;
+    display: block;
+    pointer-events: none; }
+  .kontak .tag-kontak {
+    font-size: 23px;
+    color: #444; }
+  .kontak .subtag-kontak {
+    font-size: 13px;
+    margin-bottom: 15px; }
+  .kontak .subtag-servis {
+    font-size: 13px;
+    margin-bottom: 15px;
+    line-height: 22px; }
+  .kontak .item-kontak {
+    margin-bottom: 10px; }
+  .kontak .tag-item-kontak {
+    font-size: 13px; }
+  .kontak .isi-item-kontak {
+    font-size: 13px;
+    color: #555; }
+  .kontak .box-about, .kontak .box-brand {
+    font-family: "segoe ui"; }
+  .kontak .content-brand {
+    padding: 10px 0; }
+    .kontak .content-brand .box-brand p:nth-child(2) {
+      font-weight: bolder;
+      font-size: 20px;
+      margin-bottom: 0px; }
+    .kontak .content-brand .box-brand p:last-child {
+      text-align: right; }
+    .kontak .content-brand .box-brand img {
+      max-width: 51px;
+      margin-bottom: 5px; }
+
 ol.breadcrumb {
   background-color: transparent; }
   ol.breadcrumb li > a {
@@ -201,6 +497,21 @@ section#atas {
   border-top: 1px solid #f5f5f5; }
   section#atas .nav-text {
     width: 60%; }
+
+#konten {
+  padding: 25px 0; }
+
+.yuorder .panel-heading {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: opensans; }
+.yuorder .alert-info {
+  margin: 15px 0; }
+.yuorder .tab-pane {
+  padding: 15px 10px; }
 
 header:before {
   content: '';
@@ -573,31 +884,34 @@ header .container-fluid .row:last-child > div:nth-child(4) {
     .product-brand section#konten ul.pane-browse li:hover > li {
       color: #4acaf5; }
 
-.detail-brand #atas-brand .box-info {
-  position: absolute;
-  bottom: -6vh;
-  right: 10vh;
-  background-color: #ffffff;
-  padding: 5vh 1vw 3vh 2vw;
-  box-shadow: 0px 4px 4px #bfb7b7;
-  min-width: 40vw; }
-  .detail-brand #atas-brand .box-info table tr td {
-    padding-right: 5px;
-    padding-top: 5px; }
-  .detail-brand #atas-brand .box-info .f-mont {
-    font-weight: bold; }
-    .detail-brand #atas-brand .box-info .f-mont:first-child {
-      font-size: 1.6em; }
-      .detail-brand #atas-brand .box-info .f-mont:first-child + p {
-        margin-top: 7px; }
-.detail-brand #atas-brand .box-gambar {
-  position: absolute;
-  bottom: -5vh;
-  left: 8vw;
-  max-width: 43vw; }
-  .detail-brand #atas-brand .box-gambar img {
-    padding: 0 2px;
-    min-height: 45px; }
+.detail-brand #atas-brand {
+  min-height: 50vh;
+  background-size: cover; }
+  .detail-brand #atas-brand .box-info {
+    position: absolute;
+    bottom: -6vh;
+    right: 10vh;
+    background-color: #ffffff;
+    padding: 5vh 1vw 3vh 2vw;
+    box-shadow: 0px 4px 4px #bfb7b7;
+    min-width: 40vw; }
+    .detail-brand #atas-brand .box-info table tr td {
+      padding-right: 5px;
+      padding-top: 5px; }
+    .detail-brand #atas-brand .box-info .f-mont {
+      font-weight: bold; }
+      .detail-brand #atas-brand .box-info .f-mont:first-child {
+        font-size: 1.6em; }
+        .detail-brand #atas-brand .box-info .f-mont:first-child + p {
+          margin-top: 7px; }
+  .detail-brand #atas-brand .box-gambar {
+    position: absolute;
+    bottom: -5vh;
+    left: 8vw;
+    max-width: 43vw; }
+    .detail-brand #atas-brand .box-gambar img {
+      padding: 0 2px;
+      min-height: 45px; }
 .detail-brand #konten {
   padding-top: 10vh; }
   .detail-brand #konten .breadcrumb {

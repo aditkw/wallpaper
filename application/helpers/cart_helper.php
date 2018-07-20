@@ -39,13 +39,17 @@ function totalSubDisc($data, $suffix)
 	foreach ($data as $value) {
 		$sub_weight[$i] = $value->$weight_field *  $value->$qty_field;
 
-		$discount = $value->disc_field;
-		if ($discount)
+		$discount = $value->$disc_field;
+		if ($discount){
 			$harga_disc = ($discount * $value->$price_field) / 100;
-		else
-			$harga_disc = $value->$price_field;
+			$harga = $value->$price_field - $harga_disc;
+		}
+		else{
+			$harga = $value->$price_field;
+		}
 
-		$sub_price[$i] = $harga_disc *  $value->$qty_field;
+
+		$sub_price[$i] = $harga *  $value->$qty_field;
 		$sub_qty[$i] = $value->$qty_field;
 		$i++;
 	}

@@ -6,7 +6,7 @@
 				<li><a href="#">KALKULATOR</a></li>
 			</ol>
 			<h2 class="ftimes">Kalkulator Wallpaper</h2>
-			<p class="ftimes text-xbabu"><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</em></p>
+			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
 		</div><!-- /.map-halaman -->
 	</section>
 	<section id="konten">
@@ -25,8 +25,10 @@
 							<p>Ukuran Wallpaper</p>
 						</div>
 						<div class="col-md-9">
-							<select class="selectU" name="">
-								<option value="">0.53m x 10.05m (5m2)</option>
+							<select id="uk" class="selectU" name="">
+								<option value="5">0.53m x 10.05m (5m2)</option>
+								<option value="10">0.53m x 20.05m (10m2)</option>
+								<option value="15">0.53m x 30.05m (15m2)</option>
 							</select>
 						</div>
 					</div>
@@ -38,7 +40,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input id="ld1" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter</p>
 										</div>
@@ -46,7 +48,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input id="td1" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter</p>
 										</div>
@@ -63,7 +65,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input id="ld2" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter</p>
 										</div>
@@ -71,7 +73,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input id="td2" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter</p>
 										</div>
@@ -88,7 +90,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input id="ld3" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter</p>
 										</div>
@@ -96,7 +98,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input id="td3" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter</p>
 										</div>
@@ -114,7 +116,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input readonly id="resultsWall" type="text">
 										<div class="satuan">
 											<p class="text-center">Meter2</p>
 										</div>
@@ -132,7 +134,7 @@
 								</div>
 								<div class="col-md-6">
 									<div class="bungkus">
-										<input type="text">
+										<input readonly id="need" type="text">
 										<div class="satuan">
 											<p class="text-center">Roll</p>
 										</div>
@@ -147,7 +149,7 @@
 							<div class="row">
 								<div class="col-md-6"></div>
 								<div class="col-md-6">
-									<button class="hitung" type="button" name="button">HITUNG WALLPAPER</button>
+									<button id="hitungWall" class="hitung" type="button" name="button">HITUNG WALLPAPER</button>
 								</div>
 							</div>
 						</div>
@@ -161,3 +163,25 @@
 		</div>
 	</section>
 </div>
+
+<script>
+$("#hitungWall").click(function(){
+	var hasil1;
+	var hasil2;
+	var hasil3;
+	var results;
+	var need;
+	var uk = $("#uk").val()
+
+	hasil1 = $("#ld1").val() * $("#td1").val()
+	hasil2 = $("#ld2").val() * $("#td2").val()
+	hasil3 = $("#ld3").val() * $("#td3").val()
+
+	results = hasil1 + hasil2 + hasil3
+	need = results / uk
+	need = Math.ceil(need);
+
+	$("#resultsWall").val(results)
+	$("#need").val(need)
+})
+</script>

@@ -38,5 +38,13 @@ else {
 		<!-- LWD Style -->
 		<link href="<?php echo base_url();?>dist/css/lwd.style.css" rel="stylesheet">
 		<!-- <link href="<?php echo base_url();?>dist/img/assets/fav.png?" rel="shortcut icon" type="image/ico"> -->
+		<script src="<?php echo base_url();?>plugins/jQuery/jQuery-2.1.4.min.js"></script>
+		<script src="<?php echo base_url();?>plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="<?php echo base_url();?>plugins/bxslider/jquery.bxslider.min.js"></script>
+		<script src="<?php echo base_url();?>plugins/owl-carousel/dist/owl.carousel.js"></script>
+		<script src="<?php echo base_url();?>plugins/fancyapp/source/jquery.fancybox.js?v=2.1.5"></script>
+		<script src="<?php echo base_url();?>plugins/fancyapp/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>plugins/zebra-datepicker/public/javascript/zebra_datepicker.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>dist/js/smoothscroll.min.js"></script>
 	</head>
 <body>

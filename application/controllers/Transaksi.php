@@ -25,7 +25,11 @@ class Transaksi extends Frontend_Controller
 						:
 						 0;
 
+			$voucher_id = (isset($post['voucher'])) ? $this->encrypt->decode(hash_link_decode($post['voucher'])) : 0;
+
 			$sub = totalSubDisc($get_order, 'order');
+			// print_r($sub['total_price']);
+			// die();
 			/*mendapatkan code kurir dan layanan*/
 			$shipping_code = explode(':', $post['shipment']);
 
@@ -53,9 +57,23 @@ class Transaksi extends Frontend_Controller
 
 			$transaction_total = $sub['total_price'] + $trans_data['transaction_shipping_cost'];
 
+			if (isset($post['voucher'])) {
+				$get_voucher = $this->voucher_model->get($voucher_id);
+
+				// kurangi voucher limit
+				$new_voucher = $get_voucher->voucher_limit - 1;
+				$this->voucher_model->update(
+					array('voucher_limit' => $new_voucher),
+					array('voucher_id' => $voucher_id)
+					);
+
+				$transaction_total-= $get_voucher->voucher_discount;
+			}
+
 			/*data yang akan diinputkan ke dalam table transaksi*/
 			$trans_data['order_no'] = $this->data['cart_session'];
 			$trans_data['member_id'] = $member_id;
+			$trans_data['voucher_id'] = $voucher_id;
 			$trans_data['province_id'] = $post['provinsi'];
 			$trans_data['city_id'] = $post['kota'];
 			$trans_data['district_id'] = $post['kecamatan'];
@@ -76,6 +94,7 @@ class Transaksi extends Frontend_Controller
 					'order_no' => $this->data['cart_session'],
 					'product_id' => $order->product_id,
 					'transaction_item_price' => $order->order_price,
+					'transaction_item_price_disc' => $order->order_price_disc,
 					'transaction_item_qty' => $order->order_qty,
 					'transaction_item_subtotal' => $order->order_subtotal,
 					'transaction_item_weight' => $order->order_weight
@@ -172,6 +191,23 @@ class Transaksi extends Frontend_Controller
 		}
 	}
 
+	public function testi($id)
+	{
+		$post 	= $this->input->post(NULL, TRUE);
+		$transaction_id = $this->encrypt->decode(hash_link_decode($id));
+
+		$array_data['testi_name'] 		= $post['name'];
+		$array_data['testi_desc'] 		= $post['desc'];
+		$array_data['testi_job']		  = $post['job'];
+
+		$testi = $this->testi_model->insert($array_data);
+
+		$this->transaction_model->update(array('testi_id' => $testi), array('transaction_id' => $transaction_id));
+		$this->session->set_flashdata('success','Terima kasih telah memberikan testimoni');
+
+		redirect('member-area/transaksi');
+	}
+
 	public function info($order_no)
 	{
 		if (!empty($order_no)) {
@@ -215,5 +251,34 @@ class Transaksi extends Frontend_Controller
 		else {
 			redirect(site_url());
 		}
+	}
+
+	function cek_voucher()
+	{
+		$voucher			= $this->input->post('kode');
+		$get_voucher  = $this->voucher_model->get_by(array(
+			'voucher_code' => $voucher
+		), null, null, true);
+
+		if ($get_voucher) {
+			if ($get_voucher->voucher_limit > 0 && $get_voucher->voucher_pub == '99') {
+				$data['ketemu'] = TRUE;
+				$data['pesan'] = 'Voucher dapat digunakan dan potongan harga dari voucher sebesar '.rupiah($get_voucher->voucher_discount);
+				$data['id_voucher'] = hash_link_encode($this->encrypt->encode($get_voucher->voucher_id));
+			}
+			else {
+				$data['ketemu'] = FALSE;
+				$data['pesan'] = 'Voucher sudah tidak berlaku';
+			}
+
+		}else {
+			$data['ketemu'] = FALSE;
+			$data['pesan'] = 'Voucher tidak ditemukan';
+		}
+
+		// $this->data['id'] 			= $get_data->bank_id;
+
+
+		echo json_encode($data);
 	}
 }

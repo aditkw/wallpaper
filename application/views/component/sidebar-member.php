@@ -10,10 +10,10 @@
 			<a href="<?php echo site_url('member-area/transaksi') ?>">Pesanan Anda <i class="fa fa-angle-right pull-right"></i></a>
 		</li>
 		<li>
-			<a href="<?php echo site_url('produk') ?>">Back to shop <i class="fa fa-angle-right pull-right"></i></a>
+			<a href="<?php echo site_url('produk/'.$wallpaper->category_link) ?>">Back to shop <i class="fa fa-angle-right pull-right"></i></a>
 		</li>
 		<li>
 			<a href="<?php echo site_url('member-logout') ?>">Logout <i class="fa fa-angle-right pull-right"></i></a>
 		</li>
 	</ul>
-</div><!-- /.sidebar-member -->	
+</div><!-- /.sidebar-member -->

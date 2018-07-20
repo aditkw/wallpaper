@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Konfirmasi extends Frontend_Controller
 {
-	
+
 	function index()
 	{
 		if (isset($_GET['order'])) {
@@ -32,7 +32,7 @@ class Konfirmasi extends Frontend_Controller
 			$order_no = $post['notrans'];
 			$count_trans = $this->transaction_model->count(
 				array(
-					'order_no' => $order_no, 
+					'order_no' => $order_no,
 					'trans_status_id' => 1)
 				);
 
@@ -59,10 +59,16 @@ class Konfirmasi extends Frontend_Controller
 				$array_data['payment_bank'] = $post['nama_bank'];
 				$array_data['payment_total'] = $post['total_bayar'];
 				$array_data['payment_date'] = $post['tgl_bayar'];
+				if (!empty($post['catatan'])){
+					$catetan = $post['catatan'];
+				}
+				else{
+					$catetan = $get_trans->transaction_note;
+				}
 
 				$id_payment = $this->payment_model->insert($array_data);
 				$this->transaction_model->update(
-					array('trans_status_id' => 2),
+					array('trans_status_id' => 2, 'transaction_note' => $catetan),
 					array('transaction_id' => $get_trans->transaction_id)
 					);
 

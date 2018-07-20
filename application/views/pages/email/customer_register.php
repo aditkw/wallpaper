@@ -3,7 +3,7 @@
 		<tr>
 			<td>
 				<h3 style="color: #5d9ec3;">
-					Hi, <?php echo $member->member_name ?>! Terima Kasih telah bergabung di Erakomp.com
+					Hi, <?php echo $member->member_name ?>! Terima Kasih telah bergabung di Wallpaper Indonesia
 				</h3>
 			</td>
 		</tr>

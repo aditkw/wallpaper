@@ -22,7 +22,8 @@
 									<thead>
 										<tr>
 											<th class="text-center" colspan="2">Item Produk</th>
-											<th class="text-center">Harga</th>
+											<th class="text-center">Harga Asli</th>
+											<th class="text-center">Harga Discount</th>
 											<th class="text-center" width="120">Jumlah</th>
 											<th class="text-center">Subtotal</th>
 											<th class="text-center">Action</th>
@@ -39,6 +40,7 @@
 													<a href="<?php echo site_url('produk/detail/'.$order->product_code.'/'.$order->product_link); ?>"><?php echo $order->product_name ?></a>
 												</td>
 												<td class="text-center vmiddle"><?php echo rupiah($order->order_price) ?></td>
+												<td class="text-center vmiddle"><?php echo rupiah($order->order_price_disc)." ($order->product_discount%)" ?></td>
 												<td class="text-center vmiddle">
 													<input type="hidden" name="id[]" value="<?php echo $product_id ?>">
 													<div class="input-group input-group-sm">

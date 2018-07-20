@@ -1,15 +1,14 @@
-<div class="map-halaman map-khusus">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url() ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Profile</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
+<div class="dashboard-member">
+	<section id="atas">
+		<div class="nav-text text-center middle">
+			<ol class="breadcrumb">
+				<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+				<li><a href="#">MEMBER AREA</a></li>
+			</ol>
+			<h2 class="ftimes">PROFIL MEMBER</h2>
+			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+		</div><!-- /.map-halaman -->
+	</section>
 
 <div id="konten">
 	<div class="container">
@@ -46,7 +45,7 @@
 								<div class="tag-konten">
 									<div class="nama-tag-konten font-20">MY PROFILE</div>
 								</div><!-- /.tag-konten -->
-								
+
 								<div class="box-profil">
 									<?php echo form_open(); ?>
 										<div class="form-group">
@@ -57,7 +56,7 @@
 												</div>
 											</div>
 										</div><!-- form-group -->
-																				
+
 										<div class="form-group">
 											<div class="row">
 												<label class="col-sm-3 control-label">No. Telp / Hp <span class="required">*</span></label>
@@ -66,7 +65,7 @@
 												</div>
 											</div>
 										</div><!-- form-group -->
-										
+
 										<div class="form-group">
 											<div class="row">
 												<label class="col-sm-3 control-label">Email</label>
@@ -138,9 +137,9 @@
 												</div>
 											</div>
 										</div><!-- form-group -->
-										
+
 										<div class="form-group"></div>
-										
+
 										<div class="form-group">
 											<div class="row">
 												<label class="col-sm-3 control-label">Password Lama</label>
@@ -149,7 +148,7 @@
 												</div>
 											</div>
 										</div><!-- form-group -->
-										
+
 										<div class="form-group">
 											<div class="row">
 												<label class="col-sm-3 control-label">New Password</label>
@@ -158,7 +157,7 @@
 												</div>
 											</div>
 										</div><!-- form-group -->
-										
+
 										<div class="form-group">
 											<div class="row">
 												<label class="col-sm-3 control-label">Confirm New Password</label>
@@ -167,7 +166,7 @@
 												</div>
 											</div>
 										</div><!-- form-group -->
-										
+
 										<div class="form-group">
 											<div class="row">
 												<label class="col-sm-3 control-label"></label>
@@ -186,4 +185,4 @@
 		</div><!-- /.row -->
 	</div><!-- /.container -->
 </div><!-- /#koneten-home -->
-	
+</div>

@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 /**
-* 
+*
 */
 class Keranjang extends Frontend_Controller
 {
-	
+
 	function index()
 	{
 		/*menghitung data order dari database*/
@@ -27,7 +27,7 @@ class Keranjang extends Frontend_Controller
 			$this->data['order']			= $this->order_model->get_order($array_where);
 
 			/*mendapatkan total_sub dari weight, price dan qty menggunakan fungsi total_sub dalam cart_helper*/
-			$sub = total_sub($this->data['order'], 'order');
+			$sub = totalSubDisc($this->data['order'], 'order');
 
 			$this->data['total_sub'] 	= $sub['total_price'];
 		}
@@ -48,6 +48,15 @@ class Keranjang extends Frontend_Controller
 			if ($count_product > 0) {
 				$get_product 	= $this->product_model->get($product_id);
 
+				$discount = $get_product->product_discount;
+				if ($discount){
+					$harga_disc = ($discount * $get_product->product_price) / 100;
+					$harga = $get_product->product_price - $harga_disc;
+				}
+				else{
+					$harga = $get_product->product_price;
+				}
+
 				/*cek session cart*/
 				if (empty($this->session->userdata('cart'))) {
 
@@ -61,7 +70,7 @@ class Keranjang extends Frontend_Controller
 					/*buat session cart bernilai nomor acak*/
 					$this->session->set_userdata($array_session);
 					$array_data['order_no']					= $order_no;
-				} 
+				}
 
 				else {
 					$array_data['order_no']			= $this->data['cart_session'];
@@ -73,7 +82,8 @@ class Keranjang extends Frontend_Controller
 				/*tampung data produk yang di klik 'beli' sebagai array untuk diinsert ke database*/
 				$array_data['product_id'] 		= $product_id;
 				$array_data['order_price']		= $get_product->product_price;
-				$array_data['order_subtotal']	= $get_product->product_price * $array_data['order_qty'];
+				$array_data['order_price_disc']	= $harga;
+				$array_data['order_subtotal']	= $harga * $array_data['order_qty'];
 				$array_data['order_weight']		= $get_product->product_weight * $array_data['order_qty'];
 
 				$this->order_model->insert($array_data);
@@ -100,7 +110,7 @@ class Keranjang extends Frontend_Controller
 		if (isset($_POST['update'])) {
 			$count_qty  		= count($_POST['qty']);
 
-			for ($i=0; $i < $count_qty; $i++) { 
+			for ($i=0; $i < $count_qty; $i++) {
 				$get_order = $this->order_model->get_by(
 					array(
 						'order_no' => $this->data['cart_session'],
@@ -111,13 +121,13 @@ class Keranjang extends Frontend_Controller
 					TRUE
 					);
 
-				$subtotal = $_POST['qty'][$i] * $get_order->order_price;
+				$subtotal = $_POST['qty'][$i] * $get_order->order_price_disc;
 
 				$array_data['order_subtotal'] = $subtotal;
 				$array_data['order_qty'] = $_POST['qty'][$i];
 
 				$this->order_model->update($array_data, array(
-					'order_no' => $this->data['cart_session'], 
+					'order_no' => $this->data['cart_session'],
 					'product_id' => $this->encrypt->decode(hash_link_decode($_POST['id'][$i]))
 					)
 				);
@@ -134,11 +144,11 @@ class Keranjang extends Frontend_Controller
 
 			$this->order_model->delete_by(
 				array(
-					'order_no' => $this->data['cart_session'], 
+					'order_no' => $this->data['cart_session'],
 					'product_id' => $product_id
 					)
 				);
-			
+
 			redirect(site_url('keranjang-belanja'));
 		}
 
@@ -151,11 +161,11 @@ class Keranjang extends Frontend_Controller
 	{
 		if (!empty($this->data['cart_session'])) {
 			$order_count = $this->order_model->count(array('order_no' => $this->data['cart_session']));
-			
-			if ($order_count > 0) {				
+
+			if ($order_count > 0) {
 				$this->data['content']		= 'pages/transaction/checkout';
 				$this->data['member']			= $this->member_model->get($this->encrypt->decode(hash_link_decode($this->session->userdata('member_session'))));
-			
+
 				$this->load->view('index', $this->data);
 			}
 
@@ -173,7 +183,7 @@ class Keranjang extends Frontend_Controller
 	{
 		if (!empty($this->data['cart_session'])) {
 			$order_count = $this->order_model->count(array('order_no' => $this->data['cart_session']));
-			
+
 			if ($order_count > 0) {
 				/*tujuan pengiriman berdasarkan select kecamatan*/
 				$destination_code = explode(':', $this->input->post('district'));
@@ -183,13 +193,13 @@ class Keranjang extends Frontend_Controller
 					$array_where['{PRE}order.order_no'] = $this->data['cart_session'];
 				}
 				$order = $this->order_model->get_order($array_where);
-				$sub = total_sub($order, 'order');
-				
+				$sub = totalSubDisc($order, 'order');
+
 				$this->data['content'] 		= 'pages/transaction/shipment';
 				/*mementukan service yang ditampilkan dalam pilihan paket pengiriman. cek MY_Controller*/
 				$this->data['service'] 		= $this->service;
 				$this->data['total_sub']	= $sub['total_price'];
-				
+
 				/*custom library untuk menampilkan hasil dari ongkos kirim*/
 				/*parameter ke 1, code kota / kecamatan awal pengiriman. tergantung dari type setelahnya. cek MY_Controller*/
 				/*parameter ke 2, type tempat awal pengiriman bernilai subdisrtict, atau city. cek MY_Controller*/
@@ -198,11 +208,11 @@ class Keranjang extends Frontend_Controller
 				/*parameter ke 5, total beban /  berat dalam gram*/
 				/*parameter ke 6, ekspedisi / kurir yang disediakan. cek MY_Controller*/
 				$this->data['cost']	= $this->lawave_shipment->cost(
-					$this->origin_code, 
-					$this->origin_type, 
-					$destination_code[0], 
-					$this->destination_type, 
-					$sub['total_weight'], 
+					$this->origin_code,
+					$this->origin_type,
+					$destination_code[0],
+					$this->destination_type,
+					$sub['total_weight'],
 					$this->courier
 					);
 
@@ -236,13 +246,13 @@ class Keranjang extends Frontend_Controller
 		}
 
 		$total_weight = array_sum($array_weight);
-		
+
 		$rajaongkir 	= $this->lawave_shipment->cost(
-			$this->origin_code, 
-			$this->origin_type, 
-			$dest, 
-			$this->destination_type, 
-			$total_weight, 
+			$this->origin_code,
+			$this->origin_type,
+			$dest,
+			$this->destination_type,
+			$total_weight,
 			$this->courier
 			);
 

@@ -52,6 +52,13 @@
 								<td><?php echo $date['date']; ?></td>
 							</tr>
 							<tr>
+								<td><b>Bank Admin</b> </td>
+								<td> <b>:</b> </td>
+								<td><?php echo $payment->bank_name.' - '.$payment->bank_account ?></td>
+							</tr>
+
+							<!-- <tr><td><br/></td></tr> -->
+							<tr>
 								<td><b>Account</b> </td>
 								<td> <b>:</b> </td>
 								<td><?php echo $payment->payment_account ?></td>
@@ -78,8 +85,8 @@
 									<?php endif ?>
 								</td>
 							</tr>
-						</table>	
-						<br>		
+						</table>
+						<br>
 					<?php endif ?>
 				</div><!-- /.col -->
 
@@ -138,7 +145,7 @@
 								<td><?php echo $transaction->transaction_shipping_no ?></td>
 							</tr>
 						<?php endif ?>
-					</table>			
+					</table>
 					<br>
 				</div><!-- /.col -->
 			</div><!-- /.row -->
@@ -152,6 +159,7 @@
 								<th>Qty</th>
 								<th>Product</th>
 								<th>Price</th>
+								<th>Price Discount</th>
 								<th>Subtotal</th>
 							</tr>
 						</thead>
@@ -161,6 +169,7 @@
 									<td><?php echo $item->transaction_item_qty ?></td>
 									<td><?php echo $item->product_name ?></td>
 									<td><?php echo rupiah($item->transaction_item_price) ?></td>
+									<td><?php echo rupiah($item->transaction_item_price_disc)." ($item->product_discount%)" ?></td>
 									<td align="right">
 										<span class="left-acc">Rp</span><?php echo uang($item->transaction_item_subtotal) ?>
 									</td>
@@ -200,6 +209,14 @@
 									<span class="left-acc">Rp</span><?php echo uang($transaction->transaction_shipping_cost) ?>
 								</td>
 							</tr>
+							<?php if ($transaction->voucher_id): ?>
+								<tr>
+									<th>Discount Voucher <?php echo "(<em>$transaction->voucher_code</em>)";?></th>
+									<td align="right">
+										<span class="left-acc">Rp</span><?php echo uang($transaction->voucher_discount) ?>
+									</td>
+								</tr>
+							<?php endif; ?>
 							<tr>
 								<th>Total</th>
 								<td align="right">

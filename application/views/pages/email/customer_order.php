@@ -9,7 +9,7 @@
 		</tr>
 		<tr>
 			<td>
-				Terima kasih telah malakukan pemesanan di <a href="http//:erakomp.com" title="Erakomp">Erakom.com</a></strong>.
+				Terima kasih telah malakukan pemesanan di <a href="#" title="Wallpaper Indonesia">Wallpaper Indonesia</a></strong>.
 				Segera lakukan pembayaran dan konfirmasi pembayaran untuk proses transaksi selanjutnya.
 			</td>
 		</tr>
@@ -22,15 +22,15 @@
 		<tr>
 			<td>
 				<h4>Catatan</h4>
-				1. Pastikan Anda sudah melakukan pembayaran ke salah satu rekening Erakomp yang tercantum pada tabel rekening dibawah. 
+				1. Pastikan Anda sudah melakukan pembayaran ke salah satu rekening Wallpaper Indonesia yang tercantum pada tabel rekening dibawah.
 				<br>
-				2. Batas waktu konfirmasi pembayaran adalah 1 x 24 jam sejak pemesanan dilakuka. Apabila melebihi batas tersebut, pesanan anda secara otomatis akan dibatalkan. 
+				2. Batas waktu konfirmasi pembayaran adalah 1 x 24 jam sejak pemesanan dilakuka. Apabila melebihi batas tersebut, pesanan anda secara otomatis akan dibatalkan.
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<!-- TABEL LIST BANK TUJUAN -->
-				<h4>Rekening Erakomp</h4>
+				<h4>Rekening Wallpaper Indonesia</h4>
 				<table style="width: 100%;">
 					<thead>
 						<tr style="border-bottom: 2px solid #999999;">
@@ -58,13 +58,14 @@
 			<td>
 				<!-- TABEL DATAIL PESANAN -->
 				<h4>Detail Pemesanan</h4>
-				<strong>No Order : <?php echo $transaction->order_no ?></strong> 
+				<strong>No Order : <?php echo $transaction->order_no ?></strong>
 				<table style="width: 100%;">
 					<thead>
 						<tr style="border-bottom: 2px solid #999999;">
 							<th width="5%" align="center">Qty</th>
 							<th>Produk</th>
 							<th width="25%">Harga</th>
+							<th width="25%">Harga Discount</th>
 							<th width="25%">Total</th>
 						</tr>
 					</thead>
@@ -74,12 +75,13 @@
 								<td><?php echo $item->transaction_item_qty ?></td>
 								<td><?php echo $item->product_name ?></td>
 								<td><?php echo rupiah($item->transaction_item_price) ?></td>
+								<td><?php echo rupiah($item->transaction_item_price_disc) ?></td>
 								<td><?php echo rupiah($item->transaction_item_subtotal) ?></td>
 							</tr>
 						<?php endforeach ?>
 						<tr>
-							<td colspan="2" rowspan="3">
-								
+							<td colspan="3" rowspan="4">
+
 							</td>
 							<td><strong>Jumlah Pesanan</strong></td>
 							<td><?php echo rupiah($transaction->transaction_cost) ?></td>
@@ -88,12 +90,18 @@
 							<td><strong>Biaya Pengiriman</strong></td>
 							<td><?php echo rupiah($transaction->transaction_shipping_cost) ?></td>
 						</tr>
+						<?php if ($transaction->voucher_discount): ?>
+							<tr>
+								<td><strong>Voucher Discount</strong></td>
+								<td><?php echo rupiah($transaction->voucher_discount) ?></td>
+							</tr>
+						<?php endif; ?>
 						<tr>
 							<td><strong>Total Biaya</strong></td>
 							<td><?php echo rupiah($transaction->transaction_total) ?></td>
 						</tr>
 					</tbody>
-				</table>	
+				</table>
 				<a href="<?php echo $base_url.'konfirmasi-pembayaran?order='.$transaction->order_no ?>" title="konfirmasi Pembayaran">
 					Konfirmasi Pembayaran
 				</a>

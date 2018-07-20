@@ -1,3 +1,81 @@
+@mixin contact {
+  .kontak{
+  .box-form label {
+  font-size: 14px;
+  color: #5E5E5E;
+  font-weight: normal; }
+.box-form .form-control {
+  border: 2px solid #E1E3E4;
+  box-shadow: none;
+  border-radius: 4px; }
+  .box-form .form-control:focus {
+    border: 2px solid #75b9df;
+    transition: 0.2s; }
+
+.btn-kontak {
+  width: 100%;
+  padding: 10px 10px;
+  color: #FFF;
+  background: #5599bf;
+  border-color: #5d9ec3; }
+  .btn-kontak:hover, .btn-kontak:focus {
+    background: #5d9ec3 !important;
+    border-color: #5599bf !important; }
+
+  .peta iframe {
+    width: 100%;
+    display: block;
+    pointer-events: none; }
+
+.tag-kontak {
+  font-size: 23px;
+  color: #444; }
+
+.subtag-kontak {
+  font-size: 13px;
+  margin-bottom: 15px; }
+
+.subtag-servis {
+  font-size: 13px;
+  margin-bottom: 15px;
+  line-height: 22px; }
+
+.item-kontak {
+  margin-bottom: 10px; }
+
+.tag-item-kontak {
+  font-size: 13px; }
+
+.isi-item-kontak {
+  font-size: 13px;
+  color: #555; }
+
+/*** END HUBUNGI KAMI ***/
+.box-about, .box-brand{
+  font-family: "segoe ui";
+}
+.content-brand{
+  padding: 10px 0;
+  .box-brand{
+    p{
+      &:nth-child(2){
+        font-weight: bolder;
+        font-size: 20px;
+        margin-bottom: 0px;
+      }
+      &:last-child{
+        text-align: right;
+      }
+    }
+    img{
+      max-width: 51px;
+      margin-bottom: 5px;
+    }
+  }
+}
+}
+}
+
 @mixin owl-dot($warna, $back, $actWarna, $actBack, $pos:10px) {
   .owl-dots{
     position: absolute;
@@ -120,4 +198,306 @@
   .rotate{
     transform: rotate(360deg);
   }
+}
+
+@mixin box-login {
+  .box-login {
+    padding: 20px;
+    border: 1px solid #DDD;
+    .voucher{
+      margin: 15px 0;
+      input{
+        padding: 4px;
+        border-radius: 3px;
+        border: 1px solid $babu;
+      }
+    }
+   }
+    .box-login .tag-login {
+      font-size: 20px;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+      font-family: "Opensans Bold";
+      color: #444;
+      border-bottom: 1px solid #EEE; }
+    .box-login label {
+      font-family: "Opensans Bold";
+      color: #555; }
+    .box-login .form-control {
+      border-radius: 0px;
+      box-shadow: none; }
+    .box-login .btn-login {
+      width: 100%;
+      font-family: "Opensans Bold"; }
+    .box-login .text-daftar {
+      font-family: "Opensans Reguler";
+      font-size: 13px;
+      color: #666; }
+
+    .tag-konten {
+      position: relative;
+      margin-bottom: 30px;
+      text-align: center; }
+      .tag-konten:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+        background: #DDD;
+        transform: translate(0, -50%); }
+      .tag-konten .nama-tag-konten {
+        position: relative;
+        display: inline-block;
+        font-family: "Opensans Bold";
+        font-size: 22px;
+        color: #4C4C4C;
+        z-index: 2; }
+        .tag-konten .nama-tag-konten:before {
+          position: absolute;
+          content: '';
+          left: 50%;
+          top: 50%;
+          width: 140%;
+          height: 2px;
+          background: #FFF;
+          transform: translate(-50%, -50%);
+          z-index: -1; }
+
+}
+
+@mixin member-area {
+  .dashboard-member{
+  #konten{
+    margin: 25px 0;
+    a{
+      text-decoration: none;
+    }
+    /*** MEMBER ***/
+    .sidebar-member {
+      margin-bottom: 30px; }
+      .sidebar-member li {
+        display: block; }
+        .sidebar-member li a {
+          display: block;
+          padding: 10px 15px;
+          color: #333;
+          // font-family: "Opensans";
+          border: 1px solid rgba(204, 204, 204, 0.7);
+          border-top: none; }
+          .sidebar-member li a:hover {
+            color: #FFF;
+            background: $biru;
+            border: 1px solid $biru;
+            border-top: none; }
+        .sidebar-member li:first-child a {
+          border-top: 1px solid rgba(204, 204, 204, 0.7); }
+          .sidebar-member li:first-child a:hover {
+            border-top: 1px solid $biru; }
+        .sidebar-member li.active a {
+          color: #FFF;
+          background: $biru;
+          border: 1px solid $biru;
+          border-top: none; }
+        .sidebar-member li.active:first-child a {
+          border-top: 1px solid $biru; }
+        .sidebar-member li .fa {
+          margin-top: 3px; }
+
+    .sidebar-member ul {
+      padding: 0; }
+
+    .tag-konten-member {
+      margin-bottom: 8px;
+      // font-family: "Opensans Light";
+      font-size: 22px;
+      color: #444; }
+
+    .tagline-konten-member {
+      margin-bottom: 25px;
+      // font-family: "Opensans Reguler";
+      font-size: 14px;
+      color: #777; }
+
+    .box-item-sorkat {
+      margin-bottom: 30px; }
+
+    .item-sorkat {
+      display: block;
+      padding: 30px 10px;
+      background: rgba(204, 204, 204, 0.4); }
+      .item-sorkat:hover {
+        background: $biru;
+        transition: 0.2s; }
+        .item-sorkat:hover .glyphicon, .item-sorkat:hover .jud-item-sorkat {
+          color: #FFF;
+          transition: 0.2s; }
+      .item-sorkat .glyphicon {
+        margin-bottom: 10px;
+        font-size: 30px;
+        color: #777; }
+      .item-sorkat .jud-item-sorkat {
+        // font-family: "Opensans Light";
+        font-size: 22px;
+        color: #444; }
+
+    .table-member thead {
+      color: #FFF;
+      background: $biru; }
+    .table-member th {
+      // font-family: "Opensans Semibold";
+      border-bottom: none !important; }
+    .table-member td {
+      // font-family: "Opensans Reguler";
+    }
+
+    .bold-idorder {
+      // font-family: "Opensans Semibold";
+      color: #5599bf; }
+
+    .label {
+      // font-family: "Opensans Reguler";
+      font-size: 13px;
+      font-weight: normal; }
+
+    .head-invoice {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(204, 204, 204, 0.6); }
+
+    .tabel-invoice-member {
+      margin-bottom: 0px;
+      // font-family: "Opensans Reguler";
+      font-size: 13px; }
+      .tabel-invoice-member th, .tabel-invoice-member td {
+        // font-family: "Opensans Reguler";
+        color: #666;
+        border: none !important;
+        padding-top: 3px !important;
+        padding-bottom: 3px !important; }
+      .tabel-invoice-member th {
+        // font-family: "Opensans Semibold";
+        font-weight: normal; }
+
+    .body-invoice table th {
+      font-size: 13px;
+      // font-family: "Opensans Semibold";
+    }
+    .body-invoice table td {
+      font-size: 13px;
+      // font-family: "Opensans Reguler";
+    }
+
+    .tag-review {
+      margin-bottom: 10px;
+      font-family: "Opensans Bold";
+      font-size: 24px;
+      color: #5599bf; }
+
+    .tag-idorder {
+      // font-family: "Opensans Reguler";
+      font-size: 16px;
+      color: #444; }
+      .tag-idorder strong {
+        // font-family: "Opensans Bold";
+        font-size: 16px;
+        color: #C10000; }
+
+    .text-review {
+      margin-bottom: 25px;
+      // font-family: "Opensans Reguler";
+      font-size: 14px; }
+
+    .table-review thead {
+      background: #75b9df; }
+      .table-review thead th {
+        // font-family: "Opensans Bold";
+        font-size: 18px;
+        color: #FFF;
+        border-bottom: none !important; }
+
+    .review-nama {
+      font-size: 16px; }
+
+    .review-harga {
+      // font-family: "Opensans Bold";
+      font-size: 14px;
+      color: #555; }
+
+    .list-review {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(204, 204, 204, 0.5); }
+      .list-review li {
+        display: block;
+        padding: 10px 15px;
+        // font-family: "Opensans Light";
+        font-size: 18px;
+        border-bottom: 1px solid rgba(204, 204, 204, 0.5); }
+        .list-review li:last-child {
+          border-bottom: none; }
+        .list-review li strong {
+          // font-family: "Opensans Bold";
+        }
+
+    .box-tab {
+      padding-top: 30px; }
+
+    .box-logo-bank {
+      padding-top: 10px; }
+      .box-logo-bank img {
+        margin-bottom: 10px; }
+
+    .tag-review-info {
+      // font-family: "Opensans Bold";
+      color: #444;
+      margin-bottom: 5px; }
+
+    .list-bank {
+      margin-bottom: 15px; }
+      .list-bank li {
+        padding: 5px 0px; }
+        .list-bank li .fa {
+          margin-right: 5px; }
+
+    .free-text {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      // font-family: "Opensans Bold";
+    }
+
+    .alert-payment {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      width: 80%;
+      padding: 10px 0;
+      color: #0a7f04;
+      text-align: center;
+      background: #d8fbce;
+      border: 1px solid #b2f79f;
+      border-radius: 3px;
+      transform: translate(-50%, 0);
+      z-index: 9999; }
+
+    .text-review-info {
+      // font-family: "Opensans Reguler";
+      font-size: 14px;
+      color: #333;
+      line-height: 23px; }
+
+    .btn-login {
+      width: 100%;
+      font-size: 16px;
+      padding: 8px 25px; }
+
+    .text-daftar {
+      // font-family: "Opensans Semibold";
+      color: #555; }
+
+    /*** END MEMBER ***/
+  }
+}
 }

@@ -206,3 +206,26 @@ function limitKalimat($kalimat, $limit=40){
 		}
 		return $synopsis;
 	}
+
+	function convertDate($source, $cond = 'default'){
+		$date = new DateTime($source);
+		switch ($cond) {
+			case 'tgl':
+				$r = $date->format('d');
+				break;
+
+			case 'bln':
+				$r = $date->format('F');
+				break;
+
+			case 'thn':
+				$r = $date->format('Y');
+				break;
+
+			default:
+				$r = $date->format('d F Y');
+				break;
+		}
+
+		return $r;
+	}

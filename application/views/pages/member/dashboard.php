@@ -5,7 +5,7 @@
 				<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
 				<li><a href="#">MEMBER AREA</a></li>
 			</ol>
-			<h2 class="ftimes">DASHBOARD</h2>
+			<h2 class="ftimes">Dasbor</h2>
 			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
 		</div><!-- /.map-halaman -->
 	</section>
@@ -21,28 +21,28 @@
 
 					<div class="col-md-9">
 						<div class="konten-member">
-							<div class="tag-konten-member"><strong>Welcome</strong> <?php echo $member->member_name ?></div>
+							<div class="tag-konten-member"><strong>Selamat datang</strong> <?php echo $member->member_name ?></div>
 
 							<div class="box-item-sorkat">
 								<div class="row">
 									<div class="col-sm-6">
 										<a class="item-sorkat text-center" href="<?php echo site_url('member-area?menu=profile') ?>">
 											<i class="glyphicon glyphicon-user"></i>
-											<div class="jud-item-sorkat">Profile</div>
+											<div class="jud-item-sorkat">Profil</div>
 										</a>
 									</div>
 
 									<div class="col-sm-6">
 										<a class="item-sorkat text-center" href="<?php echo site_url('member-area?menu=transaksi') ?>">
 											<i class="glyphicon glyphicon-shopping-cart"></i>
-											<div class="jud-item-sorkat">My Orders</div>
+											<div class="jud-item-sorkat">Pesanan Saya</div>
 										</a>
 									</div>
 								</div><!-- /.row -->
 							</div><!-- /.box-item-sorkat -->
 
 							<div class="tag-konten">
-								<div class="nama-tag-konten font-20">UNPAID ORDER</div>
+								<div class="nama-tag-konten font-20">PESANAN BELUM DIBAYAR</div>
 							</div><!-- /.tag-konten -->
 
 							<div class="table-responsive">

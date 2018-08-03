@@ -3,13 +3,13 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Article
-			<small>add new data</small>
+			Artikel
+			<small>tambah data baru</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li><a href="<?php echo site_url('admin/article');?>">Article</a></li>
-			<li class="active">Add New</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li><a href="<?php echo site_url('admin/article');?>">Artikel</a></li>
+			<li class="active">Tambah Baru</li>
 		</ol>
 	</section>
 
@@ -23,7 +23,7 @@
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
 						<div class="form-group">
-							<label for="article">Image Index</label>
+							<label for="article">Gambar</label>
 							<input type="file" name="image" class="img-preview form-control" required>
 							<img src="<?php echo base_url('dist/img/assets/no-image-1.jpg');?>" class="preview-image img img-responsive" alt="image index">
 						</div>
@@ -32,7 +32,7 @@
 						<div class="row">
 							<div class="col-md-12 col-lg-12">
 								<div class="form-group">
-									<label for="article">Title</label>
+									<label for="article">Judul</label>
 									<input type="text" name="title" class="form-control" value="" placeholder="article title" required>
 								</div>
 							</div>
@@ -71,7 +71,7 @@
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<div class="form-group">
-							<label for="article">Description</label>
+							<label for="article">Deskripsi</label>
 							<textarea name="desc" class="ckeditor"></textarea>
 						</div>
 					</div>
@@ -79,7 +79,7 @@
 				<hr>
 				<div class="form-group">
 					<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+					<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 				</div>
 				<?php echo form_close();?>
 			</div><!-- /.box-body -->

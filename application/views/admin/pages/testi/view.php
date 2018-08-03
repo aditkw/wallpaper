@@ -7,7 +7,7 @@
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
 			<li class="active">Testi</li>
 		</ol>
 	</section>
@@ -56,17 +56,17 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<div class="table-responsive">
 					<table id="datatable1" class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th width="5%">#</th>
-								<th>Testi Name</th>
-								<th>Testi Desc</th>
-								<th>Testi Job</th>
-								<th width="15%">Action</th>
+								<th>Nama</th>
+								<th>Deskripsi</th>
+								<th>Pekerjaan</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -99,11 +99,11 @@
 						</tbody>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Testi Name</th>
-								<th>Testi Desc</th>
-								<th>Testi Job</th>
-								<th>Action</th>
+								<th width="5%">#</th>
+								<th>Nama</th>
+								<th>Deskripsi</th>
+								<th>Pekerjaan</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 					</table>
@@ -121,26 +121,26 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New Testi</h4>
+				<h4 class="modal-title">Tambah Data Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/testi/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="service">Testi Name</label>
+					<label for="service">Nama</label>
 					<input type="text" name="name" class="form-control" placeholder="testi name">
 				</div>
 				<div class="form-group">
-					<label for="service">Testi Desc</label>
+					<label for="service">Deskripsi</label>
 					<textarea name="desc" class="form-control" rows="8" cols="80" placeholder="testi description"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="service">Testi Job</label>
+					<label for="service">Pekerjaan</label>
 					<input type="text" name="job" class="form-control" placeholder="testi job">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -160,22 +160,22 @@
 			<?php echo form_open_multipart('admin/testi/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="service">Testi Name</label>
+					<label for="service">Nama</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="testi name">
 				</div>
 				<div class="form-group">
-					<label for="service">Testi Desc</label>
+					<label for="service">Deskripsi</label>
 					<textarea class="form-control" id="desc" name="desc" rows="8" cols="80"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="service">Testi Job</label>
+					<label for="service">Pekerjaan</label>
 					<input id="job" type="text" name="job" class="form-control" placeholder="testi job">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

@@ -7,7 +7,7 @@
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
 			<li class="active">Voucher</li>
 		</ol>
 	</section>
@@ -55,21 +55,21 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Baru</button>
 				</div>
 				<table id="datatable1" class="table table-bordered table-hover">
 					<thead>
 						<tr>
-							<th width="5%">#</th>
-							<th>Voucher Code</th>
-							<th>Voucher Discount</th>
-						  <th>Voucher Limit</th>
-						  <th>Voucher Expired</th>
-							<th>Action</th>
+							<th>#</th>
+							<th>Kode Voucher</th>
+							<th>Diskon Voucher</th>
+							<th>Batas Pakai</th>
+							<th>Tanggal Expired</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
-						<?php $no = 1; foreach ($voucher as $voucher): ?>
+						<?php $no = 1; foreach ($voucher as $voucher): if($voucher->voucher_id != 0): ?>
 							<tr>
 								<td><?php echo $no;?></td>
 								<td><?php echo $voucher->voucher_code;?></td>
@@ -90,21 +90,21 @@
 									<a class="btn btn-flat btn-default btn-edit-voucher" data-id="<?php echo $voucher->voucher_id;?>" title="Update">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a onclick="return confirm('Are you sure ?')"  href="<?php echo site_url('admin/voucher/delete/'.$voucher->voucher_id);?>" class="btn btn-warning btn-flat" title="Delete">
+									<a onclick="return confirm('Apa anda yakin ?')"  href="<?php echo site_url('admin/voucher/delete/'.$voucher->voucher_id);?>" class="btn btn-warning btn-flat" title="Delete">
 									<i class="fa fa-trash"></i>
 									</a>
 								</td>
 							</tr>
-						<?php $no++; endforeach ?>
+						<?php $no++; endif; endforeach; ?>
 					</tbody>
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Voucher Code</th>
-							<th>Voucher Discount</th>
-							<th>Voucher Limit</th>
-							<th>Voucher Expired</th>
-							<th>Action</th>
+							<th>Kode Voucher</th>
+							<th>Diskon Voucher</th>
+							<th>Batas Pakai</th>
+							<th>Tanggal Expired</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -121,30 +121,30 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New Voucher</h4>
+				<h4 class="modal-title">Tambah Voucher Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/voucher/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="voucher">Voucher Code</label>
+					<label for="voucher">Kode Voucher</label>
 					<input type="text" name="code" class="form-control" placeholder="voucher code" required>
 				</div>
 				<div class="form-group">
-					<label for="voucher">Voucher Discount</label>
+					<label for="voucher">Diskon Voucher</label>
 					<input type="number" name="discount" class="form-control" placeholder="voucher discount" required>
 				</div>
 				<div class="form-group">
-					<label for="voucher">Voucher Limit</label>
+					<label for="voucher">Batas Pakai</label>
 					<input type="number" name="limit" class="form-control" placeholder="voucher limit" required>
 				</div>
 				<div class="form-group">
-					<label for="voucher">Voucher Expired</label>
+					<label for="voucher">Tanggal Expired</label>
 					<input type="date" name="expired" class="form-control" required>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -159,31 +159,31 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Update voucher</h4>
+				<h4 class="modal-title">Edit Voucher</h4>
 			</div>
 			<?php echo form_open_multipart('admin/voucher/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="voucher">Voucher Code</label>
+					<label for="voucher">Kode Voucher</label>
 					<input id="id" type="hidden" name="id">
 					<input id="code" type="text" name="code" class="form-control" placeholder="voucher code" required>
 				</div>
 				<div class="form-group">
-					<label for="voucher">Voucher Discount</label>
+					<label for="voucher">Diskon Voucher</label>
 					<input id="discount" type="number" name="discount" class="form-control" placeholder="voucher discount" required>
 				</div>
 				<div class="form-group">
-					<label for="voucher">Voucher Limit</label>
+					<label for="voucher">Batas Pakai</label>
 					<input id="limit" type="number" name="limit" class="form-control" placeholder="voucher limit" required>
 				</div>
 				<div class="form-group">
-					<label for="voucher">Voucher Expired</label>
+					<label for="voucher">Tanggal Expired</label>
 					<input id="expired" type="date" name="expired" class="form-control" placeholder="voucher expired" required>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

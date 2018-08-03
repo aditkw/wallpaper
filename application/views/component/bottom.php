@@ -2,10 +2,39 @@
 <script src="<?php echo base_url();?>dist/js/ajax.js"></script>
 <script src="<?php echo base_url();?>dist/js/lwd.js"></script>
 <script src="<?php echo base_url();?>dist/js/lwd.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>dist/js/smoothscrool-jquery.js"></script>
 
 <script type="text/javascript">
 
 $(document).ready(function(){
+
+	$('#subscribe').submit(function(event) {
+		event.preventDefault();
+		var obj = $(this);
+		var subs = obj.find("input[type=\'email\']").val();
+		$.ajax({
+			type: "POST",
+			url: "<?php echo site_url('member/subscribe');?>",
+			data: { email_address: subs},
+			timeout : 3000,
+			dataType: "JSON",
+			error: function(xhr, ajaxOptions, thrownError) {
+				alert(xhr.status);
+				alert(thrownError);
+			},
+			success: function(data) {
+				if (data.status) {
+					obj.css("border", "2px solid #11d4a2")
+					$("#btnSubscribe").css({"background":"#11d4a2", "color":"#ffffff"})
+					swal("Sukses!", data.message, "success");
+				}else {
+					obj.css("border", "2px solid #e03b09")
+					$("#btnSubscribe").css({"background":"#e03b09", "color":"#ffffff"})
+					swal("Oops", data.message, "error");
+				}
+			}
+		});
+	});
 
 		$('#shipment').change(function () {
 			var ship = $(this).val();

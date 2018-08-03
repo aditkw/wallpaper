@@ -9,7 +9,7 @@
 				<li><a href="#">PRODUK</a></li>
 				<li><a href="<?=site_url('produk/'.$uri_2)?>"><?=strtoupper(str_replace('-',' ',$uri_2))?></a></li>
 			</ol>
-			<h2 class="ftimes">Our Brands</h2>
+			<h2 class="ftimes">Brand Kami</h2>
 			<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
 		</div><!-- /.map-halaman -->
 	</section>

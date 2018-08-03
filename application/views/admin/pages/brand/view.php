@@ -7,7 +7,7 @@
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
 			<li class="active">Brand</li>
 		</ol>
 	</section>
@@ -55,19 +55,19 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<table id="datatable1" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th width="5%">#</th>
-							<th width="15%">Image</th>
-							<th>Category</th>
+							<th width="15%">Gambar</th>
+							<th>Kategori</th>
 							<th>Motif</th>
-							<th>Brand Name</th>
-							<th>Brand Price</th>
-							<th>Brand Size</th>
-							<th>Action</th>
+							<th>Nama Brand</th>
+							<th>Harga Brand</th>
+							<th>Ukuran Brand</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -106,14 +106,14 @@
 					</tbody>
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Image</th>
-							<th>Category</th>
+							<th width="5%">#</th>
+							<th width="15%">Gambar</th>
+							<th>Kategori</th>
 							<th>Motif</th>
-							<th>Brand Name</th>
-							<th>Brand Price</th>
-							<th>Brand Size</th>
-							<th>Action</th>
+							<th>Nama Brand</th>
+							<th>Harga Brand</th>
+							<th>Ukuran Brand</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -130,14 +130,14 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New Brand</h4>
+				<h4 class="modal-title">Tambah Brand Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/brand/insert');?>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="category">Select Category</label>
+							<label for="category">Pilih Kategori</label>
 							<select name="category" id="" class="form-control">
 								<?php foreach ($category as $cat): ?>
 									<option value="<?=$cat->category_id?>"><?=$cat->category_name?></option>
@@ -147,7 +147,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="category">Select Motif</label>
+							<label for="category">Pilih Motif</label>
 							<select name="motif" id="" class="form-control">
 								<?php foreach ($motif as $mot): ?>
 									<option value="<?=$mot->motif_id?>"><?=$mot->motif_name?></option>
@@ -157,19 +157,19 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="brand">Brand Name</label>
+					<label for="brand">Nama Brand</label>
 					<input type="text" name="name" class="form-control" placeholder="brand name" required>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Price</label>
+							<label for="brand">Harga Brand</label>
 							<input type="number" name="price" class="form-control" placeholder="brand price" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Price Strip</label>
+							<label for="brand">Harga Coret Brand</label>
 							<input type="number" name="price_strip" class="form-control" placeholder="brand price strip" required>
 						</div>
 					</div>
@@ -177,13 +177,13 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Discount</label>
+							<label for="brand">Diskon Brand</label>
 							<input type="number" name="discount" class="form-control" placeholder="brand discount" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Size</label>
+							<label for="brand">Ukuran Brand</label>
 							<input type="text" name="size" class="form-control" placeholder="brand size" required>
 						</div>
 					</div>
@@ -192,25 +192,25 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Weight</label>
+							<label for="brand">Berat Brand</label>
 							<input type="text" name="weight" class="form-control" placeholder="brand weight" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Launch</label>
+							<label for="brand">Tahun Terbit</label>
 							<input type="text" name="launch" class="form-control" placeholder="brand launch" required>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="brand">Image</label>
+					<label for="brand">Gambar</label>
 					<input type="file" name="image" class="form-control">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -232,7 +232,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="category">Select Category</label>
+							<label for="category">Pilih Kategori</label>
 							<select name="category" id="category" class="form-control">
 								<?php foreach ($category as $cat): ?>
 									<option value="<?=$cat->category_id?>"><?=$cat->category_name?></option>
@@ -242,7 +242,7 @@
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="category">Select Motif</label>
+							<label for="category">Pilih Motif</label>
 							<select name="motif" id="motif" class="form-control">
 								<?php foreach ($motif as $mot): ?>
 									<option value="<?=$mot->motif_id?>"><?=$mot->motif_name?></option>
@@ -252,7 +252,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="brand">Brand Name</label>
+					<label for="brand">Nama Brand</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="brand name" required>
 				</div>
@@ -260,13 +260,13 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Price</label>
+							<label for="brand">Harga Brand</label>
 							<input id="price" type="number" name="price" class="form-control" placeholder="brand price" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Price Strip</label>
+							<label for="brand">Harga Coret Brand</label>
 							<input id="price_strip" type="number" name="price_strip" class="form-control" placeholder="brand price strip" required>
 						</div>
 					</div>
@@ -274,13 +274,13 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Discount</label>
+							<label for="brand">Diskon Brand</label>
 							<input id="discount" type="number" name="discount" class="form-control" placeholder="brand discount" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Size</label>
+							<label for="brand">Ukuran Brand</label>
 							<input id="size" type="text" name="size" class="form-control" placeholder="brand size" required>
 						</div>
 					</div>
@@ -289,26 +289,26 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Weight</label>
+							<label for="brand">Berat Brand</label>
 							<input id="weight" type="text" name="weight" class="form-control" placeholder="brand weight" required>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="brand">Brand Launch</label>
+							<label for="brand">Tahun Terbit</label>
 							<input id="launch" type="text" name="launch" class="form-control" placeholder="brand launch" required>
 						</div>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="brand">Image</label>
+					<label for="brand">Gambar</label>
 					<input type="file" name="image" class="form-control">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

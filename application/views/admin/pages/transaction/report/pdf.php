@@ -11,11 +11,11 @@
 		<!-- Theme style -->
 		<link rel="stylesheet" href="<?php echo base_url('dist/css/AdminLTE.min.css');?>">
 		<style type="text/css">
-			.table > tbody > tr > td, 
-			.table > tbody > tr > th, 
-			.table > tfoot > tr > td, 
-			.table > tfoot > tr > th, 
-			.table > thead > tr > td, 
+			.table > tbody > tr > td,
+			.table > tbody > tr > th,
+			.table > tfoot > tr > td,
+			.table > tfoot > tr > th,
+			.table > thead > tr > td,
 			.table > thead > tr > th {
 				padding: 4px;
 			}
@@ -26,24 +26,24 @@
 		</style>
 	</head>
 	<body>
-		<h4 style="margin: 0 0 20px">Sales Report</h4>
+		<h4 style="margin: 0 0 20px">Laporan Penjualan</h4>
 		<div class="row">
 			<div class="col-xs-6">
 				<table class="table">
 					<tr>
-						<td valign="top" style="width: 35%">Sort Date</td>
+						<td valign="top" style="width: 35%">Diurutkan Tanggal</td>
 						<td>
 							<table style="width: 100%">
 								<tr>
-									<?php 
-									$sort_date_from = isset($from) ? indonesian_date($from) : ''; 
+									<?php
+									$sort_date_from = isset($from) ? indonesian_date($from) : '';
 									$sort_date_to = isset($to) ? indonesian_date($to) : '';
 									?>
-									<td style="width: 30%">From</td>
+									<td style="width: 30%">Dari Tgl</td>
 									<td style="width: 70%"><?php echo isset($from) ? $sort_date_from['date'] : ''; ?></td>
 								</tr>
 								<tr>
-									<td>To</td>
+									<td>Ke Tgl</td>
 									<td><?php echo isset($to) ? $sort_date_to['date'] : ''; ?></td>
 								</tr>
 							</table>
@@ -55,7 +55,7 @@
 				<table class="table" style="width: 70%">
 					<tr>
 						<td align="right">
-							<?php 
+							<?php
 							$today = indonesian_date(date('Y-m-d'));
 							echo $today['date'];
 							?>
@@ -69,7 +69,7 @@
 				<thead>
 					<tr>
 						<th width="5%">No</th>
-						<th>Date</th>
+						<th>Tanggal</th>
 						<th>Customer</th>
 						<th>Total</th>
 						<th style="text-align:center;">Status</th>
@@ -77,23 +77,23 @@
 				</thead>
 				<tbody>
 					<?php $no = 1; foreach ($transaction as $trans) : ?>
-						<?php 
+						<?php
 						$total[$no] = $trans->transaction_total;
-						$date = indonesian_date($trans->transaction_date) 
+						$date = indonesian_date($trans->transaction_date)
 						?>
 						<tr>
 							<td><?php echo $no; ?></td>
 							<td><?php echo $date['date']; ?></td>
 							<td><?php echo $trans->transaction_name; ?></td>
 							<td align="right"><span style="text-align: left; float: left;">Rp</span><?php echo uang($trans->transaction_total); ?></td>
-							<td align="center"><?php echo ($trans->trans_status_id == 3) ?  "On Delivery" : "Closed"; ?></td>
+							<td align="center"><?php echo ($trans->trans_status_id == 3) ?  "Proses Kirim" : "Selesai"; ?></td>
 						</tr>
 					<?php $no++; endforeach ?>
 				</tbody>
 				<thead>
 					<tr>
 						<th>No</th>
-						<th>Date</th>
+						<th>Tanggal</th>
 						<th>Customer</th>
 						<th>Total</th>
 						<th style="text-align:center;">Status</th>

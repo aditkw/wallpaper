@@ -68,7 +68,7 @@
 
 									<div class="col-md-4">
 										<div class="box-alamat">
-											<div class="tag-kontak">Contact Information</div>
+											<div class="tag-kontak">Informasi Kontak</div>
 											<div class="subtag-kontak">Untuk informasi lebih lanjut, silahkan hubungi kami.</div>
 											<div class="item-kontak">
 												<div class="tag-item-kontak">Alamat</div>

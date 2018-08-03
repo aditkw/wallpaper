@@ -256,28 +256,26 @@ class Transaksi extends Frontend_Controller
 	function cek_voucher()
 	{
 		$voucher			= $this->input->post('kode');
+		$now				 = date('Y-m-d');
 		$get_voucher  = $this->voucher_model->get_by(array(
 			'voucher_code' => $voucher
 		), null, null, true);
 
 		if ($get_voucher) {
-			if ($get_voucher->voucher_limit > 0 && $get_voucher->voucher_pub == '99') {
+			if ($get_voucher->voucher_limit > 0 && $get_voucher->voucher_pub == '99' && $get_voucher->voucher_expired >= $now) {
 				$data['ketemu'] = TRUE;
 				$data['pesan'] = 'Voucher dapat digunakan dan potongan harga dari voucher sebesar '.rupiah($get_voucher->voucher_discount);
 				$data['id_voucher'] = hash_link_encode($this->encrypt->encode($get_voucher->voucher_id));
 			}
 			else {
 				$data['ketemu'] = FALSE;
-				$data['pesan'] = 'Voucher sudah tidak berlaku';
+				$data['pesan'] = 'Voucher sudah habis atau tidak berlaku';
 			}
 
 		}else {
 			$data['ketemu'] = FALSE;
 			$data['pesan'] = 'Voucher tidak ditemukan';
 		}
-
-		// $this->data['id'] 			= $get_data->bank_id;
-
 
 		echo json_encode($data);
 	}

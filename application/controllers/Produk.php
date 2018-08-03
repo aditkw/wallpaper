@@ -64,9 +64,12 @@ class Produk extends Frontend_Controller
 			}else {
 				$where_product = array('brand_link' => $brand, 'image_parent_name' => 'product', 'image_seq' => '0');
 			}
-			$this->data['brands'] = $this->brand_model->get_brand(array('category_link' => $category));
-			$this->data['motif'] = $this->motif_model->get();
-			$this->data['color'] = $this->color_model->get();
+			$this->data['brands'] = $this->brand_model->get_brand(array('category_link' => $category), 2);
+			$this->data['unvbrands'] = $this->brand_model->get_brand(array('category_link' => $category), 100, 2);
+			$this->data['motif'] = $this->motif_model->get_by(null, 2);
+			$this->data['unvmotif'] = $this->motif_model->get_by(null, 10, 2);
+			$this->data['color'] = $this->color_model->get_by(null, 2);
+			$this->data['unvcolor'] = $this->color_model->get_by(null, 10, 2);
 			$this->data['brand'] = $this->brand_model->get_brand(array('brand_link' => $brand), NULL, NULL, TRUE);
 
 			isset($_GET['tampil']) ? $tampil = $_GET['tampil'] : $tampil = 9;
@@ -123,7 +126,7 @@ class Produk extends Frontend_Controller
 			$this->data['num_page']		= $num_page;
 			$this->data['pagination'] = $this->pagination->create_links();
 
-			$this->data['banner'] = $this->product_model->get_product(array('brand_link' => $brand, 'image_parent_name' => 'product', 'image_seq' => '1'), NULL, NULL, FALSE, 'image_name');
+			$this->data['banner'] = $this->product_model->get_product(array('brand_link' => $brand, 'image_parent_name' => 'product', 'image_seq' => '1'), 5, NULL, FALSE, 'image_name');
 
 			$this->data['product'] = $this->product_model->get_product(
 				$where_product,

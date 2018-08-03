@@ -111,6 +111,26 @@
 					}
 				});
 			});
+			//subs email
+			$('.btn-edit-email').click(function() {
+				var id = $(this).attr('data-id');
+				$.ajax({
+					type: "POST",
+					url: "<?php echo site_url('admin/email/update_load');?>",
+					data: { dataID: id},
+					timeout : 3000,
+					dataType: "JSON",
+					error: function() {
+						alert("ERROR!");
+					},
+					success: function(data) {
+						$("#id").val(data.id);
+						$("#email").val(data.email);
+						$("#member_id").val(data.member_id).prop('selected','selected');
+						$("#update").modal('show');
+					}
+				});
+			});
 			// get term (edit)
 			$('.btn-edit-term').click(function() {
 				var id = $(this).attr('data-id');

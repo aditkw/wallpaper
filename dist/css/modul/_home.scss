@@ -81,11 +81,14 @@
           background-color: transparentize($biru, 0.3);
           width: 200%;
           li{
-            &:hover{
-              color: $item;
+            a{
+              &:hover{
+                color: $item;
+              }
+              text-decoration: none;
+              color: $putih;
+              transition: color 0.3s ease;
             }
-            color: $putih;
-            transition: color 0.3s ease;
             text-align: center;
             padding: 8px 0;
             display: block;

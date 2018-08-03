@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Products
+			Produk
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Products</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Produk</li>
 		</ol>
 	</section>
 
@@ -55,20 +55,20 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" onclick="window.location.href='<?php echo site_url('admin/product/add');?>'" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" onclick="window.location.href='<?php echo site_url('admin/product/add');?>'" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<div class="table-responsive">
 					<table id="datatable1" class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th width="5%">#</th>
-								<th width="15%">Image</th>
-								<th>Code</th>
-								<th>Product Name</th>
-								<th>Category</th>
-								<th>Stock</th>
+								<th width="15%">Gambar</th>
+								<th>Kode</th>
+								<th>Nama Produk</th>
+								<th>Kategori</th>
+								<th>Stok</th>
 								<!-- <th>Status</th> -->
-								<th width="15%">Action</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -127,14 +127,14 @@
 						</tbody>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Image</th>
-								<th>Code</th>
-								<th>Product Name</th>
-								<th>Category</th>
-								<th>Stock</th>
+								<th width="5%">#</th>
+								<th width="15%">Gambar</th>
+								<th>Kode</th>
+								<th>Nama Produk</th>
+								<th>Kategori</th>
+								<th>Stok</th>
 								<!-- <th>Status</th> -->
-								<th>Action</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 					</table>

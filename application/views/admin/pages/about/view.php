@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 			<h1>
-					About
+					Tentang Kami
 					<small></small>
 			</h1>
 			<ol class="breadcrumb">
-					<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-					<li class="active">About</li>
+					<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+					<li class="active">Tentang Kami</li>
 			</ol>
 	</section>
 
@@ -17,7 +17,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -30,7 +30,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -41,7 +41,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -55,11 +55,11 @@
 			<?php echo form_open_multipart('admin/about/update');?>
 				<div class="box-body">
 					<div class="form-group">
-						<label for="about">Name / Title</label>
+						<label for="about">Nama / Judul</label>
 						<textarea name="name" class="form-control" rows="3" placeholder="name / title"><?php echo $about->info_name;?></textarea>
 					</div>
 					<div class="form-group">
-						<label for="about">Description</label>
+						<label for="about">Deskripsi</label>
 						<textarea name="desc" class="ckeditor"><?php echo $about->info_desc;?></textarea>
 					</div>
 					<div class="row">
@@ -68,13 +68,13 @@
 								<label for="about">Image</label>
 								<input type="file" name="image" class="form-control" value="" placeholder="">
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<div class="callout callout-warning">
 									<h4><i class="fa fa-warning"></i> <strong></strong></h4>
 									Use an image with dimensions of <strong>... x ... pixels.</strong>
 									<p>Use an image with a maximum size of <strong> 2 MB.</strong></p>
 								</div>
-							</div>
+							</div> -->
 						</div>
 						<div class="col-md-6 col-lg-6">
 							<img id="preview-image" src="<?php echo base_url($path_file.'/'.$about->info_image);?>" class="img img-responsive" alt="about image">
@@ -90,4 +90,3 @@
 
 	</section><!-- /.content -->
 </div><!-- /.content-wrapper -->
-

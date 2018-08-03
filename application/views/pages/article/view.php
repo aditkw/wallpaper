@@ -1,73 +1,56 @@
-<section id="bg-page">
-	<img class="img" src="<?php echo base_url('dist/img/assets/bg-page.jpg');?>" alt="Page Konten">
+<div class="artikel">
+<section id="atas">
+	<div class="nav-text text-center middle">
+		<ol class="breadcrumb">
+			<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+			<li><a href="#">BERITA & EVENT</a></li>
+		</ol>
+		<h2 class="ftimes">BERITA & EVENT</h2>
+		<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+	</div><!-- /.map-halaman -->
 </section>
 
-<div class="map-halaman">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url(); ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Berita</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
-
 <section id="konten">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
-				<div class="konten-berita">
-					<div class="row">
-						<div class="col-md-9">
-							<div class="box-list-berita">
-							<?php foreach ($article as $article): ?>
-								<div class="list-berita">
-									<div class="row">
-										<div class="col-sm-4">
-											<div class="img-list-berita">
-												<a href="<?php echo site_url('berita/baca/'.$article->article_link) ?>">
-													<img class="img" src="<?php echo base_url('uploads/img/article/'.$article->image_name); ?>" alt="<?php echo $article->article_alt ?>">
-												</a>
-											</div><!-- /.img-list-berita -->
-										</div><!-- /.col -->
-										<div class="col-md-8">
-											<div class="konten-list-berita">
-												<div class="jud-list-berita">
-													<a href="<?php echo site_url('berita/baca/'.$article->article_link) ?>">
-														<?php echo $article->article_title ?>
-													</a>
-												</div>
-												<div class="tgl-list-berita">
-													<?php 
-													$date = indonesian_date($article->article_date);													
-													echo $date['datetime'].' WIB';
-													?>
-
-												</div>
-												<div class="subisi-list-berita">
-													<?php echo $article->article_review ?>
-												</div>
-											</div><!-- /.konten-list-berita -->
-										</div><!-- /.col -->
-									</div><!-- /.row -->
-								</div><!-- /.list-berita -->
-							<?php endforeach ?>
-							</div><!-- /.box-list-berita -->
-							
-							<div class="box-page text-right">
-								<?php echo $pagination ?>
-							</div><!-- /.page -->
-						</div><!-- /.col -->
-						
-						<div class="col-md-3">
-							
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.konten-produk -->
-			</div><!-- /.col -->
-		</div><!-- /.row -->
+			<div class="col-md-9">
+				<?php foreach ($articles as $article): ?>
+					<?php if (!empty($_GET['tag'])): ?>
+						<?php if (in_array(strtolower($_GET['tag']), explode(',', strtolower(str_replace(' ', '', $article->article_tag))))): ?>
+							<div class="col-md-6">
+									<div class="box-news animation-element">
+										<img class="img-responsive" src="<?=site_url("uploads/img/article/$article->image_name")?>" alt="">
+										<p><?=limitKalimat($article->article_title, 38)?></p>
+										<p><i class="fa fa-calendar"></i> <?=convertDate($article->article_date)?></p>
+										<p><?=limitKalimat($article->article_desc, 100)?></p>
+										<p class="text-right"><a href="<?=site_url("berita-event/$article->article_link")?>">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a></p>
+									</div>
+								</div>
+						<?php endif; ?>
+						<?php else: ?>
+							<div class="col-md-6">
+									<div class="box-news animation-element">
+										<img class="img-responsive" src="<?=site_url("uploads/img/article/$article->image_name")?>" alt="">
+										<p><?=limitKalimat($article->article_title, 38)?></p>
+										<p><i class="fa fa-calendar"></i> <?=convertDate($article->article_date)?></p>
+										<p><?=limitKalimat($article->article_desc, 100)?></p>
+										<p class="text-right"><a href="<?=site_url("berita-event/$article->article_link")?>">Baca Selengkapnya <i class="fa fa-arrow-right"></i></a></p>
+									</div>
+								</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+			<div class="col-md-3">
+				<div class="this-tag">
+					<h3>TAG</h3>
+					<?php foreach ($tags as $tag): ?>
+						<a href="<?=site_url('berita-event?tag='.strtolower(str_replace(' ', '', $tag->tag_name)))?>">
+							<span><?=$tag->tag_name?></span>
+						</a>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
 	</div><!-- /.container -->
-</section>	
+</section>
+</div>

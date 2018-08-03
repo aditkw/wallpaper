@@ -78,6 +78,7 @@ class MY_Controller extends CI_Controller
 			array(
 				'about_model',
 				'voucher_model',
+				'mailchimp_model',
 				'howto_model',
 				'category_model',
 				'color_model',
@@ -98,7 +99,6 @@ class MY_Controller extends CI_Controller
 				'tag_model',
 				'article_model',
 				'brand_model',
-				// 'brandcateg_model',
 				'province_model',
 				'city_model',
 				'order_model',
@@ -353,15 +353,15 @@ class Frontend_Controller extends MY_Controller
 
 class Backend_Controller extends MY_Controller
 {
-	protected $delete_text 			= 'Data has been removed.';
-	protected $add_text 				= 'Data has been added.';
-	protected $edit_text 				= 'Data has been updated.';
-	protected $publish_text			= 'Data has been published.';
-	protected $unpublish_text		= 'Data unpublished.';
-	protected $block_text				= 'Member has been disabled.';
-	protected $unblock_text			= 'Member enabled.';
-	protected $pass_inc_text 		= 'Incorrect old password.';
-	protected $too_large_text 	= 'Image is too large.';
+	protected $delete_text 			= 'Data berhasil dihapus.';
+	protected $add_text 				= 'Data berhasil ditambahkan.';
+	protected $edit_text 				= 'Data berhasil diubah.';
+	protected $publish_text			= 'Data berhasil ditayangkan.';
+	protected $unpublish_text		= 'Data tidak ditayangkan.';
+	protected $block_text				= 'Member berhasil diblok.';
+	protected $unblock_text			= 'Berhasil membuka blok.';
+	protected $pass_inc_text 		= 'Password lama salah.';
+	protected $too_large_text 	= 'Ukuran gambar terlalu besar.';
 
 	public function __construct()
 	{

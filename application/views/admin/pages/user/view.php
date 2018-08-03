@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -54,18 +54,18 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#addUser" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#addUser" title="Add New"><i class="fa fa-plus"></i> Tambah Baru</button>
 				</div>
 				<table id="datatable1" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th width="5%">#</th>
-							<th>Name</th>
+							<th>Nama</th>
 							<th>Username</th>
 							<th>Email</th>
 							<th>Level User</th>
-							<th>Satus</th>
-							<th width="15%">Action</th>
+							<th>Status</th>
+							<th width="15%">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -82,9 +82,9 @@
 								</td>
 								<td>
 									<?php if ($user->user_status == 'block'): ?>
-										<span class="label label-danger">Not Active</span>
+										<span class="label label-danger">Tidak Aktif</span>
 									<?php else: ?>
-										<span class="label label-success">Active</span>
+										<span class="label label-success">Aktif</span>
 									<?php endif ?>
 								</td>
 								<td>
@@ -93,7 +93,7 @@
 										<a id="editButton" class="btn btn-flat btn-default btn-edit-user" data-id="<?php echo $user->user_session;?>" title="Update">
 											<i class="fa fa-edit"></i>
 										</a>
-										<a onclick="return confirm('Are you sure ?')"  href="<?php echo site_url('admin/user/delete/'.$user->user_session);?>" class="btn btn-warning btn-flat" title="Hapus">
+										<a onclick="return confirm('Apa anda yakin ?')"  href="<?php echo site_url('admin/user/delete/'.$user->user_session);?>" class="btn btn-warning btn-flat" title="Hapus">
 										<i class="fa fa-trash"></i>
 										</a>
 								</td>
@@ -102,13 +102,13 @@
 					</tbody>
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Name</th>
+							<th width="5%">#</th>
+							<th>Nama</th>
 							<th>Username</th>
 							<th>Email</th>
 							<th>Level User</th>
-							<th>Satus</th>
-							<th>Action</th>
+							<th>Status</th>
+							<th width="15%">Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -126,14 +126,14 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add User</h4>
+				<h4 class="modal-title">Tambah User</h4>
 			</div>
 			<?php echo form_open('admin/user/insert');?>
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-md-6 col-lg-6">
 						<div class="form-group">
-							<label for="user">Name</label>
+							<label for="user">Nama</label>
 							<input type="text" name="name" class="form-control" value="" placeholder="name" required>
 						</div>
 						<div class="form-group">
@@ -147,7 +147,7 @@
 						<div class="form-group">
 							<label for="user">Level User</label>
 							<select name="level" class="form-control">
-								<option disabled selected>--Select Level--</option>
+								<option disabled selected>--Pilih Level--</option>
 								<option value="owner">Owner</option>
 								<option value="admin">Admin</option>
 								<option value="user">User</option>
@@ -156,9 +156,9 @@
 						<div class="form-group">
 							<label for="user">Status</label>
 							<select name="status" class="form-control">
-								<option disabled selected>--Select Status--</option>
-								<option value="active">Active</option>
-								<option value="block">Block</option>
+								<option disabled selected>--Pilih Status--</option>
+								<option value="active">Aktif</option>
+								<option value="block">Blokir</option>
 							</select>
 						</div>
 					</div>
@@ -203,9 +203,9 @@
 			<?php echo form_open('admin/user/update');?>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-md-6 col-lg-6">						
+					<div class="col-md-6 col-lg-6">
 						<div class="form-group">
-							<label for="user">Full Name</label>
+							<label for="user">Nama</label>
 							<input id="id" type="hidden" name="id" value="">
 							<input id="name" type="text" name="name" class="form-control" value="" placeholder="name" required>
 						</div>
@@ -220,7 +220,7 @@
 						<div class="form-group">
 							<label for="user">Level User</label>
 							<select id="level" name="level" class="form-control">
-								<option disabled selected>--Select Level--</option>
+								<option disabled selected>--Pilih Level--</option>
 								<option value="owner">Owner</option>
 								<option value="admin">Admin</option>
 								<option value="user">User</option>
@@ -229,23 +229,23 @@
 						<div class="form-group">
 							<label for="user">Status</label>
 							<select id="status" name="status" class="form-control">
-								<option disabled selected>--Select Status--</option>
-								<option value="active">Active</option>
-								<option value="block">Block</option>
+								<option disabled selected>--Pilih Status--</option>
+								<option value="active">Aktif</option>
+								<option value="block">Blokir</option>
 							</select>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">						
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 						<div class="form-group">
-							<label for="user">Old Password</label>
+							<label for="user">Password Lama</label>
 							<input type="password" name="oldpass" class="form-control" value="" placeholder="old password">
 						</div>
 						<div class="form-group">
-							<label for="user">New Password *</label>
+							<label for="user">Password Baru *</label>
 							<input type="password" name="newpass" class="form-control" value="" placeholder="password">
 						</div>
 						<div class="form-group">
-							<label for="user">Password Confirm</label>
+							<label for="user">Konfirmasi Password</label>
 							<input type="password" name="passconf" class="form-control" value="" placeholder="password confirm">
 						</div>
 						<div class="form-group">
@@ -258,7 +258,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

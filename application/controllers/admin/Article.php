@@ -175,18 +175,31 @@ class Article extends Backend_Controller
 		$array_id = array('article_id' => $id);
 
 		$get_data = $this->article_model->get($id);
+		$all_data = $this->article_model->get();
 
 		if ($get_data->article_pub == '88') {
-			$array_data['article_pub'] = '99';
+			foreach ($all_data as $article) {
+				if ($article->article_id == $get_data->article_id) {
+					$this->article_model->update(array('article_pub' => '99'), array('article_id' => $article->article_id));
+				}else {
+					$this->article_model->update(array('article_pub' => '88'), array('article_id' => $article->article_id));
+				}
+			}
 			$text_msg = $this->publish_text;
 		}
 
 		else {
-			$array_data['article_pub'] = '88';
+			foreach ($all_data as $article) {
+				if ($article->article_id == $get_data->article_id) {
+					$this->article_model->update(array('article_pub' => '99'), array('article_id' => $article->article_id));
+				}else {
+					$this->article_model->update(array('article_pub' => '88'), array('article_id' => $article->article_id));
+				}
+			}
 			$text_msg = $this->unpublish_text;
 		}
 
-		$this->article_model->update($array_data, $array_id);
+		// $this->article_model->update($array_data, $array_id);
 		$this->session->set_flashdata('success', $text_msg);
 
 		redirect(site_url('admin/article'));

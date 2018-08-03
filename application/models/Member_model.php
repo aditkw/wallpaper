@@ -1,16 +1,16 @@
-<?php 
+<?php
 
 /**
 * member model
 */
 class Member_model extends MY_Model
 {
-	
+
 	protected $_table_name 		= 'member';
 	protected $_primary_key 	= 'member_id';
 	protected $_order_by 			= 'member_id';
-	protected $_order_by_type = 'DESC';
-	
+	protected $_order_by_type = 'ASC';
+
 	/*
 	| nilai dari variable diatas akan dikirim ke MY_Model dan digunakan untuk mengakses table
 	*/

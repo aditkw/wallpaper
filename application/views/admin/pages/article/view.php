@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Articles
+			Artikel
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Articles</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Artikel</li>
 		</ol>
 	</section>
 
@@ -55,18 +55,18 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" onclick="window.location.href='<?php echo site_url('admin/article/add');?>'" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" onclick="window.location.href='<?php echo site_url('admin/article/add');?>'" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<div class="table-responsive">
 					<table id="datatable1" class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th width="5%">#</th>
-								<th width="15%">Image</th>
-								<th>Title</th>
+								<th width="15%">Gambar</th>
+								<th>Judul</th>
 								<!-- <th width="15%">Category</th> -->
 								<th>Tag</th>
-								<th width="15%">Action</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -86,8 +86,8 @@
 												<i class="fa fa-bullhorn"></i>
 											</a>
 										<?php else: ?>
-											<a href="<?php echo site_url('admin/article/publish/'.$article->article_id);?>" class="btn btn-flat btn-success" title="Publish">
-												<i class="fa fa-bullhorn"></i>
+											<a href="<?php echo site_url('admin/article/publish/'.$article->article_id);?>" title="Publish">
+												<button type="button" disabled class="btn btn-flat btn-success"><i class="fa fa-bullhorn"></i></button>												
 											</a>
 										<?php endif ?>
 										<a class="btn btn-flat btn-default" onclick="window.location.href='<?php echo site_url('admin/article/edit/'.$article->article_id);?>'" title="Update">
@@ -102,12 +102,13 @@
 						</tbody>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Image</th>
-								<th>Title</th>
-								<!-- <th>Category</th> -->
+								<th width="5%">#</th>
+								<th width="15%">Gambar</th>
+								<th>Judul</th>
+								<!-- <th width="15%">Category</th> -->
 								<th>Tag</th>
-								<th>Action</th>
+								<th width="15%">Aksi</th>
+
 							</tr>
 						</thead>
 					</table>

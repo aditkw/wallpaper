@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -56,18 +56,18 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<div class="table-responsive">
 					<table id="datatable1" class="table table-bordered table-hover">
 						<thead>
 							<tr>
 								<th width="5%">#</th>
-								<th width="15%">Image</th>
-								<th>Bank Name</th>
-								<th>Bank No</th>
-								<th>Bank Account</th>
-								<th width="15%">Action</th>
+								<th width="15%">Gambar</th>
+								<th>Nama Bank</th>
+								<th>Rek Bank</th>
+								<th>Atas Nama</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -103,12 +103,12 @@
 						</tbody>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Image</th>
-								<th>Bank Name</th>
-								<th>Bank No</th>
-								<th>Bank Account</th>
-								<th>Action</th>
+								<th width="5%">#</th>
+								<th width="15%">Gambar</th>
+								<th>Nama Bank</th>
+								<th>Rek Bank</th>
+								<th>Atas Nama</th>
+								<th width="15%">Aksi</th>
 							</tr>
 						</thead>
 					</table>
@@ -126,30 +126,30 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New Bank</h4>
+				<h4 class="modal-title">Tambah Bank Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/bank/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="service">Bank Name</label>
+					<label for="service">Nama Bank</label>
 					<input type="text" name="name" class="form-control" placeholder="bank name">
 				</div>
 				<div class="form-group">
-					<label for="service">Bank Number</label>
+					<label for="service">Rek Bank</label>
 					<input type="text" name="no" class="form-control" placeholder="bank number">
 				</div>
 				<div class="form-group">
-					<label for="service">Bank Account</label>
+					<label for="service">Atas Nama</label>
 					<input type="text" name="account" class="form-control" placeholder="bank account">
 				</div>
 				<div class="form-group">
-					<label for="service">Image</label>
+					<label for="service">Gambar</label>
 					<input type="file" name="image" class="form-control" required>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -169,26 +169,26 @@
 			<?php echo form_open_multipart('admin/bank/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="service">Bank Name</label>
+					<label for="service">Nama Bank</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="bank name">
 				</div>
 				<div class="form-group">
-					<label for="service">Bank Number</label>
+					<label for="service">Rek Bank</label>
 					<input id="no" type="text" name="no" class="form-control" placeholder="bank number">
 				</div>
 				<div class="form-group">
-					<label for="service">Bank Account</label>
+					<label for="service">Atas Nama</label>
 					<input id="account" type="text" name="account" class="form-control" placeholder="bank account">
 				</div>
 				<div class="form-group">
-					<label for="service">Image</label>
+					<label for="service">Gambar</label>
 					<input type="file" name="image" class="form-control">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

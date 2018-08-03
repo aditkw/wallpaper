@@ -457,6 +457,37 @@ class Member extends Frontend_Controller
 		}
 	}
 
+	function subscribe()
+	{
+		$email			= $this->input->post('email_address');
+
+		$this->form_validation->set_rules('email_address','Email','required|is_unique[lwd_mailchimp.mailchimp_email]');
+		$this->form_validation->set_error_delimiters('', '');
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['message'] = validation_errors();
+			$data['status'] = 0;
+		}
+		else {
+			$array_data['mailchimp_email'] = $email;
+			/*mendapatkan id member, jika bukan member, id_member bernilai 0 (nol)*/
+			$member_id = (!empty($this->session->userdata('member_session')))
+				?
+					$this->encrypt->decode(hash_link_decode($this->session->userdata('member_session')))
+						:
+						 0;
+
+			$array_data['member_id'] = $member_id;
+
+			$data['id_sub'] = $this->mailchimp_model->insert($array_data);
+			$data['message'] = 'Terima kasih sudah berlangganan email dari kami!';
+			$data['status'] = 1;
+		}
+
+		echo json_encode($data);
+
+	}
+
 	public function ajax_city()
 	{
 		$id 					= $this->input->post('dataID');

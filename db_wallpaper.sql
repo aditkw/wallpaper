@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2018 at 01:53 PM
+-- Generation Time: Aug 03, 2018 at 01:43 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 5.6.32
 
@@ -49,7 +49,9 @@ CREATE TABLE `lwd_article` (
 --
 
 INSERT INTO `lwd_article` (`article_id`, `article_tag`, `article_title`, `article_title_en`, `article_review`, `article_review_en`, `article_desc`, `article_desc_en`, `article_date`, `article_pub`, `article_image`, `article_alt`, `article_link`) VALUES
-(1, 'Notebook', 'testy', '', '', '', '<p>qwew</p>\r\n', '', '2018-07-09 00:00:00', '99', '', 'testy', 'testy');
+(1, 'OS, App, Note book', 'USA: Here Come The New Lease Rules!', '', '', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo.</p>\r\n', '', '2018-07-09 00:00:00', '88', '', 'USA: Here Come The New Lease Rules!', 'usa-here-come-the-new-lease-rules'),
+(2, 'Android, App, Smartphone', 'Cyprus: Tax Treaties Signed With Saudi Arabia', '', '', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo.</p>\r\n\r\n<p>Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo.</p>\r\n\r\n<p> </p>\r\n\r\n<h2>Dolor Ipsum</h2>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo.</p>\r\n\r\n<p>Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo.</p>\r\n\r\n<p> </p>\r\n\r\n<h2>Lorem Dolor?</h2>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo.</p>\r\n', '', '2018-07-25 00:00:00', '88', '', 'Cyprus: Tax Treaties Signed With Saudi Arabia', 'cyprus-tax-treaties-signed-with-saudi-arabia'),
+(3, 'Promo', 'Promo Lebaran', '', '', '', '<p>Cek promo lebaran yang kami punya</p>\r\n', '', '2018-07-30 00:00:00', '99', '', 'Promo Lebaran', 'promo-lebaran');
 
 -- --------------------------------------------------------
 
@@ -94,12 +96,8 @@ CREATE TABLE `lwd_banner` (
 --
 
 INSERT INTO `lwd_banner` (`banner_id`, `banner_type`, `banner_link`, `banner_alt`, `banner_pub`, `banner_image`) VALUES
-(7, 'banner', '#', 'erakomp', '99', 'erakomp-115.jpg'),
-(8, 'banner', '#', 'erakomp', '99', 'erakomp-1469.jpg'),
-(9, 'banner', '#', 'erakomp', '99', 'erakomp-4622.jpg'),
-(10, 'banner', '#', 'erakomp', '99', 'erakomp-5173.jpg'),
-(11, 'banner', '#', 'erakomp', '99', 'erakomp-6375.jpg'),
-(12, 'banner', '#', 'erakomp', '99', 'erakomp-7445.jpg'),
+(7, 'banner', '#', 'wallpaper promo', '99', 'erakomp-286.jpg'),
+(8, 'banner', '#', 'wallpaper indonesia', '99', 'wallpaper-indonesia-8717.jpg'),
 (13, 'slide', '#', '#', '99', '-6528.jpg');
 
 -- --------------------------------------------------------
@@ -775,7 +773,7 @@ CREATE TABLE `lwd_image` (
 --
 
 INSERT INTO `lwd_image` (`image_id`, `parent_id`, `image_parent_name`, `image_name`, `image_seq`) VALUES
-(255, 1, 'article', 'testy-7050.JPG', 0),
+(255, 1, 'article', 'usa-here-come-the-new-lease-rules-7489.jpg', 0),
 (256, 104, 'product', 'alt-5962.jpg', 0),
 (257, 104, 'product', 'alt-5963.png', 1),
 (258, 104, 'product', 'alt-5964.jpg', 2),
@@ -810,7 +808,9 @@ INSERT INTO `lwd_image` (`image_id`, `parent_id`, `image_parent_name`, `image_na
 (287, 108, 'product', 'asd-5523.jpg', 3),
 (288, 108, 'product', 'asd-5524.jpg', 4),
 (289, 108, 'product', 'asd-5525.jpg', 5),
-(290, 108, 'product', 'asd-5526.jpg', 6);
+(290, 108, 'product', 'asd-5526.jpg', 6),
+(291, 2, 'article', 'cyprus-tax-treaties-signed-with-saudi-arabia-7090.jpg', 0),
+(292, 3, 'article', 'promo-lebaran-4037.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -834,7 +834,7 @@ CREATE TABLE `lwd_info` (
 --
 
 INSERT INTO `lwd_info` (`info_id`, `catinfo_id`, `info_name`, `info_name_en`, `info_desc`, `info_desc_en`, `info_pub`, `info_image`) VALUES
-(1, 1, 'Lorem ipsum.', 'info name', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo. Aenean a enim sed elit rhoncus facilisis. Suspendisse in lorem blandit, convallis eros non, venenatis augue.</p>\r\n', 'info description', '88', '3263-lorem-ipsum-imgre3s.png'),
+(1, 1, 'Wallpaper Indonesia', 'info name', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum. Nulla facilisi. Aliquam vitae magna leo. Aenean a enim sed elit rhoncus facilisis. Suspendisse in lorem blandit, convallis eros non, venenatis augue.</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non bibendum lacus elementum.</p>\r\n\r\n<p>Nulla facilisi. Aliquam vitae magna leo. Aenean a enim sed elit rhoncus facilisis. Suspendisse in lorem blandit, convallis eros non, venenatis augue.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Donec in est non diam congue dignissim. Sed ac purus ac mauris feugiat efficitur. Donec luctus nibh sit amet massa ornare interdum. Nunc id elit tempor, luctus nibh vel, viverra leo. Donec non ante vehicula nisl sodales ultrices. Integer viverra lacinia turpis vehicula convallis. Quisque commodo, neque eget feugiat pharetra, leo nibh consectetur tortor, eget tempus felis tortor non dolor. In hac habitasse platea dictumst. Donec vestibulum felis eget quam elementum, non.</p>\r\n', 'info description', '88', 'lorem-ipsum-4497.png'),
 (3, 2, 'Term and Conditions', '', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sem velit, rhoncus quis venenatis et, iaculis id nunc. Nulla ut quam suscipit, molestie velit at, interdum tortor. Praesent vel tortor sed sapien facilisis accumsan maximus ut eros. Nulla pellentesque augue nisl, non rutrum ante imperdiet eu. Morbi porttitor volutpat justo, vitae suscipit enim euismod vel. Sed quis est non urna tincidunt finibus. Donec eget ullamcorper ipsum.</p>\r\n\r\n<p>In elit lorem, molestie non vestibulum vitae, consectetur ut diam. Sed eu nisi diam. Donec arcu tellus, pulvinar ac consectetur vel, auctor posuere elit.</p>\r\n', '', '88', ''),
 (5, 3, 'd', '', 'ddd', '', '88', ''),
 (6, 4, 'Cari Barang', '', '<p>Kamu dapat mencari barang yang kamu inginkan dengan fitur <strong>Search</strong> atau berdasarkan kategori.</p>\r\n', '', '99', ''),
@@ -842,6 +842,30 @@ INSERT INTO `lwd_info` (`info_id`, `catinfo_id`, `info_name`, `info_name_en`, `i
 (8, 4, 'Shopping Review', '', '<p>Kamu wajib melengkapi alamat pengiriman barang pada halaman shopping review.</p>\r\n', '', '99', ''),
 (9, 4, 'Pembayaran', '', '<p>Kamu dapat melakukan pembayaran ke rekening Bukalapak melalui <strong>BukaDompet</strong>, <strong>Mandiri ClickPay</strong>, <strong>BCA KlikPay</strong>, <strong>CIMB Clicks</strong> , <strong>Kartu Visa/Mastercard</strong> atau <strong>Transfer</strong></p>\r\n', '', '99', ''),
 (10, 4, 'Konfirmasi Terima Barang', '', '<p>Setelah barang sampai, lakukan konfirmasi dengan menekan <strong>Konfirmasi Terima Barang</strong> pada halaman <strong>Detail Transaksi</strong>.<br> Transaksi akan dianggap selesai setelah kamu memberikan konfirmasi terima barang kepada pelapak yang bersangkutan.</p>\r\n', '', '99', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lwd_mailchimp`
+--
+
+CREATE TABLE `lwd_mailchimp` (
+  `mailchimp_id` int(11) NOT NULL,
+  `mailchimp_email` varchar(255) NOT NULL,
+  `member_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lwd_mailchimp`
+--
+
+INSERT INTO `lwd_mailchimp` (`mailchimp_id`, `mailchimp_email`, `member_id`) VALUES
+(22, 'aditlawave@gmail.com', 10),
+(23, 'aditwalihadi@lawavedesign.com', 10),
+(26, 'steph@mail.com', 0),
+(27, 'test@mail.com', 0),
+(28, 'enau@gmail.com', 0),
+(29, 'aditwalihadi14@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -871,11 +895,8 @@ CREATE TABLE `lwd_member` (
 --
 
 INSERT INTO `lwd_member` (`member_id`, `province_id`, `city_id`, `district_id`, `reason_id`, `member_name`, `member_email`, `member_phone`, `member_address`, `member_postcode`, `member_password`, `member_status`, `member_block`, `member_image`) VALUES
-(0, 0, 0, 0, 0, 'the buyer is not a member', '', '', '', '', '', 'verified', 'active', ''),
-(7, 0, 0, 0, 1, 'Syarif Syabana', 'syarif@gmail.com', '081906096810', '', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'unverified', 'active', ''),
-(8, 3, 456, 6308, 3, 'Muhamad Syarif SyaBana', 'syariflwd@gmail.com', '02155740759', 'Kebon nanas', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'verified', 'active', ''),
-(9, 6, 152, 2096, 0, 'Syarif Lwd', 'syarif@lawavedesign.com', '081906096810', 'Kebon Nanas RT 006/02, No B96 Kel Panunggangan Utara', '', 'e6980d3379562a6b464ada71870793acb0d6b629', 'verified', 'active', ''),
-(10, 0, 0, 0, 0, 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', '', '', '875814e930290eced1fb938f8c7451d199997826', 'verified', 'active', '');
+(0, 0, 0, 0, 0, 'bukan member', '', '', '', '', '', 'verified', 'active', ''),
+(10, 3, 456, 6297, 0, 'adit walihadi', 'aditwalihadi14@gmail.com', '087881908586', 'Jl Batuceper Blok H21', '', '875814e930290eced1fb938f8c7451d199997826', 'verified', 'active', '');
 
 -- --------------------------------------------------------
 
@@ -917,6 +938,15 @@ CREATE TABLE `lwd_order` (
   `order_weight` int(11) NOT NULL,
   `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lwd_order`
+--
+
+INSERT INTO `lwd_order` (`order_id`, `order_no`, `product_id`, `order_price`, `order_price_disc`, `order_qty`, `order_subtotal`, `order_weight`, `order_date`) VALUES
+(1, '105948', 104, '250000', '225000', 1, '225000', 2, '2018-07-24 17:32:15'),
+(2, '13860', 105, '300000', '255000', 1, '255000', 2, '2018-07-26 11:27:38'),
+(3, '79524', 104, '250000', '225000', 1, '225000', 2, '2018-08-03 15:13:34');
 
 -- --------------------------------------------------------
 
@@ -983,7 +1013,7 @@ INSERT INTO `lwd_product` (`product_id`, `category_id`, `color_id`, `brand_id`, 
 (105, 16, 3, 16, '202-356', 'Wallpaper Example 202', 'tada', '300000', 17, '400000', 2, '340, 400', '99', 2, 'wallpaper-example-202', 15),
 (106, 16, 4, 20, '302-354', 'Wallpaper Example 302-3', 'wat', '400000', 50, '550000', 23, '240, 300', '99', 3, 'wallpaper-example-302-3', 50),
 (107, 16, 4, 20, '402-334', 'Wallpaper Example 402-334', 'attr', '450000', 42, '600000', 4, '450, 500', '99', 4, 'wallpaper-example-402-334', 35),
-(108, 16, 4, 16, '121241ff', 'qweqwe', 'asd', '123123', 21, '123123', 12, '21, 21', '99', 2, 'qweqwe', 12);
+(108, 16, 4, 16, '121241ff', 'qweqwe', 'asd', '123123', 21, '123123', 12, '21, 21', '99', 2, 'qweqwe', 0);
 
 -- --------------------------------------------------------
 
@@ -1149,7 +1179,9 @@ INSERT INTO `lwd_tag` (`tag_id`, `tag_name`, `tag_name_en`, `tag_pub`, `tag_link
 (3, 'Notebook', '', '99', 'notebook'),
 (4, 'App', '', '99', 'app'),
 (5, 'OS', '', '99', 'os'),
-(6, 'Android', '', '99', 'android');
+(6, 'Android', '', '99', 'android'),
+(7, 'Wallpaper', '', '99', 'wallpaper'),
+(8, 'Promo', '', '99', 'promo');
 
 -- --------------------------------------------------------
 
@@ -1271,10 +1303,10 @@ CREATE TABLE `lwd_trans_status` (
 --
 
 INSERT INTO `lwd_trans_status` (`trans_status_id`, `trans_status_name`, `trans_status_name_en`) VALUES
-(1, 'Unpaid Order', ''),
-(2, 'Transaction Confirmed', ''),
-(3, 'On Delivery', ''),
-(4, 'Transaction Complete', '');
+(1, 'Belum Dibayar', ''),
+(2, 'Transaksi Dikonfirmasi', ''),
+(3, 'Proses Pengiriman', ''),
+(4, 'Transaksi Selesai', '');
 
 -- --------------------------------------------------------
 
@@ -1322,7 +1354,7 @@ CREATE TABLE `lwd_voucher` (
 
 INSERT INTO `lwd_voucher` (`voucher_id`, `voucher_code`, `voucher_discount`, `voucher_expired`, `voucher_limit`, `voucher_pub`) VALUES
 (0, 'novoucher', 0, '9999-12-31', 99, '99'),
-(1, 'freevoucher', 90000, '2018-07-18', 3, '99');
+(1, 'freevoucher', 90000, '2018-07-23', 3, '99');
 
 --
 -- Indexes for dumped tables
@@ -1395,6 +1427,12 @@ ALTER TABLE `lwd_image`
 --
 ALTER TABLE `lwd_info`
   ADD PRIMARY KEY (`info_id`);
+
+--
+-- Indexes for table `lwd_mailchimp`
+--
+ALTER TABLE `lwd_mailchimp`
+  ADD PRIMARY KEY (`mailchimp_id`);
 
 --
 -- Indexes for table `lwd_member`
@@ -1517,7 +1555,7 @@ ALTER TABLE `lwd_voucher`
 -- AUTO_INCREMENT for table `lwd_article`
 --
 ALTER TABLE `lwd_article`
-  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `article_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lwd_bank`
@@ -1571,13 +1609,19 @@ ALTER TABLE `lwd_contact`
 -- AUTO_INCREMENT for table `lwd_image`
 --
 ALTER TABLE `lwd_image`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=291;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=293;
 
 --
 -- AUTO_INCREMENT for table `lwd_info`
 --
 ALTER TABLE `lwd_info`
   MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `lwd_mailchimp`
+--
+ALTER TABLE `lwd_mailchimp`
+  MODIFY `mailchimp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `lwd_member`
@@ -1595,7 +1639,7 @@ ALTER TABLE `lwd_motif`
 -- AUTO_INCREMENT for table `lwd_order`
 --
 ALTER TABLE `lwd_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `lwd_payment`
@@ -1637,7 +1681,7 @@ ALTER TABLE `lwd_shipment`
 -- AUTO_INCREMENT for table `lwd_tag`
 --
 ALTER TABLE `lwd_tag`
-  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `tag_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `lwd_testi`

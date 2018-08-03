@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Product
+			Produk
 			<small>update data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li><a href="<?php echo site_url('admin/product');?>">Products</a></li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li><a href="<?php echo site_url('admin/product');?>">Produk</a></li>
 			<li class="active">Update</li>
 		</ol>
 	</section>
@@ -23,7 +23,7 @@
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
 						<div class="form-group">
-							<label for="product">Image Index</label>
+							<label for="product">Gambar Index</label>
 							<input type="hidden" name="id_image_0" value="<?php echo $image_index->image_id;?>">
 							<input type="file" name="image[]" class="img-preview form-control">
 							<img id="preview-image" src="<?php echo base_url($path_file.'/'.$image_index->image_name);?>" class="img img-responsive" alt="image index">
@@ -33,16 +33,16 @@
 						<div class="row">
 							<div class="col-md-4 col-lg-4">
 								<div class="form-group">
-									<label for="product">Code</label>
+									<label for="product">Kode</label>
 									<input type="hidden" name="id" value="<?php echo $product->product_id;?>">
 									<input type="text" name="code" class="form-control" value="<?php echo $product->product_code;?>" placeholder="product code" required>
 								</div>
 							</div>
 							<div class="col-md-4 col-lg-4">
 								<div class="form-group">
-									<label for="product">Category</label>
+									<label for="product">Kategori</label>
 										<select id="category" name="category" class="form-control" required>
-											<option disabled selected>Select Category</option>
+											<option disabled selected>Pilih Kategori</option>
 											<?php foreach ($category as $category): ?>
 												<option value="<?php echo $category->category_id;?>" <?php if ($product->category_id == $category->category_id): ?> selected <?php endif ?>>
 													<?php echo ucwords($category->category_name);?>
@@ -68,9 +68,9 @@
 						<div class="row">
 							<div class="col-md-offset-2 col-md-8 col-lg-8">
 								<div class="form-group">
-									<label for="product">Color</label>
+									<label for="product">Warna</label>
 									<select id="color" name="color" class="form-control" required>
-										<option disabled>Select Color</option>
+										<option disabled>Pilih Warna</option>
 										<?php foreach ($color as $color): ?>
 											<option value="<?php echo $color->color_id;?>" <?php if ($product->color_id == $color->color_id): ?> selected <?php endif ?>>
 												<?php echo ucwords($color->color_name);?>
@@ -97,7 +97,7 @@
 						<div class="row">
 							<div class="col-md-12 col-lg-12">
 								<div class="form-group">
-									<label for="product">Name</label>
+									<label for="product">Nama Produk</label>
 									<input type="text" name="name" class="form-control" value="<?php echo $product->product_name;?>" placeholder="product name" required>
 								</div>
 							</div>
@@ -121,30 +121,30 @@
 				<div class="row">
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Price</label>
+							<label for="product">Harga</label>
 							<input type="number" name="price" class="form-control" value="<?php echo $product->product_price;?>" placeholder="product price" required>
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Price Strip</label>
+							<label for="product">Harga Coret</label>
 							<input type="number" name="strip" class="form-control" value="<?php echo $product->product_price_strip;?>" placeholder="product price strip">
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Discount(%)</label>
+							<label for="product">Diskon(%)</label>
 							<input type="number" name="discount" class="form-control" value="<?php echo $product->product_discount;?>" placeholder="product discount">
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Weight (kg)</label>
+							<label for="product">Berat (kg)</label>
 							<input type="number" name="weight" class="form-control" value="<?php echo $product->product_weight;?>" placeholder="product weight" required>
 						</div>
 					</div>
 					<div class="col-md-4 col-lg-4">
-						<label for="product">Size (Width x Height) (cm)</label>
+						<label for="product">Ukuran (Lebar x Tinggi) (cm)</label>
 						<div class="row">
 							<div class="col-md-6 col-lg-6">
 								<div class="form-group">
@@ -160,7 +160,7 @@
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Stock</label>
+							<label for="product">Stok</label>
 							<input type="number" name="stock" class="form-control" value="<?php echo $product->product_stock;?>" placeholder="product stock" required>
 						</div>
 					</div>
@@ -178,7 +178,7 @@
 				<div class="row">
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Image Banner</label>
+							<label for="product">Gambar Banner</label>
 							<input type="hidden" name="id_image_1" value="<?php echo $image_banner->image_id;?>">
 							<input type="file" name="image[]" class="img-preview form-control">
 							<img id="preview-image" src="<?php echo base_url($path_file.'/'.$image_banner->image_name);?>" class="img img-responsive" alt="image index">
@@ -186,7 +186,7 @@
 					</div>
 					<div class="col-md-4 col-lg-4">
 						<div class="form-group">
-							<label for="product">Image Alt</label>
+							<label for="product">Alt Gambar</label>
 							<input type="text" name="alt" class="form-control" value="<?php echo $product->product_alt;?>" placeholder="image alt" required>
 						</div>
 					</div>
@@ -203,7 +203,7 @@
 						<div class="form-group">
 							<div class="callout callout-warning">
 								<h4><i class="fa fa-warning"></i></h4>
-								<p><strong>Image Index</strong> digunakan sebagai gambar utama dan harus diisi.</p>
+								<p><strong>Gambar Index</strong> digunakan sebagai gambar utama dan harus diisi.</p>
 							</div>
 						</div>
 					</div>
@@ -212,7 +212,7 @@
 						<?php if (!in_array($image->image_seq, $a)): ?>
 							<div class="col-md-5ths col-lg-5ths col-sm-6 col-xs-10">
 								<div class="form-group">
-									<label for="product">Image </label>
+									<label for="product">Gambar </label>
 									<input type="hidden" name="id_image_<?php echo $no;?>" value="<?php echo $image->image_id;?>">
 									<input type="file" name="image[]" class="form-control">
 									<?php if (!empty($image->image_name)): ?>
@@ -233,7 +233,7 @@
 				<hr>
 				<div class="form-group">
 					<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+					<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 				</div>
 				<?php echo form_close();?>
 			</div><!-- /.box-body -->

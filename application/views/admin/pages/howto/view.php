@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			How to Buy
+			Cara Pembelian
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Service</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Cara Pembelian</li>
 		</ol>
 	</section>
 
@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -55,15 +55,15 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<table id="datatable1" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th width="5%">#</th>
-							<th>Step Name</th>
-							<th>Description</th>
-							<th width="15%">Action</th>
+							<th>Langkah</th>
+							<th>Deskripsi</th>
+							<th width="15%">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -86,7 +86,7 @@
 									<a class="btn btn-flat btn-default btn-edit-howto" data-id="<?php echo $howto->info_id;?>" title="Update">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a onclick="return confirm('Are you sure ?')"  href="<?php echo site_url('admin/howto/delete/'.$howto->info_id);?>" class="btn btn-warning btn-flat" title="Delete">
+									<a onclick="return confirm('Apa anda yakin ?')"  href="<?php echo site_url('admin/howto/delete/'.$howto->info_id);?>" class="btn btn-warning btn-flat" title="Delete">
 									<i class="fa fa-trash"></i>
 									</a>
 								</td>
@@ -96,9 +96,9 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Step Name</th>
-							<th>Description</th>
-							<th>Action</th>
+							<th>Langkah</th>
+							<th>Deskripsi</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -115,22 +115,22 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add Step</h4>
+				<h4 class="modal-title">Tambah Langkah-Langkah</h4>
 			</div>
 			<?php echo form_open_multipart('admin/howto/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="faq">Step Name</label>
+					<label for="faq">Langkah-langkah</label>
 					<input type="text" name="name" class="form-control" placeholder="step name">
 				</div>
 				<div class="form-group">
-					<label for="faq">Description</label>
+					<label for="faq">Deskripsi</label>
 					<textarea name="desc" class="ckeditor" placeholder="description" rows="5"></textarea>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -145,23 +145,23 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">update Step</h4>
+				<h4 class="modal-title">Update Langkah-langkah</h4>
 			</div>
 			<?php echo form_open_multipart('admin/howto/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="faq">Step Name</label>
+					<label for="faq">Langkah-langkah</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="step name">
 				</div>
 				<div class="form-group">
-					<label for="faq">Description</label>
+					<label for="faq">Deskripsi</label>
 					<textarea id="desc" name="desc" class="ckeditor" placeholder="description" rows="5"></textarea>
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

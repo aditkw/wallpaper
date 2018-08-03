@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -58,7 +58,7 @@
 					<thead>
 						<tr>
 							<th width="5%">#</th>
-							<th width="15%">Photo</th>
+							<!-- <th width="15%">Photo</th> -->
 							<th width="20%">Name</th>
 							<th>Email</th>
 							<th>Status</th>
@@ -70,9 +70,9 @@
 							<?php if ($member->member_id != 0): ?>
 								<tr>
 									<td><?php echo $no;?></td>
-									<td>
+									<!-- <td> -->
 										<!-- IMAGE -->
-									</td>
+									<!-- </td> -->
 									<td>
 										<?php echo ucwords($member->member_name);?>
 									</td>
@@ -123,7 +123,7 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Photo</th>
+							<!-- <th>Photo</th> -->
 							<th>Name</th>
 							<th>Email</th>
 							<th>Status</th>
@@ -162,7 +162,7 @@
 							<?php if ($reason->reason_id != 0): ?>
 								<option value="<?php echo $reason->reason_id?>">
 									<?php echo ucwords($reason->reason_name)?>
-								</option>		
+								</option>
 							<?php endif ?>
 						<?php endforeach ?>
 					</select>

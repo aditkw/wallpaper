@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Transaction
-			<small>sales report</small>
+			Transaksi
+			<small>laporan penjualan</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Sales Report</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Laporan Penjualan</li>
 		</ol>
 	</section>
 
@@ -18,7 +18,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -31,7 +31,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -42,7 +42,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -57,7 +57,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-md-6 col-lg-6">
-						
+
 					</div>
 					<div class="col-md-6 col-lg-6">
 						<?php echo form_open('admin/transaction/report', array('method' => 'GET')) ?>
@@ -76,7 +76,7 @@
 								</div>
 								<div class=" col-md-2 col-lg-2">
 									<div>
-										<button type="submit" class="btn btn-block btn-sm btn-flat btn-success">Sort</button>
+										<button type="submit" class="btn btn-block btn-sm btn-flat btn-success">Urutkan</button>
 									</div>
 								</div>
 							</div>
@@ -88,9 +88,9 @@
 						<thead>
 							<tr>
 								<th width="5%">#</th>
-								<th width="15%">Order No</th>
-								<th>Order Date</th>
-								<th>Name</th>
+								<th width="15%">No Pesanan</th>
+								<th>Tgl Pesan</th>
+								<th>Nama Member</th>
 								<th width="15%">Total</th>
 								<th>Status</th>
 								<th width="15%">Action</th>
@@ -99,7 +99,7 @@
 						<tbody>
 							<?php $no = 1; foreach ($transaction as $trans): ?>
 								<tr>
-									<?php 
+									<?php
 									$total[$no] = $trans->transaction_total;
 									$trans_date = indonesian_date($trans->transaction_date);
 									?>
@@ -108,7 +108,7 @@
 									<td><?php echo $trans_date['date'] ?></td>
 									<td><?php echo $trans->transaction_name ?></td>
 									<td><?php echo rupiah($trans->transaction_total) ?></td>
-									<td><?php echo $status_trans = ($trans->trans_status_id == 4) ? 'Closed' : 'Delivery'; ?></td>
+									<td><?php echo $status_trans = ($trans->trans_status_id == 4) ? 'Selesai' : 'Proses Kirim'; ?></td>
 									<td>
 										<!-- VIEW DETAIL -->
 										<a class="btn btn-sm btn-flat btn-default" href="<?php echo site_url('admin/transaction/transaction-detail/'.$trans->order_no.'/'.hash_link_encode($this->encrypt->encode($trans->trans_status_id))) ?>" title="Detail <?php echo $trans->order_no ?>">
@@ -120,13 +120,13 @@
 						</tbody>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Order No</th>
-								<th>Order Date</th>
-								<th>Name</th>
-								<th>Total</th>
+								<th width="5%">#</th>
+								<th width="15%">No Pesanan</th>
+								<th>Tgl Pesan</th>
+								<th>Nama Member</th>
+								<th width="15%">Total</th>
 								<th>Status</th>
-								<th>Action</th>
+								<th width="15%">Action</th>
 							</tr>
 						</thead>
 					</table>
@@ -143,11 +143,11 @@
 								<td>
 									<strong>Total</strong>
 								</td>
-								<td align="center"> 
-									<?php 
+								<td align="center">
+									<?php
 									if ($no > 1) {
 										echo rupiah(array_sum($total));
-									} 
+									}
 
 									else {
 										'';

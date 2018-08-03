@@ -55,16 +55,16 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<table id="datatable1" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th width="5%">#</th>
 							<!-- <th width="15%">Image</th> -->
-							<th width="80%">Motif Name</th>
+							<th width="80%">Nama Motif</th>
 							<!-- <th>Description</th> -->
-							<th>Action</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -105,9 +105,9 @@
 						<tr>
 							<th>#</th>
 							<!-- <th>Image</th> -->
-							<th>Motif Name</th>
+							<th>Nama Motif</th>
 							<!-- <th>Description</th> -->
-							<th>Action</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -124,12 +124,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New motif</h4>
+				<h4 class="modal-title">Tambah Motif Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/motif/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="motif">Motif Name</label>
+					<label for="motif">Nama Motif</label>
 					<input type="text" name="name" class="form-control" placeholder="motif name" required>
 				</div>
 <!--
@@ -149,7 +149,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -169,7 +169,7 @@
 			<?php echo form_open_multipart('admin/motif/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="motif">Motif Name</label>
+					<label for="motif">Nama Motif</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="motif name" required>
 				</div>
@@ -190,7 +190,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

@@ -33,7 +33,7 @@ endif;
 					</table>
 				</div>
 				<div class="box-gambar">
-					<div id="prodBrand" class="owl-carousel">
+					<div id="prodBrand">
 						<?php foreach($banner as $banner): ?>
 						<img class="imgKcl" data-img="<?=$banner->image_name?>" src="<?=site_url("uploads/img/product/$banner->image_name")?>" alt="">
 						<?php endforeach; ?>
@@ -68,16 +68,27 @@ endif;
 						<?php $count = $this->product_model->count(array('brand_id' => $brand->brand_id)) ?>
 							<p><a href="<?=site_url('produk/'.$uri_2.'/'.$brand->brand_link)?>"><?=$brand->brand_name?> (<?=$count?>)</a></p>
 						<?php endforeach; ?>
-						<p id="lainMerk">Lainnya <i class="fa fa-angle-down"></i></p>
+            <div id="toogbrand" class="ngumpet">
+              <?php foreach ($unvbrands as $brand): ?>
+  						<?php $count = $this->product_model->count(array('brand_id' => $brand->brand_id)) ?>
+  							<p><a href="<?=site_url('produk/'.$uri_2.'/'.$brand->brand_link)?>"><?=$brand->brand_name?> (<?=$count?>)</a></p>
+  						<?php endforeach; ?>
+            </div>
+						<p id="lainBrand" class="pointer">Lainnya <i class="fa fa-angle-down"></i></p>
 					</div>
 					<div class="filter">
 						<p class="f-mont text-biru"><i class="fa fa-filter"></i>&nbsp;&nbsp;Filter Produk</p>
 						<div class="motif">
 							<p class="text-xbabu">Berdasarkan motif</p>
 							<?php foreach ($motif as $motif): ?>
-								<p><input class="motifcheck" type="checkbox" value="<?=$motif->motif_link?>">&nbsp;&nbsp;<?=$motif->motif_name?></p>
+                <p><input class="motifcheck" type="checkbox" value="<?=$motif->motif_link?>">&nbsp;&nbsp;<?=$motif->motif_name?></p>
 							<?php endforeach; ?>
-							<p class="text-xbabu" id="lainMotif">Tampilkan lebih sedikit <i class="fa fa-angle-up"></i></p>
+              <div id="toogmotif" class="ngumpet">
+              <?php foreach ($unvmotif as $motif): ?>
+                <p><input class="motifcheck" type="checkbox" value="<?=$motif->motif_link?>">&nbsp;&nbsp;<?=$motif->motif_name?></p>
+              <?php endforeach; ?>
+              </div>
+							<p class="text-xbabu pointer" id="lainMotif">Tampilkan lebih banyak <i class="fa fa-angle-down"></i></p>
 						</div>
 						<div class="warna">
 							<p class="text-xbabu">Berdasarkan warna</p>
@@ -92,7 +103,20 @@ endif;
 							?>
 								<p><input <?=$checked?> class="colorcheck" type="checkbox" value="<?=$color->color_link?>">&nbsp;&nbsp;<?=$color->color_name?></p>
 							<?php endforeach; ?>
-							<p class="text-xbabu" id="lainWarna">Tampilkan lebih sedikit <i class="fa fa-angle-up"></i></p>
+              <div id="toogcolor" class="ngumpet">
+              <?php foreach ($unvcolor as $color):
+                if (!empty($_GET['color'])){
+							    $color_get = explode(',', $_GET['color']);
+							    (in_array($color->color_link, $color_get)) ? $checked = 'checked' : $checked = '' ;
+							  }
+							  else {
+							    $checked = '';
+							  }
+              ?>
+                <p><input <?=$checked?> class="colorcheck" type="checkbox" value="<?=$color->color_link?>">&nbsp;&nbsp;<?=$color->color_name?></p>
+              <?php endforeach; ?>
+              </div>
+							<p class="text-xbabu pointer" id="lainColor">Tampilkan lebih banyak <i class="fa fa-angle-down"></i></p>
 						</div>
 						<?=form_open("produk/wallpaper/$uri_3", array('method' => 'GET'))?>
 						<div class="harga">
@@ -163,7 +187,7 @@ endif;
 
 	totalP.innerHTML = hitung
 
-  let abs = "http://localhost/wallpaper/"
+  let abs = "<?=site_url()?>"
   let imgAwal = $("#atas-brand").attr('img-awal')
   let choose;
   switch (imgAwal) {
@@ -185,28 +209,30 @@ endif;
     $('#atas-brand').css("background-image", "url("+abs+"uploads/img/product/"+attrKcl+")").fadeOut().fadeIn();
   });
 
-  $("#prodBrand").owlCarousel({
-    loop:false,
-    autoplay: true,
-    smartSpeed: 1000,
-    responsiveClass:true,
-    autoplayHoverPause: false,
-    responsive:{
-      320:{
-        items:1
-      },
-      480:{
-        items:2
-      },
-      600:{
-        items:3
-      },
-      768:{
-        items:4
-      },
-      1000:{
-        items:5
-      }
+  $("#lainBrand").on('click', function(){
+    $("#toogbrand").toggle("fast");
+    $(this).remove();
+  });
+
+  $("#lainMotif").on('click', function(){
+    let i = $(this).find("i");
+    $("#toogmotif").toggle("fast");
+    if (i.hasClass('fa-angle-down')) {
+      $(this).html("Tampilkan lebih sedikit <i class=\"fa fa-angle-up\"></i>");
+    }
+    else {
+      $(this).html("Tampilkan lebih banyak <i class=\"fa fa-angle-down\"></i>");
+    }
+  });
+
+  $("#lainColor").on('click', function(){
+    let i = $(this).find("i");
+    $("#toogcolor").toggle("fast");
+    if (i.hasClass('fa-angle-down')) {
+      $(this).html("Tampilkan lebih sedikit <i class=\"fa fa-angle-up\"></i>");
+    }
+    else {
+      $(this).html("Tampilkan lebih banyak <i class=\"fa fa-angle-down\"></i>");
     }
   });
 

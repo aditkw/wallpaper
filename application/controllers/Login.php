@@ -52,7 +52,7 @@ class Login extends Frontend_Controller
 			}
 
 			else {
-				$this->session->set_flashdata('failed', 'Oops !!! Username or password incorrect !');
+				$this->session->set_flashdata('failed', 'Oops.. Username atau password salah!');
 				redirect('login');
 			}
 		}
@@ -77,7 +77,7 @@ class Login extends Frontend_Controller
 		$unset 				= $this->session->unset_userdata($array_sess);
 
 		if ($unset) {
-			$this->session->set_flashdata('success','Logout success.');
+			$this->session->set_flashdata('success','Logout berhasil.');
 			redirect(site_url('login'));
 		}
 

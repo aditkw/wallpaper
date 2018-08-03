@@ -145,3 +145,11 @@
 		</div>
 	</section>
 </div>
+
+<script>
+$(".small-img > img").click(function(e){
+	var newsrc = $(this).attr('src');
+	$(".bungkus img").attr('src', newsrc);
+	$(".bungkus a").attr('href', newsrc);
+});
+</script>

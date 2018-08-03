@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Contact
+			Kontak
 			<small></small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Contact</li>
+			<li><a href="#"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Kontak</li>
 		</ol>
 	</section>
 
@@ -57,9 +57,9 @@
 			<div class="box-body">
 				<div class="nav-tabs-custom">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Contact</a></li>
-						<li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Address</a></li>
-						<li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Social Media</a></li>
+						<li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="false">Kontak</a></li>
+						<li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Alamat</a></li>
+						<li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Sosial Media</a></li>
 						<!-- <li class="pull-right"><button type='submit' class="text-muted btn btn-flat btn-primary"><i class="fa fa-save"></i> Save</button></li> -->
 					</ul>
 
@@ -69,15 +69,15 @@
 							<?php echo form_open('admin/contact/update/contact');?>
 							<div class="form-group">
 								<input type="hidden" name="id" value="<?php echo $contact->contact_id;?>">
-								<label for="title">Phone Number</label>
+								<label for="title">No Telpon</label>
 								<input type="text" name="phone" class="form-control" value="<?php echo $contact->contact_phone;?>" placeholder="phone number">
 							</div>
 							<div class="form-group">
-								<label for="title">CS Number</label>
+								<label for="title">No CS</label>
 								<input type="text" name="cs" class="form-control" value="<?php echo $contact->contact_cs;?>" placeholder="cs phone">
 							</div>
 							<div class="form-group">
-								<label for="title">WhatsApp Number</label>
+								<label for="title">Nomor WhatsApp</label>
 								<input type="text" name="wa" class="form-control" value="<?php echo $contact->contact_wa;?>" placeholder="wa number">
 							</div>
 							<div class="form-group">
@@ -85,7 +85,7 @@
 								<input type="email" name="email" class="form-control" value="<?php echo $contact->contact_email;?>" placeholder="email">
 							</div>
 							<div class="form-group">
-								<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+								<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 								<button type="reset" name="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
 							</div>
 							<?php echo form_close();?>
@@ -94,16 +94,16 @@
 						<div class="tab-pane" id="tab_2">
 							<?php echo form_open('admin/contact/update/address');?>
 							<div class="form-group">
-								<label for="title">Address</label>
+								<label for="title">Alamat</label>
 								<input type="hidden" name="id" value="<?php echo $contact->contact_id;?>">
 								<textarea name="address" class="form-control" placeholder="address" rows="3"><?php echo $contact->contact_address;?></textarea>
 							</div>
 							<div class="form-group">
-								<label for="title">Maps Location <span class="badge bg-yellow" data-toggle="modal" data-target="#helpModal" style="cursor: help;">?</span> </label>
+								<label for="title">Lokasi Peta <span class="badge bg-yellow" data-toggle="modal" data-target="#helpModal" style="cursor: help;">?</span> </label>
 								<textarea name="maps" class="form-control" placeholder="maps location" rows="5"><?php echo $contact->contact_maps;?></textarea>
 							</div>
 							<div class="form-group">
-								<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+								<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 								<button type="reset" name="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
 							</div>
 							<?php echo	form_close();?>
@@ -150,12 +150,12 @@
 				<h2 class="modal-title" id="myModalLabel">Update maps location</h2>
 			</div>
 			<div class="modal-body">
-				<h4>1. Go to <a href="http://maps.google.com" target="_blank">http://maps.google.com</a></h4>
-				<h4>2. Search location</h4>
+				<h4>1. Menuju ke <a href="http://maps.google.com" target="_blank">http://maps.google.com</a></h4>
+				<h4>2. Cari lokasi</h4>
 				<img class="img img-responsive" src="<?php echo base_url('dist/img/assets/maps.jpg');?>">
-				<h4>3. Select menu and "Share or embed map"</h4>
+				<h4>3. Pilih menu "Share or embed map"</h4>
 				<img class="img img-responsive" src="<?php echo base_url('dist/img/assets/maps-3.jpg');?>">
-				<h4>3. Copy and paste the section marked red to map locations field.</h4>
+				<h4>3. Copy and paste bagian yang dilingkari ke kolom lokasi peta .</h4>
 				<img class="img img-responsive" src="<?php echo base_url('dist/img/assets/maps-4.jpg');?>">
 			</div>
 			<div class="modal-footer">

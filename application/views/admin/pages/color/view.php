@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Color
+			Warna
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Color</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Warna</li>
 		</ol>
 	</section>
 
@@ -55,16 +55,16 @@
 		<div class="box">
 			<div class="box-body">
 				<div class="form-group text-right">
-					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Add New</button>
+					<button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#add" title="Add New"><i class="fa fa-plus"></i> Tambah Data Baru</button>
 				</div>
 				<table id="datatable1" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th width="5%">#</th>
 							<!-- <th width="15%">Image</th> -->
-							<th width="80%">Color Name</th>
+							<th width="80%">Warna</th>
 							<!-- <th>Description</th> -->
-							<th>Action</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -94,7 +94,7 @@
 									<a class="btn btn-flat btn-default btn-edit-color" data-id="<?php echo $color->color_id;?>" title="Update">
 										<i class="fa fa-edit"></i>
 									</a>
-									<a onclick="return confirm('Are you sure ?')"  href="<?php echo site_url('admin/color/delete/'.$color->color_id);?>" class="btn btn-warning btn-flat" title="Delete">
+									<a onclick="return confirm('Apa anda yakin ?')"  href="<?php echo site_url('admin/color/delete/'.$color->color_id);?>" class="btn btn-warning btn-flat" title="Delete">
 									<i class="fa fa-trash"></i>
 									</a>
 								</td>
@@ -105,9 +105,9 @@
 						<tr>
 							<th>#</th>
 							<!-- <th>Image</th> -->
-							<th>color Name</th>
+							<th>Warna</th>
 							<!-- <th>Description</th> -->
-							<th>Action</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -124,12 +124,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New color</h4>
+				<h4 class="modal-title">Tambah Warna Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/color/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="color">color Name</label>
+					<label for="color">Warna</label>
 					<input type="text" name="name" class="form-control" placeholder="color name" required>
 				</div>
 <!--
@@ -149,7 +149,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -164,12 +164,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Update color</h4>
+				<h4 class="modal-title">Update Warna</h4>
 			</div>
 			<?php echo form_open_multipart('admin/color/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="color">color Name</label>
+					<label for="color">Warna</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="color name" required>
 				</div>
@@ -190,7 +190,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

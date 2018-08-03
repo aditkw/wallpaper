@@ -11,11 +11,11 @@
 		<!-- Theme style -->
 		<link rel="stylesheet" href="<?php echo base_url('dist/css/AdminLTE.min.css');?>">
 		<style type="text/css">
-			.table > tbody > tr > td, 
-			.table > tbody > tr > th, 
-			.table > tfoot > tr > td, 
-			.table > tfoot > tr > th, 
-			.table > thead > tr > td, 
+			.table > tbody > tr > td,
+			.table > tbody > tr > th,
+			.table > tfoot > tr > td,
+			.table > tfoot > tr > th,
+			.table > thead > tr > td,
 			.table > thead > tr > th {
 				padding: 4px;
 			}
@@ -29,7 +29,7 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<h2 class="page-header">
-							LaWaveShop
+							Wallpaper Indonesia
 							<small class="pull-right" style="padding-right: 15px;"><?php $invoice_date = indonesian_date(date('Y-m-d')); echo $invoice_date['date'] ?></small>
 						</h2>
 					</div><!-- /.col -->
@@ -58,12 +58,12 @@
 							<?php if ($transaction->trans_status_id > 1): ?>
 								<?php $date = indonesian_date($payment->payment_date); ?>
 								<tr>
-									<th width="25%"><b>Date Paid</b> </th>
+									<th width="25%"><b>Tgl Bayar</b> </th>
 									<th width="5%"><b>:</b> </th>
 									<td><?php echo $date['date']; ?></td>
 								</tr>
 								<tr>
-									<td><b>Account</b> </td>
+									<td><b>Atas Nama</b> </td>
 									<td> <b>:</b> </td>
 									<td><?php echo $payment->payment_account ?></td>
 								</tr>
@@ -73,25 +73,25 @@
 									<td><?php echo $payment->payment_bank ?></td>
 								</tr>
 								<tr>
-									<td><b>No</b> </td>
+									<td><b>No Rek</b> </td>
 									<td> <b>:</b> </td>
 									<td><?php echo $payment->payment_no ?></td>
 								</tr>
 							<?php endif ?>
-							
+
 							<tr>
-								<td valign="top"><b>Shipment</b> </td>
+								<td valign="top"><b>Pengiriman</b> </td>
 								<td valign="top"> <b>:</b> </td>
 								<td><?php echo $transaction->transaction_shipping ?></td>
 							</tr>
 							<?php if (!empty($transaction->transaction_shipping_no)): ?>
 								<tr>
-									<td valign="top"><b>Receipt No</b> </td>
+									<td valign="top"><b>No Resi</b> </td>
 									<td valign="top"> <b>:</b> </td>
 									<td><?php echo $transaction->transaction_shipping_no ?></td>
 								</tr>
 							<?php endif ?>
-						</table>			
+						</table>
 						<br>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -103,8 +103,9 @@
 							<thead>
 								<tr>
 									<th>Qty</th>
-									<th>Product</th>
-									<th>Price</th>
+									<th>Produk</th>
+									<th>Harga</th>
+									<th>Harga Diskon</th>
 									<th>Subtotal</th>
 								</tr>
 							</thead>
@@ -114,6 +115,7 @@
 										<td><?php echo $item->transaction_item_qty ?></td>
 										<td><?php echo $item->product_name ?></td>
 										<td><?php echo rupiah($item->transaction_item_price) ?></td>
+										<td><?php echo rupiah($item->transaction_item_price_disc)." ($item->product_discount%)" ?></td>
 										<td><?php echo rupiah($item->transaction_item_subtotal) ?></td>
 									</tr>
 								<?php endforeach ?>
@@ -125,7 +127,7 @@
 				<div class="row">
 					<!-- accepted payments column -->
 					<div class="col-xs-6">
-						<p class="lead" style="margin-bottom: 0">Note:</p>
+						<p class="lead" style="margin-bottom: 0">Catatan:</p>
 						<p style="margin-top: 5px;">
 							<?php echo $transaction->transaction_note ?>
 						</p>
@@ -138,9 +140,17 @@
 									<td><?php echo rupiah($transaction->transaction_cost) ?></td>
 								</tr>
 								<tr>
-									<th>Shipping</th>
+									<th>Biaya Kirim</th>
 									<td><?php echo rupiah($transaction->transaction_shipping_cost) ?></td>
 								</tr>
+								<?php if ($transaction->voucher_id): ?>
+									<tr>
+										<th>Diskon Voucher <?php echo "(<em>$transaction->voucher_code</em>)";?></th>
+										<td>
+											<?php echo rupiah($transaction->voucher_discount) ?>
+										</td>
+									</tr>
+								<?php endif; ?>
 								<tr>
 									<th>Total</th>
 									<td><strong><?php echo rupiah($transaction->transaction_total) ?></strong></td>
@@ -158,4 +168,3 @@
 		<script src="<?php echo base_url('dist/js/app.min.js');?>"></script>
 	</body>
 </html>
-	

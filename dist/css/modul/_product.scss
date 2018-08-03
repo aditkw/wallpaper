@@ -69,6 +69,8 @@
       left: 8vw;
       max-width: 43vw;
       img{
+        cursor: pointer;
+        max-width: 20%;
         padding: 0 2px;
         min-height: 45px;
       }
@@ -92,7 +94,7 @@
           border-bottom: 1px solid $abu;
           padding-bottom: 5px;
         }
-        & > p:nth-child(n+2){
+        & > p:nth-child(n+2), & > div#toogbrand > p{
           margin-bottom: 5px;
           padding-left: 15px;
           a{

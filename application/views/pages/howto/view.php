@@ -1,43 +1,32 @@
-<section id="bg-page">
-	<img class="img" src="<?php echo base_url('dist/img/assets/bg-page.jpg');?>" alt="Page Konten">
+<section id="atas">
+	<div class="nav-text text-center middle">
+		<ol class="breadcrumb">
+			<li><a href="<?php echo site_url(); ?>">BERANDA</a></li>
+			<li><a href="#">CARA BELANJA</a></li>
+		</ol>
+		<h2 class="ftimes">Cara Belanja</h2>
+		<p class="ftimes text-xbabu"><em><?=$ruang_tulis?></em></p>
+	</div><!-- /.map-halaman -->
 </section>
-
-<div class="map-halaman">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ol class="breadcrumb">
-					<li><a href="<?php echo site_url() ?>"><i class="fa fa-home"></i></a></li>
-					<li class="active">Cara Order</li>
-				</ol>
-			</div><!-- /.col -->
-		</div><!-- /.row -->
-	</div><!-- /.container -->
-</div><!-- /.map-halaman -->
 
 <section id="konten">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="konten-about">
-					<div class="row">
-						<div class="col-md-9">
-							<div class="box-about">
-								<h2 class="tag-page">Cara Order</h2>
+					 <div class="box-about">
+								<!-- <div class="judul-box">
+									<p>Cara Order Di Zuko</p>
+								</div> -->
 								<div class="isi-about">
 								<?php foreach ($howto as $howto): ?>
-									<h4># <?php echo $howto->info_name ?></h4>
+									<h4>• <?php echo $howto->info_name ?></h4>
 									<?php echo $howto->info_desc ?>
+									<hr>
 								<?php endforeach ?>
 								</div>
 							</div><!-- /.box-about -->
-						</div><!-- /.col -->
-						
-						<div class="col-md-3">
-					  		<?php // include "sidebar-berita.php"; ?>
-						</div><!-- /.col -->
-					</div><!-- /.row -->
-				</div><!-- /.konten-about -->
+					</div><!-- /.konten-about -->
 			</div><!-- /.col -->
 		</div><!-- /.row -->
 	</div><!-- /.container -->

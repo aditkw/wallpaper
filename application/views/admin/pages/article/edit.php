@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Article
+			Artikel
 			<small>update data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li><a href="<?php echo site_url('admin/article');?>">Article</a></li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li><a href="<?php echo site_url('admin/article');?>">Artikel</a></li>
 			<li class="active">Update</li>
 		</ol>
 	</section>
@@ -23,7 +23,7 @@
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
 						<div class="form-group">
-							<label for="article">Image Index</label>
+							<label for="article">Gambar</label>
 							<input type="file" name="image" class="img-preview form-control">
 							<img src="<?php echo base_url($path_file.'/'.$image_index->image_name);?>" class="preview-image img img-responsive" alt="image index">
 						</div>
@@ -32,7 +32,7 @@
 						<div class="row">
 							<div class="col-md-12 col-lg-12">
 								<div class="form-group">
-									<label for="article">Title</label>
+									<label for="article">Judul</label>
 									<input type="hidden" name="id" value="<?php echo hash_link_encode($article->article_id); ?>">
 									<input type="text" name="title" class="form-control" value="<?php echo $article->article_title; ?>" placeholder="article title" required>
 								</div>
@@ -73,7 +73,7 @@
 				<div class="row">
 					<div class="col-md-12 col-lg-12">
 						<div class="form-group">
-							<label for="article">Description</label>
+							<label for="article">Deskripsi</label>
 							<textarea name="desc" class="ckeditor"><?php echo $article->article_desc; ?></textarea>
 						</div>
 					</div>
@@ -81,7 +81,7 @@
 				<hr>
 				<div class="form-group">
 					<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-					<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+					<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 				</div>
 				<?php echo form_close();?>
 			</div><!-- /.box-body -->

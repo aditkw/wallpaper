@@ -3,34 +3,34 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Transaction
+			Transaksi
 			<small>
 				<?php if ($uri_3 == 'order'): ?>
-					new order
+					Order baru
 				<?php elseif ($uri_3 == 'confirm'): ?>
-					confirmed
+					Konfirmasi
 				<?php elseif ($uri_3 == 'delivery'): ?>
-					delivery
+					Pengiriman
 				<?php elseif ($uri_3 == 'close'): ?>
-					close
+					Selesai
 				<?php else: ?>
-					canceled
+					Dibatalkan
 				<?php endif ?>
 			</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
 			<li class="active">
 				<?php if ($uri_3 == 'order'): ?>
-					New Order
+					Order baru
 				<?php elseif ($uri_3 == 'confirm'): ?>
-					Confirmed
+					Konfirmasi
 				<?php elseif ($uri_3 == 'delivery'): ?>
-					Delivery
+					Pengiriman
 				<?php elseif ($uri_3 == 'close'): ?>
-					Close
+					Selesai
 				<?php else: ?>
-					Canceled
+					Dibatalkan
 				<?php endif ?>
 			</li>
 		</ol>
@@ -42,7 +42,7 @@
 		<div class="row form-group">
 			<!-- Menampilkan hasil kesalahan validasi dalam proses input dan update data -->
 			<?php if ($this->session->flashdata('error')):?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 						<h4><i class="icon fa fa-close"></i> Error!</h4>
@@ -55,7 +55,7 @@
 
 			<!-- Menampilkan hasil sukses dari proses input dan update data -->
 			<?php if ($this->session->flashdata('success')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-success alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-check"></i> Success!</h4>
@@ -66,7 +66,7 @@
 
 			<!-- Menampilkan hasil kesalahan dari proses input dan update data -->
 			<?php if ($this->session->flashdata('failed')): ?>
-				<div class="col-md-12 wow fadeInDown"> 
+				<div class="col-md-12 wow fadeInDown">
 					<div class="alert alert-danger alert-dismissable">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 						<h4><i class="icon fa fa-close"></i> Failed!</h4>
@@ -84,11 +84,11 @@
 					<thead>
 						<tr>
 							<th width="5%">#</th>
-							<th width="15%">Order No</th>
+							<th width="15%">No Pesanan</th>
 							<th>Member</th>
-							<th>Name</th>
+							<th>Nama</th>
 							<th width="15%">Total</th>
-							<th width="15%">Action</th>
+							<th width="15%">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -132,12 +132,12 @@
 					</tbody>
 					<thead>
 						<tr>
-							<th>#</th>
-							<th>Order No</th>
+							<th width="5%">#</th>
+							<th width="15%">No Pesanan</th>
 							<th>Member</th>
-							<th>Name</th>
-							<th>Total</th>
-							<th>Action</th>
+							<th>Nama</th>
+							<th width="15%">Total</th>
+							<th width="15%">Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -154,27 +154,27 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Shipment Number</h4>
+				<h4 class="modal-title">Nomor Pengiriman</h4>
 			</div>
 			<?php echo form_open_multipart('admin/transaction/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="shipment">Order No</label>
+					<label for="shipment">No Pesanan</label>
 					<input id="id" type="hidden" name="id">
 					<input id="order_no" type="text" name="order_no" class="form-control" placeholder="order no">
 				</div>
 				<div class="form-group">
-					<label for="shipment">Shipmern Number</label>
+					<label for="shipment">Nomor Resi</label>
 					<input id="shipping_no" type="text" name="shipping_no" class="form-control" placeholder="shipment number">
 				</div>
 				<div class="form-group">
-					<label for="shipment">Date</label>
+					<label for="shipment">Tanggal Kirim</label>
 					<input id="datepicker" type="date" name="date" class="form-control">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="update-shipping-number" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="update-shipping-number" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

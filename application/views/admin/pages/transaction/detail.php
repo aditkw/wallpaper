@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Transaction Detail
+			Detail Transaksi
 			<small>#<?php echo $transaction->order_no ?></small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('dashboard') ?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li><a href="<?php echo site_url('admin/transaction') ?>">Transaction</a></li>
+			<li><a href="<?php echo site_url('dashboard') ?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li><a href="<?php echo site_url('admin/transaction') ?>">Transaksi</a></li>
 			<li class="active">Detail</li>
 		</ol>
 	</section>
@@ -19,8 +19,8 @@
 			<div class="row">
 				<div class="col-xs-12">
 					<h2 class="page-header">
-						<i class="fa fa-globe"></i> LaWaveShop
-						<small class="pull-right">Date: <?php echo date('d/m/Y') ?></small>
+						<i class="fa fa-globe"></i> Wallpaper Indonesia
+						<small class="pull-right">Tanggal: <?php echo date('d/m/Y') ?></small>
 					</h2>
 				</div><!-- /.col -->
 			</div>
@@ -44,10 +44,10 @@
 					<!-- JIKA STATUS SELAIN NEW ORDER -->
 					<?php if ($transaction->trans_status_id > 1): ?>
 						<?php $date = indonesian_date($payment->payment_date); ?>
-						Confirmed
+						Sudah Konfirmasi
 						<table>
 							<tr>
-								<th width="25%"><b>Date Paid</b> </th>
+								<th width="25%"><b>Tgl Bayar</b> </th>
 								<th width="5%"><b>:</b> </th>
 								<td><?php echo $date['date']; ?></td>
 							</tr>
@@ -59,7 +59,7 @@
 
 							<!-- <tr><td><br/></td></tr> -->
 							<tr>
-								<td><b>Account</b> </td>
+								<td><b>Akun Bank</b> </td>
 								<td> <b>:</b> </td>
 								<td><?php echo $payment->payment_account ?></td>
 							</tr>
@@ -69,7 +69,7 @@
 								<td><?php echo $payment->payment_bank ?></td>
 							</tr>
 							<tr>
-								<td><b>No</b> </td>
+								<td><b>No Rek</b> </td>
 								<td> <b>:</b> </td>
 								<td><?php echo $payment->payment_no ?></td>
 							</tr>
@@ -115,12 +115,12 @@
 								<?php endif ?>
 
 								<?php if ($transaction->transaction_cancel == 99): ?>
-									<span class="label label-danger">Canceled</span>
+									<span class="label label-danger">Dibatalkan</span>
 								<?php endif ?>
 							</td>
 						</tr>
 						<tr>
-							<td><b>Account</b> </td>
+							<td><b>Akun</b> </td>
 							<td> <b>:</b> </td>
 							<td>
 
@@ -134,13 +134,13 @@
 							</td>
 						</tr>
 						<tr>
-							<td valign="top"><b>Shipment</b> </td>
+							<td valign="top"><b>Jasa Pengiriman</b> </td>
 							<td valign="top"> <b>:</b> </td>
 							<td><?php echo $transaction->transaction_shipping ?></td>
 						</tr>
 						<?php if (!empty($transaction->transaction_shipping_no)): ?>
 							<tr>
-								<td valign="top"><b>Receipt No</b> </td>
+								<td valign="top"><b>No Resi</b> </td>
 								<td valign="top"> <b>:</b> </td>
 								<td><?php echo $transaction->transaction_shipping_no ?></td>
 							</tr>
@@ -157,9 +157,9 @@
 						<thead>
 							<tr>
 								<th>Qty</th>
-								<th>Product</th>
-								<th>Price</th>
-								<th>Price Discount</th>
+								<th>Produk</th>
+								<th>Harga</th>
+								<th>Harga Diskon</th>
 								<th>Subtotal</th>
 							</tr>
 						</thead>
@@ -183,13 +183,13 @@
 			<div class="row">
 				<!-- accepted payments column -->
 				<div class="col-xs-6">
-					<p class="lead">Note:</p>
+					<p class="lead">Catatan:</p>
 					<p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
 						<?php echo $transaction->transaction_note ?>
 					</p>
 					<?php if (!empty($transaction->transaction_receive_note)): ?>
 						<p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-							<b>Receive Note :</b>
+							<b>Catatan (sudah terima barang) :</b>
 							<?php echo $transaction->transaction_receive_note ?>
 						</p>
 					<?php endif ?>
@@ -204,14 +204,14 @@
 								</td>
 							</tr>
 							<tr>
-								<th>Shipping</th>
+								<th>Biaya Pengiriman</th>
 								<td align="right">
 									<span class="left-acc">Rp</span><?php echo uang($transaction->transaction_shipping_cost) ?>
 								</td>
 							</tr>
 							<?php if ($transaction->voucher_id): ?>
 								<tr>
-									<th>Discount Voucher <?php echo "(<em>$transaction->voucher_code</em>)";?></th>
+									<th>Diskon Voucher <?php echo "(<em>$transaction->voucher_code</em>)";?></th>
 									<td align="right">
 										<span class="left-acc">Rp</span><?php echo uang($transaction->voucher_discount) ?>
 									</td>
@@ -234,7 +234,7 @@
 					<a href="<?php echo site_url('admin/transaction/invoice-print/'.$transaction->order_no.'/'.hash_link_encode($this->encrypt->encode($transaction->trans_status_id))) ?>" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print PDF</a>
 					<!-- <button class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment</button> -->
 					<?php if ($transaction->trans_status_id == 2): ?>
-						<button class="btn btn-primary pull-right" style="margin-right: 5px;" onclick="window.location.href='<?php echo site_url('admin/transaction/approve/'.$transaction->order_no.'/'.hash_link_encode($this->encrypt->encode($transaction->trans_status_id))) ?>'"><i class="fa fa-check"></i> Approve Confirmation</button>
+						<button class="btn btn-primary pull-right" style="margin-right: 5px;" onclick="window.location.href='<?php echo site_url('admin/transaction/approve/'.$transaction->order_no.'/'.hash_link_encode($this->encrypt->encode($transaction->trans_status_id))) ?>'"><i class="fa fa-check"></i> Konfirmasi Pembayaran Ini</button>
 					<?php endif ?>
 				</div>
 			</div>
@@ -249,27 +249,27 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Shipment Number</h4>
+				<h4 class="modal-title">Nomor Pengiriman</h4>
 			</div>
 			<?php echo form_open_multipart('admin/transaction/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="shipment">Order No</label>
+					<label for="shipment">No Pesanan</label>
 					<input id="id" type="hidden" name="id">
 					<input id="order_no" type="text" name="order_no" class="form-control" placeholder="order no">
 				</div>
 				<div class="form-group">
-					<label for="shipment">Shipmern Number</label>
+					<label for="shipment">No Resi</label>
 					<input id="shipping_no" type="text" name="shipping_no" class="form-control" placeholder="shipment shipping_no">
 				</div>
 				<div class="form-group">
-					<label for="shipment">Date</label>
+					<label for="shipment">Tanggal Kirim</label>
 					<input id="datepicker" type="date" name="date" class="form-control">
 				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="update-shipping-number" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="update-shipping-number" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>

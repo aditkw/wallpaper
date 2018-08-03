@@ -7,7 +7,7 @@
     </div>
     <div class="container">
       <div class="row info-slide">
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-12">
           <a href="<?=site_url('kalkulator')?>">
             <img class="pull-left max-width" src="<?=site_url('dist/img/assets/kalku.jpg')?>" alt="">
           </a>
@@ -16,20 +16,22 @@
             <p>Hitung kebutuhan wallpaper mu</p>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-12">
           <a href="<?=site_url('cara-belanja')?>">
             <img class="pull-left max-width" src="<?=site_url('dist/img/assets/howto.jpg')?>" alt="">
           </a>
           <div class="pull-left text">
             <p class="f-philo">CARA PEMBELIAN</p>
-            <p>Pelajari cara pembelian sebelum membeli</p>
+            <p>Pelajari cara pembelian sebelum beli</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <img class="pull-left max-width" src="<?=site_url('dist/img/assets/promo.jpg')?>" alt="">
+        <div class="col-md-4 col-xs-12">
+          <a href="<?=site_url('berita-event/'.$promot->article_link)?>">
+            <img style="max-width:25%;" class="pull-left" src="<?=site_url('uploads/img/article/'.$promot->image_name)?>" alt="">
+          </a>
           <div class="pull-left text">
-            <p class="f-philo">PROMO LEBARAN</p>
-            <p>Cek promo lebaran yang kami punya</p>
+            <p class="f-philo"><?=limitKalimat($promot->article_title, 20)?></p>
+            <p><?=limitKalimat($promot->article_desc)?></p>
           </div>
         </div>
         <div class="clear"></div>
@@ -53,7 +55,7 @@
         <?php if ($wp->product_discount): ?>
           <div class="col-md-3 box-prod">
             <div class="img-hover relative">
-              <img class="max-width" src="<?=site_url("uploads/img/product/$wp->image_name")?>" alt="">
+              <img class="max-width middle block" src="<?=site_url("uploads/img/product/$wp->image_name")?>" alt="">
               <div class="hover-detail">
                 <a href="<?=site_url('produk/detail/'.$wp->product_code.'/'.$wp->product_link)?>"><i class="fa fa-search"></i></a>
               </div>
@@ -73,12 +75,13 @@
 
     <div class="container banner">
       <div class="row">
-        <div class="col-md-6">
-          <img class="img-responsive" src="<?=site_url('dist/img/assets/banner1.jpg')?>" alt="">
-        </div>
-        <div class="col-md-6">
-          <img class="img-responsive" src="<?=site_url('dist/img/assets/banner2.jpg')?>" alt="">
-        </div>
+        <?php foreach ($banners as $banner): ?>
+          <div class="col-md-6">
+            <a href="<?=$banner->banner_link?>">
+              <img class="img-responsive" src="<?=site_url('uploads/img/banner/'.$banner->banner_image)?>" alt="">
+            </a>
+          </div>
+        <?php endforeach; ?>
       </div>
     </div>
 
@@ -99,7 +102,7 @@
             WARNA
             <ul>
               <?php foreach ($color as $color): ?>
-                <li><?=$color->color_name?></li>
+                <li><a href="<?=site_url("produk/$wallpaper->category_link/all?color=$color->color_link")?>"><?=$color->color_name?></a></li>
               <?php endforeach; ?>
             </ul>
           </li>
@@ -115,7 +118,7 @@
         <?php foreach($brand_wp as $brand): ?>
           <div class="col-md-3 box-prod">
             <div class="img-hover relative">
-              <img class="max-width" src="<?=site_url("uploads/img/brand/$brand->brand_image")?>" alt="">
+              <img class="max-width middle block" src="<?=site_url("uploads/img/brand/$brand->brand_image")?>" alt="">
               <div class="hover-detail">
                 <a href="<?=site_url('produk/'.$wallpaper->category_link.'/'.$brand->brand_link)?>"><i class="fa fa-search"></i></a>
               </div>
@@ -133,7 +136,7 @@
       <p class="all-product text-center"><a class="text-xbabu" href="<?=site_url('produk/'.$wallpaper->category_link)?>">LIHAT SEMUA PRODUK <i class="fa fa-long-arrow-right text-biru"></i></a></p>
      </div>
 
-     <div class="testimonial relative">
+     <div id="testi" class="testimonial relative">
        <img class="middle block" src="<?=site_url('dist/img/assets/quote.png')?>" alt="">
        <p class="text-center f-mont">Hal terpenting dalam bisnis adalah memiliki <span class="text-biru">Pelanggan Yang Senang <br>
         Berbelanja Pada Kami.</span> Kami memberikan pelayanan terbaik.</p>

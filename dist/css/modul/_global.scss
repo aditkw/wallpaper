@@ -40,9 +40,11 @@ $abs: "http://localhost/wallpaper/";
 .f-philo{font-family: "Philosopher"}
 .f-mont{font-family: "Montserrat"}
 .f-times{font-family: "Times New Roman"}
+.pointer{cursor: pointer}
 
 p, li, a, td{font-family: "Segoe Ui"}
 @include box-prod;
+@include box-news;
 @include box-login;
 @include member-area;
 @include contact;
@@ -56,6 +58,7 @@ section#atas{
   padding-top: 15vh;
   padding-bottom: 10vh;
   border-top: 1px solid $abu;
+  border-bottom: 1px solid $abu;
   .nav-text{
     width: 60%;
   }

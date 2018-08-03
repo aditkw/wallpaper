@@ -80,8 +80,8 @@
 										<?php echo rupiah($payment->payment_total) ?>
 									</td>
 								</tr>
-							</table>	
-							<br>		
+							</table>
+							<br>
 						<?php endif ?>
 					</div><!-- /.col -->
 				<div class="col-sm-4 invoice-col">
@@ -136,7 +136,7 @@
 								<td><?php echo $transaction->transaction_shipping_no ?></td>
 							</tr>
 						<?php endif ?>
-					</table>			
+					</table>
 					<br>
 				</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -148,8 +148,9 @@
 							<thead>
 								<tr>
 									<th>Qty</th>
-									<th>Product</th>
-									<th>Price</th>
+									<th>Produk</th>
+									<th>Harga</th>
+									<th>Harga Diskon</th>
 									<th>Subtotal</th>
 								</tr>
 							</thead>
@@ -159,6 +160,7 @@
 										<td><?php echo $item->transaction_item_qty ?></td>
 										<td><?php echo $item->product_name ?></td>
 										<td><?php echo rupiah($item->transaction_item_price) ?></td>
+										<td><?php echo rupiah($item->transaction_item_price_disc)." ($item->product_discount%)" ?></td>
 										<td><?php echo rupiah($item->transaction_item_subtotal) ?></td>
 									</tr>
 								<?php endforeach ?>
@@ -170,7 +172,7 @@
 				<div class="row">
 					<!-- accepted payments column -->
 					<div class="col-xs-6">
-						<p class="lead">Note:</p>
+						<p class="lead">Catatan:</p>
 						<p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
 							<?php echo $transaction->transaction_note ?>
 						</p>
@@ -183,9 +185,17 @@
 									<td><?php echo rupiah($transaction->transaction_cost) ?></td>
 								</tr>
 								<tr>
-									<th>Shipping</th>
+									<th>Biaya Kirim</th>
 									<td><?php echo rupiah($transaction->transaction_shipping_cost) ?></td>
 								</tr>
+								<?php if ($transaction->voucher_id): ?>
+									<tr>
+										<th>Diskon Voucher <?php echo "(<em>$transaction->voucher_code</em>)";?></th>
+										<td align="right">
+											<span class="left-acc">Rp</span><?php echo uang($transaction->voucher_discount) ?>
+										</td>
+									</tr>
+								<?php endif; ?>
 								<tr>
 									<th>Total</th>
 									<td><?php echo rupiah($transaction->transaction_total) ?></td>
@@ -203,4 +213,3 @@
 		<script src="<?php echo base_url('dist/js/app.min.js');?>"></script>
 	</body>
 </html>
-	

@@ -3,12 +3,12 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Category
+			Kategori
 			<small>data</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li class="active">Category</li>
+			<li><a href="<?php echo site_url('admin');?>"><i class="fa fa-dashboard"></i> Dasbor</a></li>
+			<li class="active">Kategori</li>
 		</ol>
 	</section>
 
@@ -62,9 +62,9 @@
 						<tr>
 							<th width="5%">#</th>
 							<!-- <th width="15%">Image</th> -->
-							<th width="80%">Category Name</th>
+							<th width="80%">Nama Kategori</th>
 							<!-- <th>Description</th> -->
-							<th>Action</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -105,9 +105,9 @@
 						<tr>
 							<th>#</th>
 							<!-- <th>Image</th> -->
-							<th>Category Name</th>
+							<th>Nama Kategori</th>
 							<!-- <th>Description</th> -->
-							<th>Action</th>
+							<th>Aksi</th>
 						</tr>
 					</thead>
 				</table>
@@ -124,12 +124,12 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Add New Category</h4>
+				<h4 class="modal-title">Tambah Kategori Baru</h4>
 			</div>
 			<?php echo form_open_multipart('admin/category/insert');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="category">Category Name</label>
+					<label for="category">Nama Kategori</label>
 					<input type="text" name="name" class="form-control" placeholder="category name" required>
 				</div>
 <!--
@@ -149,7 +149,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
@@ -169,7 +169,7 @@
 			<?php echo form_open_multipart('admin/category/update');?>
 			<div class="modal-body">
 				<div class="form-group">
-					<label for="category">Category Name</label>
+					<label for="category">Nama kategori</label>
 					<input id="id" type="hidden" name="id">
 					<input id="name" type="text" name="name" class="form-control" placeholder="category name" required>
 				</div>
@@ -190,7 +190,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="reset" class="btn btn-default btn-flat"><i class="fa fa-refresh"></i> Reset</button>
-				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Save</button>
+				<button type="submit" name="submit" class="btn btn-primary btn-flat"><i class="fa fa-save"></i> Simpan</button>
 			</div>
 			<?php echo form_close();?>
 		</div>
